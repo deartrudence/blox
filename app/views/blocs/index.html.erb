@@ -1,11 +1,11 @@
 <h1>Listing blocs</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
       <th>Name</th>
       <th>Code</th>
-      <th>Category</th>
+      <th>Category ID</th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,7 +17,7 @@
       <tr>
         <td><%= bloc.name %></td>
         <td><%= bloc.code %></td>
-        <td><%= bloc.category %></td>
+        <td><%= bloc.category_id %></td>
         <td><%= link_to 'Show', bloc %></td>
         <td><%= link_to 'Edit', edit_bloc_path(bloc) %></td>
         <td><%= link_to 'Destroy', bloc, method: :delete, data: { confirm: 'Are you sure?' } %></td>

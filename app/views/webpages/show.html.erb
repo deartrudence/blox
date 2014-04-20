@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @webpage.name %>
+</p>
+
+<p>
+  <strong>Bloc:</strong>
+  <%= @webpage.bloc_id %>
+</p>
+
+<%= link_to 'Edit', edit_webpage_path(@webpage) %> |
+<%= link_to 'Back', webpages_path %>

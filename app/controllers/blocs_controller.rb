@@ -4,7 +4,7 @@ class BlocsController < ApplicationController
   # GET /blocs
   # GET /blocs.json
   def index
-    @blocs = Bloc.all
+    @blocs = Bloc.includes(:category).all
   end
 
   # GET /blocs/1
@@ -69,6 +69,6 @@ class BlocsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bloc_params
-      params.require(:bloc).permit(:name, :code, :category)
+      params.require(:bloc).permit(:name, :code, :category_id)
     end
 end

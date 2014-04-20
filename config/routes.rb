@@ -1,4 +1,8 @@
 Blox::Application.routes.draw do
+  resources :categories
+
+  resources :webpages
+
   resources :blocs
 
   # The priority is based upon order of creation: first created -> highest priority.
