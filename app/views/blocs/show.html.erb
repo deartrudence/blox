@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @bloc.name %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @bloc.code %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @bloc.category %>
+</p>
+
+<%= link_to 'Edit', edit_bloc_path(@bloc) %> |
+<%= link_to 'Back', blocs_path %>

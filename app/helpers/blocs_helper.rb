@@ -1,0 +1,2 @@
+module BlocsHelper
+end

@@ -1,0 +1,31 @@
+<h1>Listing blocs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Category</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blocs.each do |bloc| %>
+      <tr>
+        <td><%= bloc.name %></td>
+        <td><%= bloc.code %></td>
+        <td><%= bloc.category %></td>
+        <td><%= link_to 'Show', bloc %></td>
+        <td><%= link_to 'Edit', edit_bloc_path(bloc) %></td>
+        <td><%= link_to 'Destroy', bloc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bloc', new_bloc_path %>
