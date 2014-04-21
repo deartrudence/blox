@@ -5,10 +5,12 @@
   <%= @webpage.name %>
 </p>
 
-<p>
-  <strong>Bloc:</strong>
-  <%= @webpage.bloc_id %>
-</p>
+
+<ul>
+	<% for bloc in @webpage.blocs %>
+        <li><%= bloc.name %></li>
+    <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_webpage_path(@webpage) %> |
 <%= link_to 'Back', webpages_path %>
