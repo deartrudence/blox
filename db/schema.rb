@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140420194014) do
+ActiveRecord::Schema.define(version: 20140421214015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20140420194014) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "web_layouts", force: true do |t|
+    t.integer  "bloc_id"
+    t.integer  "webpage_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "web_layouts", ["bloc_id"], name: "index_web_layouts_on_bloc_id", using: :btree
+  add_index "web_layouts", ["webpage_id"], name: "index_web_layouts_on_webpage_id", using: :btree
 
   create_table "webpages", force: true do |t|
     t.string   "name"
