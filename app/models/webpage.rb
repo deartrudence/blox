@@ -5,8 +5,6 @@ class Webpage < ActiveRecord::Base
 
 
 	def add_bloc
-		self.bloc_id = self.bloc_id.push(:bloc_id)
-		self.bloc_id_will_change!
-		self.save
+	
 	end
 end
