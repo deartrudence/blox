@@ -5,6 +5,7 @@ class WebpagesController < ApplicationController
   # GET /webpages.json
   def index
     @webpages = Webpage.all
+    
   end
 
   # GET /webpages/1
@@ -15,10 +16,12 @@ class WebpagesController < ApplicationController
   # GET /webpages/new
   def new
     @webpage = Webpage.new
+    @categories = Category.all
   end
 
   # GET /webpages/1/edit
   def edit
+    @categories = Category.all
   end
 
   # POST /webpages
@@ -40,15 +43,16 @@ class WebpagesController < ApplicationController
   # PATCH/PUT /webpages/1
   # PATCH/PUT /webpages/1.json
   def update
-    respond_to do |format|
-      if @webpage.update(webpage_params)
-        format.html { redirect_to @webpage, notice: 'Webpage was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @webpage.errors, status: :unprocessable_entity }
-      end
-    end
+    
+    # respond_to do |format|
+    #   # if @webpage.update(webpage_params)
+    #   #   format.html { redirect_to @webpage, notice: 'Webpage was successfully updated.' }
+    #   #   format.json { head :no_content }
+    #   # else
+    #   #   format.html { render action: 'edit' }
+    #   #   format.json { render json: @webpage.errors, status: :unprocessable_entity }
+    #   # end
+    # end
   end
 
   # DELETE /webpages/1

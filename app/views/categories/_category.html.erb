@@ -1,0 +1,11 @@
+
+
+
+      <strong><%= category.name %></strong>
+      <ul>
+        <% for bloc in category.blocs %>
+          <li><%= bloc.name %>
+              <%= link_to "+", edit_webpage_path %></li>
+        <% end %>
+      </ul>
+  

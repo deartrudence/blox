@@ -1,15 +1,8 @@
 <h1>Listing categories</h1>
 
+  <%= render @categories %>
 
-
-    <% for category in @categories %>
-      <strong><%= category.name %></strong>
-      <ul>
-        <% for bloc in category.blocs %>
-          <li><%= bloc.name %></li>
-        <% end %>
-      </ul>
-    <% end %>
+    
 
 <br>
 
