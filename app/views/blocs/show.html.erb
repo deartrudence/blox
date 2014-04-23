@@ -11,8 +11,15 @@
 </p>
 
 <p>
+  <strong>Image:</strong>
+  <%= @bloc.img_url %><br>
+  <img src="<%= @bloc.img_url %>" alt=" <%= @bloc.name %> ">
+
+</p>
+
+<p>
   <strong>Category:</strong>
-  <%= @bloc.category_id %>
+  <%= @bloc.category_id %> :: <%= @bloc.category.name %>
 </p>
 
 <%= link_to 'Edit', edit_bloc_path(@bloc) %> |

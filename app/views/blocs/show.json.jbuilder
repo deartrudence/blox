@@ -1,1 +1,1 @@
-json.extract! @bloc, :id, :name, :code, :category, :created_at, :updated_at
+json.extract! @bloc, :id, :name, :code, :img_url, :category, :created_at, :updated_at

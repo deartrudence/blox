@@ -5,7 +5,9 @@
       <ul>
         <% for bloc in category.blocs %>
           <li><%= bloc.name %>
+              <% if @webpage.present? %>
               <%= link_to "+", edit_webpage_path %></li>
+              <% end %>
         <% end %>
       </ul>
   

@@ -69,6 +69,6 @@ class BlocsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bloc_params
-      params.require(:bloc).permit(:name, :code, :category_id)
+      params.require(:bloc).permit(:name, :code, :img_url, :category_id)
     end
 end

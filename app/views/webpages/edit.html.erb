@@ -3,5 +3,12 @@
 <%= render @categories %>
 <%= render 'form' %>
 
+<ul>
+	<% for bloc in @webpage.blocs %>
+        <!-- <li><%= bloc.img_url %></li> -->
+		<img src="<%= bloc.img_url %>" alt="<%= bloc.name %>">
+    <% end %>
+</ul>
+
 <%= link_to 'Show', @webpage %> |
 <%= link_to 'Back', webpages_path %>

@@ -8,7 +8,8 @@
 
 <ul>
 	<% for bloc in @webpage.blocs %>
-        <li><%= bloc.name %></li>
+        <!-- <li><%= bloc.img_url %></li> -->
+		<img src="<%= bloc.img_url %>" alt="<%= bloc.name %>">
     <% end %>
 </ul>
 
