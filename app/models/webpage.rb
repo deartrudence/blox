@@ -4,7 +4,7 @@ class Webpage < ActiveRecord::Base
 
 
 
-	def add_bloc
-	
+	def add_bloc(bloc)
+		self.blocs << bloc
 	end
 end
