@@ -43,16 +43,19 @@ class WebpagesController < ApplicationController
   # PATCH/PUT /webpages/1
   # PATCH/PUT /webpages/1.json
   def update
-    
-    # respond_to do |format|
-    #   # if @webpage.update(webpage_params)
-    #   #   format.html { redirect_to @webpage, notice: 'Webpage was successfully updated.' }
-    #   #   format.json { head :no_content }
-    #   # else
-    #   #   format.html { render action: 'edit' }
-    #   #   format.json { render json: @webpage.errors, status: :unprocessable_entity }
-    #   # end
-    # end
+    @bloc = Bloc.find(params[:bloc])
+    @webpage.blocs << @bloc
+    @webpage.save
+    respond_to do |format|
+      #if @webpage.update(webpage_params)
+        #format.html { redirect_to @webpage, notice: 'Webpage was successfully updated.' }
+        format.html { redirect_to edit_webpage_path, notice: 'Webpage was successfully updated.' }
+        format.json { head :no_content }
+      # else
+      #   format.html { render action: 'edit' }
+      #   format.json { render json: @webpage.errors, status: :unprocessable_entity }
+      # end
+    end
   end
 
   # DELETE /webpages/1

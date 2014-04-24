@@ -6,7 +6,7 @@
         <% for bloc in category.blocs %>
           <li><%= bloc.name %>
               <% if @webpage.present? %>
-              <%= link_to "+", edit_webpage_path %></li>
+              <%= link_to "+", webpage_path(:webpage => @webpage, :bloc => bloc), method: :put %></li>
               <% end %>
         <% end %>
       </ul>
