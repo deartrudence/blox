@@ -5,8 +5,8 @@
 
 <ul>
 	<% for bloc in @webpage.blocs %>
-        <!-- <li><%= bloc.img_url %></li> -->
 		<img src="<%= bloc.img_url %>" alt="<%= bloc.name %>">
+		<%= link_to "-", webpage_path(:todelete => @webpage.web_layouts.find_by(bloc: bloc)), method: :put %>
     <% end %>
 </ul>
 

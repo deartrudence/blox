@@ -43,21 +43,31 @@ class WebpagesController < ApplicationController
   # PATCH/PUT /webpages/1
   # PATCH/PUT /webpages/1.json
   def update
-    new_index = @webpage.blocs.maximum(:position) + 1
-    @bloc = Bloc.find(params[:bloc])
-    @layout = WebLayout.new bloc: @bloc, webpage: @webpage, position: new_index
-    @layout.save
 
-    respond_to do |format|
-      #if @webpage.update(webpage_params)
-        #format.html { redirect_to @webpage, notice: 'Webpage was successfully updated.' }
-        format.html { redirect_to edit_webpage_path, notice: 'Webpage was successfully updated.' }
-        format.json { head :no_content }
-      # else
-      #   format.html { render action: 'edit' }
-      #   format.json { render json: @webpage.errors, status: :unprocessable_entity }
-      # end
+    if params[:todelete].present?
+
+        @webpage.web_layouts.delete(params[:todelete])
+        @webpage.save
+        redirect_to edit_webpage_path
+    else
+      new_index = @webpage.blocs.maximum(:position) + 1
+      @bloc = Bloc.find(params[:bloc])
+      @layout = WebLayout.new bloc: @bloc, webpage: @webpage, position: new_index
+      @layout.save
+
+      respond_to do |format|
+        #if @webpage.update(webpage_params)
+          #format.html { redirect_to @webpage, notice: 'Webpage was successfully updated.' }
+          format.html { redirect_to edit_webpage_path, notice: 'Webpage was successfully updated.' }
+          format.json { head :no_content }
+        # else
+        #   format.html { render action: 'edit' }
+        #   format.json { render json: @webpage.errors, status: :unprocessable_entity }
+        # end
+      end
     end
+
+    
   end
 
   # DELETE /webpages/1
