@@ -43,9 +43,11 @@ class WebpagesController < ApplicationController
   # PATCH/PUT /webpages/1
   # PATCH/PUT /webpages/1.json
   def update
+    new_index = @webpage.blocs.maximum(:position) + 1
     @bloc = Bloc.find(params[:bloc])
-    @webpage.blocs << @bloc
-    @webpage.save
+    @layout = WebLayout.new bloc: @bloc, webpage: @webpage, position: new_index
+    @layout.save
+
     respond_to do |format|
       #if @webpage.update(webpage_params)
         #format.html { redirect_to @webpage, notice: 'Webpage was successfully updated.' }

@@ -29,7 +29,8 @@ c = Bloc.create!(
 	img_url: 'http://placehold.it/800x150/4d4d4d'
 )
 
-Webpage.create!([
-	name: 'Website 01',
-	blocs: [a, b, c]
-])
+page = Webpage.create!(name: 'Website 01')
+
+WebLayout.create! webpage: page, bloc: c, position: 3
+WebLayout.create! webpage: page, bloc: a, position: 1
+WebLayout.create! webpage: page, bloc: b, position: 2
