@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bloc:</strong>
+  <%= @web_layout.bloc %>
+</p>
+
+<p>
+  <strong>Webpage:</strong>
+  <%= @web_layout.webpage %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @web_layout.position %>
+</p>
+
+<%= link_to 'Edit', edit_web_layout_path(@web_layout) %> |
+<%= link_to 'Back', web_layouts_path %>

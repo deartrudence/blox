@@ -1,0 +1,2 @@
+module WebLayoutsHelper
+end

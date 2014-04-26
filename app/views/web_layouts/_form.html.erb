@@ -1,0 +1,29 @@
+<%= form_for(@web_layout) do |f| %>
+  <% if @web_layout.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@web_layout.errors.count, "error") %> prohibited this web_layout from being saved:</h2>
+
+      <ul>
+      <% @web_layout.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :bloc_id %><br>
+    <%= f.text_field :bloc_id %>
+  </div>
+  <div class="field">
+    <%= f.label :webpage_id %><br>
+    <%= f.text_field :webpage_id %>
+  </div>
+  <div class="field">
+    <%= f.label :position %><br>
+    <%= f.number_field :position %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

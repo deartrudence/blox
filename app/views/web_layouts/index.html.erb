@@ -1,0 +1,31 @@
+<h1>Listing web_layouts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Bloc</th>
+      <th>Webpage</th>
+      <th>Position</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @web_layouts.each do |web_layout| %>
+      <tr>
+        <td><%= web_layout.bloc %></td>
+        <td><%= web_layout.webpage %></td>
+        <td><%= web_layout.position %></td>
+        <td><%= link_to 'Show', web_layout %></td>
+        <td><%= link_to 'Edit', edit_web_layout_path(web_layout) %></td>
+        <td><%= link_to 'Destroy', web_layout, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Web layout', new_web_layout_path %>

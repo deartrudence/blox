@@ -17,6 +17,7 @@ class WebpagesController < ApplicationController
   def new
     @webpage = Webpage.new
     @categories = Category.all
+    @web_layouts = WebLayout.all
   end
 
   # GET /webpages/1/edit
@@ -44,27 +45,27 @@ class WebpagesController < ApplicationController
   # PATCH/PUT /webpages/1.json
   def update
 
-    if params[:todelete].present?
+    # if params[:todelete].present?
 
-        @webpage.web_layouts.delete(params[:todelete])
-        @webpage.save
-        redirect_to edit_webpage_path
-    else
-      new_index = @webpage.blocs.maximum(:position) + 1
-      @bloc = Bloc.find(params[:bloc])
-      @layout = WebLayout.new bloc: @bloc, webpage: @webpage, position: new_index
-      @layout.save
+    #     @webpage.web_layouts.delete(params[:todelete])
+    #     @webpage.save
+    #     redirect_to edit_webpage_path
+    # else
+    #   new_index = @webpage.blocs.maximum(:position) + 1
+    #   @bloc = Bloc.find(params[:bloc])
+    #   @layout = WebLayout.new bloc: @bloc, webpage: @webpage, position: new_index
+    #   @layout.save
 
       respond_to do |format|
-        #if @webpage.update(webpage_params)
-          #format.html { redirect_to @webpage, notice: 'Webpage was successfully updated.' }
+        if @webpage.update(webpage_params)
+          format.html { redirect_to @webpage, notice: 'Webpage was successfully updated.' }
           format.html { redirect_to edit_webpage_path, notice: 'Webpage was successfully updated.' }
           format.json { head :no_content }
-        # else
-        #   format.html { render action: 'edit' }
-        #   format.json { render json: @webpage.errors, status: :unprocessable_entity }
-        # end
-      end
+        else
+          format.html { render action: 'edit' }
+          format.json { render json: @webpage.errors, status: :unprocessable_entity }
+        end
+      #end
     end
 
     

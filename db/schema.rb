@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140425003325) do
+ActiveRecord::Schema.define(version: 20140426144824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 20140425003325) do
   create_table "web_layouts", force: true do |t|
     t.integer  "bloc_id"
     t.integer  "webpage_id"
+    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "position"
   end
 
   add_index "web_layouts", ["bloc_id"], name: "index_web_layouts_on_bloc_id", using: :btree

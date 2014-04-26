@@ -3,7 +3,9 @@
 one:
   bloc_id: 
   webpage_id: 
+  position: 1
 
 two:
   bloc_id: 
   webpage_id: 
+  position: 1

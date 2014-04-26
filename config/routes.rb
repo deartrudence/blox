@@ -1,4 +1,6 @@
 Blox::Application.routes.draw do
+  resources :web_layouts
+
   resources :categories
 
   resources :webpages
