@@ -1,14 +1,102 @@
-<h1>Editing webpage</h1>
+<div id="wrapper">
+	
+	<!-- Sidebar -->
+	<div id="sidebar-wrapper">
+		<ul class="sidebar-nav">
+			<li class="sidebar-brand"><a href="#">Blox Categories</a></li>
+			<% @categories.each do |category| %>
+				<li>
+					<a href="#" id="name-<%=category.name%>" onMouseOver="show('list-<%=category.name%>'), slidein()" ><%= category.name %></a>
+				</li>
+			<% end %>
+		</ul>
+	</div>
 
-<%= render @categories %>
-<%= render 'form' %>
+	<div id="sidebar-submenu">
+		<%= render @categories %>
+	</div>
+	<!-- /Sidebar -->
 
-<ul>
-	<% for wlayout in @webpage.web_layouts %>
-		<img src="<%= wlayout.bloc.img_url %>" alt="<%= wlayout.bloc.name %>">
-		<%= link_to "-", web_layout_path(wlayout, webpage: @webpage), method: :delete %>
-    <% end %>
-</ul>
+	<div id="page-content-wrapper">
+		<div class="content-header">
+			<h1>
+				<a href="#" id="menu-toggle" class="btn btn-default">
+					<i class="icon-reorder"></i>
+				</a>
+				Editing webpage
+			</h1>
+		</div>
 
-<%= link_to 'Show', @webpage %> |
-<%= link_to 'Back', webpages_path %>
+		<div class="page-content inset">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<%= render 'form' %>
+				</div>
+			</div>
+			<br><br><br>
+
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<% for wlayout in @webpage.web_layouts %>
+						<div class="bloc-item">
+							<img src="<%= wlayout.bloc.img_url %>" alt="<%= wlayout.bloc.name %>">
+							<%= link_to "Delete", web_layout_path(wlayout, webpage: @webpage), method: :delete, class: 'btn btn-danger btn-sm' %>
+						</div>
+				    <% end %>
+				</div>
+			</div>
+			<br><br><br>
+
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<hr>
+					<%= link_to 'Show', @webpage %> |
+					<%= link_to 'Back', webpages_path %>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- /Page content -->
+
+<!-- Custom JavaScript for the Menu Toggle -->
+<script>
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("active");
+});
+
+	// Sidebar-submenu content controller
+	var showID = null;
+	function show(id) {
+		if (showID != null) {
+			document.getElementById(showID).style.display = "none";
+		}
+	document.getElementById(id).style.display = "block";
+	showID = id;
+	}
+
+
+	// Sidebar-submenu slide-in & slide-out controllers
+	function slidein(){
+		document.getElementById('sidebar-submenu').style.left = "250px";
+	}
+
+  	var timer;
+    $(document).ready(function() {
+        $("#sidebar-wrapper, #sidebar-submenu").mouseleave(function() {
+            timer=setTimeout(
+            	"$('#sidebar-submenu').animate({left: '-80px'},0);"
+            	,0);
+        });
+
+        $("#sidebar-wrapper, #sidebar-submenu").mouseenter(function() {
+            clearTimeout(timer);
+        });
+    });
+</script>
+</div>
+
+
+
