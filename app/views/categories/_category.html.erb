@@ -1,11 +1,13 @@
 
 
-
+	
       <strong><%= category.name %></strong>
       <ul>
         <% for bloc in category.blocs %>
           <li><%= bloc.name %>
+		
               <% if @webpage.present? %>
+              
               <%= link_to "+", web_layouts_path(:webpage => @webpage, :bloc => bloc), method: :post %></li>
               <% end %>
         <% end %>

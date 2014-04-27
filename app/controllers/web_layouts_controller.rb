@@ -1,6 +1,7 @@
 class WebLayoutsController < ApplicationController
   before_action :set_web_layout, only: [:show, :edit, :update, :destroy]
 
+
   # GET /web_layouts
   # GET /web_layouts.json
   def index
@@ -25,19 +26,28 @@ class WebLayoutsController < ApplicationController
   # POST /web_layouts
   # POST /web_layouts.json
   def create
-      #@web_layout = WebLayout.new(position: 1) #(web_layout_params)
-      #new_index = @web_layout.position + 1
-      #@bloc = params[:bloc]
-      @web_layout = WebLayout.new #webpage: @webpage, bloc: @bloc,  position: 1
-      #raise "hell"
-      @web = Webpage.find_by(@webpage)
+      #This create adds a new WebLayout to a Webpage
+
+      @web_layout = WebLayout.new 
+      
+      @web = Webpage.find(params[:webpage])
+
+      #Increment WebLayout position or add the first one
+      if @web.web_layouts.present?
+        new_index = @web.web_layouts.maximum(:position) + 1
+      else
+        new_index = 1
+      end
+      #set bloc for WebLayout
       @b = Bloc.find(params[:bloc])
+
+      #Set and save WebLayout
       @web_layout.webpage = @web
       @web_layout.bloc = @b
+      @web_layout.position = new_index
       @web_layout.save
     
-    #@web_layout = WebLayout.new(web_layout_params)
-
+    #Redirect to Webpage Edit page
     respond_to do |format|
       #if @web_layout.save
          format.html { redirect_to edit_webpage_path(@web), notice: 'Web layout was successfully created.' }
@@ -69,7 +79,7 @@ class WebLayoutsController < ApplicationController
   def destroy
     @web_layout.destroy
     respond_to do |format|
-      format.html { redirect_to web_layouts_url }
+      format.html { redirect_to edit_webpage_path(params[:webpage]) }
       format.json { head :no_content }
     end
   end
@@ -79,6 +89,7 @@ class WebLayoutsController < ApplicationController
     def set_web_layout
       @web_layout = WebLayout.find(params[:id])
     end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def web_layout_params

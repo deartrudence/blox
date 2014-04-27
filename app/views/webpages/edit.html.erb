@@ -4,9 +4,9 @@
 <%= render 'form' %>
 
 <ul>
-	<% for bloc in @webpage.blocs %>
-		<img src="<%= bloc.img_url %>" alt="<%= bloc.name %>">
-		<%= link_to "-", webpage_path(:todelete => @webpage.web_layouts.find_by(bloc: bloc)), method: :put %>
+	<% for wlayout in @webpage.web_layouts %>
+		<img src="<%= wlayout.bloc.img_url %>" alt="<%= wlayout.bloc.name %>">
+		<%= link_to "-", web_layout_path(wlayout, webpage: @webpage), method: :delete %>
     <% end %>
 </ul>
 

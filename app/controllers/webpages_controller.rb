@@ -17,7 +17,6 @@ class WebpagesController < ApplicationController
   def new
     @webpage = Webpage.new
     @categories = Category.all
-    @web_layouts = WebLayout.all
   end
 
   # GET /webpages/1/edit
@@ -32,7 +31,7 @@ class WebpagesController < ApplicationController
 
     respond_to do |format|
       if @webpage.save
-        format.html { redirect_to @webpage, notice: 'Webpage was successfully created.' }
+        format.html { redirect_to edit_webpage_path(@webpage), notice: 'Webpage was successfully created.' }
         format.json { render action: 'show', status: :created, location: @webpage }
       else
         format.html { render action: 'new' }
@@ -44,17 +43,6 @@ class WebpagesController < ApplicationController
   # PATCH/PUT /webpages/1
   # PATCH/PUT /webpages/1.json
   def update
-
-    # if params[:todelete].present?
-
-    #     @webpage.web_layouts.delete(params[:todelete])
-    #     @webpage.save
-    #     redirect_to edit_webpage_path
-    # else
-    #   new_index = @webpage.blocs.maximum(:position) + 1
-    #   @bloc = Bloc.find(params[:bloc])
-    #   @layout = WebLayout.new bloc: @bloc, webpage: @webpage, position: new_index
-    #   @layout.save
 
       respond_to do |format|
         if @webpage.update(webpage_params)
