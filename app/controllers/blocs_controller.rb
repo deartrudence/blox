@@ -28,7 +28,7 @@ class BlocsController < ApplicationController
 
     respond_to do |format|
       if @bloc.save
-        format.html { redirect_to '/dashboard/index', notice: 'Bloc was successfully created.' }
+        format.html { redirect_to dashboard_index_path, notice: 'Bloc was successfully created.' }
         format.json { render action: 'show', status: :created, location: @bloc }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class BlocsController < ApplicationController
   def update
     respond_to do |format|
       if @bloc.update(bloc_params)
-        format.html { redirect_to @bloc, notice: 'Bloc was successfully updated.' }
+        format.html { redirect_to dashboard_index_path, notice: 'Bloc was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +56,7 @@ class BlocsController < ApplicationController
   def destroy
     @bloc.destroy
     respond_to do |format|
-      format.html { redirect_to blocs_url }
+      format.html { redirect_to dashboard_index_path }
       format.json { head :no_content }
     end
   end

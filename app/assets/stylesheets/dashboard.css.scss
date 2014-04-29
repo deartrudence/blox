@@ -1,3 +1,277 @@
 // Place all the styles related to the dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* COLOR PALETTE
+=======================
+
+Starting Blue 	#15b374
+Bright Blue 	#0099FF
+Light Blue 		#2dbdf2
+Dark Blue 		#1599c8
+Med Green 		#15b374
+Teal 			#36B1B9
+
+======================= */
+
+$boxchart: #0099FF;
+
+/*#masthead{
+	background-color: #f8f8f8;
+	background-image: -moz-linear-gradient(top, #ffffff, #ededed);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#ededed));
+	background-image: -webkit-linear-gradient(top, #ffffff, #ededed);
+	background-image: -o-linear-gradient(top, #ffffff, #ededed);
+	background-image: linear-gradient(to bottom, #ffffff, #ededed);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffededed', GradientType=0);
+	border-bottom: 1px solid #c9c9c9;
+	-webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+	text-shadow: 1px 1px 2px #FFF;
+	margin-bottom: 10px;
+}
+
+.masthead-pad{
+	padding-bottom: 10px;
+}*/
+
+#masthead{
+	padding: 0 20px;
+}
+
+#masthead hr{
+	border-color: $boxchart;
+}
+
+#masthead h1{
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+#masthead p{
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.smallstat {
+	background: white;
+	position: relative;
+	text-align: right;
+	margin-bottom: 30px;
+	height: 70px;
+	border: 1px solid #e1e6ef;
+}
+
+.smallstat .boxchart-overlay {
+	width: 100px;
+	height: 68px;
+	padding: 25px 0 15px;
+	text-align: center;
+	margin-right: 10px;
+	float: left;
+	overflow: hidden;
+}
+
+.smallstat .boxchart-overlay.boxchart-color {
+	background: $boxchart;
+}
+
+.smallstat .boxchart-overlay i{
+	color: white;
+}
+
+.smallstat .title,
+.smallstat .value {
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
+.smallstat .value {
+	padding-top: 16px;
+	font-size: 16px;
+}
+
+.smallstat .title {
+	color: #c0cadd;
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+
+.panel {
+-webkit-border-radius: 0px;
+-moz-border-radius: 0px;
+border-radius: 0px;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;
+border: 1px solid #e1e6ef;
+margin-bottom: 30px;
+}
+
+.panel .panel-heading {
+
+padding: 0 15px;
+border-bottom: 1px solid #e1e6ef;
+background: #fcfcfd;
+}
+
+.panel .panel-heading h4{
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.panel .panel-body h4{
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #999999;
+/*	border-left: 3px solid $boxchart;
+	padding-left: 5px;*/
+}
+
+.panel .panel-body h4 .btn{
+	text-transform: capitalize; 
+}
+
+.panel .panel-body h5 b{
+	text-transform: uppercase;
+	color: #c0cadd;
+
+}
+
+/* Buttons
+========================================= */
+.btn {
+  border: none;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  text-shadow: none;
+  color: #374767;
+}
+.btn i {
+  margin-top: 2px;
+}
+.btn-default {
+  color: #374767;
+  background: #e1e6ef;
+  border: 1px solid #e1e6ef;
+}
+.btn-default:hover,
+.btn-default.disabled,
+.btn-default[disabled] {
+  background-color: #c0cadd;
+  border-color: #c0cadd;
+}
+.btn-default:active,
+.btn-default.active {
+  background-color: #bac4da;
+  border-color: #bac4da;
+}
+.btn-primary {
+  color: white;
+  /*background: #20a8d8;*/
+  background: $boxchart;
+  border: 1px solid $boxchart;
+}
+.btn-primary:hover,
+.btn-primary.disabled,
+.btn-primary[disabled] {
+  /*background-color: #1985ac;
+  border-color: #1985ac;*/
+  background-color: darker($boxchart, 1);
+  border-color: darker($boxchart, 1);
+}
+.btn-primary:active,
+.btn-primary.active {
+  background-color: #187fa3;
+  border-color: #187fa3;
+}
+.btn-warning {
+  color: white;
+  background: #fabb3d;
+  border: 1px solid #fabb3d;
+}
+.btn-warning:hover,
+.btn-warning.disabled,
+.btn-warning[disabled] {
+  background-color: #f9aa0b;
+  border-color: #f9aa0b;
+}
+.btn-warning:active,
+.btn-warning.active {
+  background-color: #f4a406;
+  border-color: #f4a406;
+}
+.btn-danger {
+  color: white;
+  background: #ff5454;
+  border: 1px solid #ff5454;
+}
+.btn-danger:hover,
+.btn-danger.disabled,
+.btn-danger[disabled] {
+  background-color: #ff2121;
+  border-color: #ff2121;
+}
+.btn-danger:active,
+.btn-danger.active {
+  background-color: #ff1717;
+  border-color: #ff1717;
+}
+.btn-success {
+  color: white;
+  /*background: #79c447;*/
+  background: #15b374;
+  border: 1px solid #15b374;
+}
+.btn-success:hover,
+.btn-success.disabled,
+.btn-success[disabled] {
+  background-color: #129762;
+  border-color: #129762;
+}
+.btn-success:active,
+.btn-success.active {
+  background-color: #5c9c32;
+  border-color: #5c9c32;
+}
+.btn-info {
+  color: white;
+  background: #67c2ef;
+  border: 1px solid #67c2ef;
+}
+.btn-info:hover,
+.btn-info.disabled,
+.btn-info[disabled] {
+  background-color: #39afea;
+  border-color: #39afea;
+}
+.btn-info:active,
+.btn-info.active {
+  background-color: #30ace9;
+  border-color: #30ace9;
+}
+.btn-inverse {
+  color: white;
+  background: #444444;
+  border: 1px solid #444444;
+}
+.btn-inverse:hover,
+.btn-inverse.disabled,
+.btn-inverse[disabled] {
+  background-color: #2b2b2b;
+  border-color: #2b2b2b;
+  color: white;
+}
+.btn-inverse:active,
+.btn-inverse.active {
+  background-color: #252525;
+  border-color: #252525;
+}
+
