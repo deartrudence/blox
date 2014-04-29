@@ -1,3 +1,7 @@
+
+<%= javascript_include_tag 'dragdrop.js' %>
+<%= javascript_include_tag 'event.js' %>
+
 <div id="wrapper">
 	
 	<!-- Sidebar -->
@@ -37,12 +41,13 @@
 
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
-					<% for wlayout in @webpage.web_layouts %>
-						<div class="bloc-item">
-							<img src="<%= wlayout.bloc.img_url %>" alt="<%= wlayout.bloc.name %>">
-							<%= link_to "Delete", web_layout_path(wlayout, webpage: @webpage), method: :delete, class: 'btn btn-danger btn-sm' %>
-						</div>
-				    <% end %>
+						<% for wlayout in @webpage.web_layouts %>
+							<div class="bloc-item">
+								<img src="<%= wlayout.bloc.img_url %>" alt="<%= wlayout.bloc.name %>">
+								<%= link_to "Delete", web_layout_path(wlayout, webpage: @webpage), method: :delete, class: 'btn btn-danger btn-sm' %>
+							</div>
+					    <% end %>
+
 				</div>
 			</div>
 			<br><br><br>

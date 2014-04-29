@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Dashboard</h1>
+			<%= link_to "Add Category", new_category_path, class: 'btn btn-primary' %>
+			<%= link_to "Add Bloc", new_bloc_path, class: 'btn btn-primary' %>
+			<h2>Total Webpages: <%=@webpages%></h2>
+				<h2>Categories</h2>
+				<% @categories.each do |category| %>
+					<h3><a href="<%= edit_category_path(category) %>"><%= category.name %></a></h3>
+					
+
+					<% for bloc in category.blocs %>
+						<p><%=bloc.name%></p>	
+						<img src="<%=bloc.img_url%>" alt="bloc.name">
+						<br><br>
+					<% end %>
+
+
+				<% end %>
+		</div>
+	</div>
+</div>

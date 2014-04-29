@@ -1,6 +1,16 @@
 class WebLayoutsController < ApplicationController
   before_action :set_web_layout, only: [:show, :edit, :update, :destroy]
 
+  def sort
+    params[:all_layouts].each_with_index do |id, index|
+      WebLayout.update_all(['position=?', index+1], ['id=?', id])
+    end
+    render :nothing => true
+    # params[:scenes].each_with_index do |id, index|
+    # Scene.update_all(['position=?', index+1], ['id=?', id])
+    # end
+    # render :nothing => true
+  end
 
   # GET /web_layouts
   # GET /web_layouts.json

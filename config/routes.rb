@@ -1,4 +1,5 @@
 Blox::Application.routes.draw do
+  get "dashboard/index"
   resources :web_layouts
 
   resources :categories
@@ -6,6 +7,14 @@ Blox::Application.routes.draw do
   resources :webpages
 
   resources :blocs
+
+  resources :web_layouts do
+    post :sort, on: :collection
+  end
+
+  
+
+  # resources :dashboards
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -28,7 +28,7 @@ class BlocsController < ApplicationController
 
     respond_to do |format|
       if @bloc.save
-        format.html { redirect_to @bloc, notice: 'Bloc was successfully created.' }
+        format.html { redirect_to '/dashboard/index', notice: 'Bloc was successfully created.' }
         format.json { render action: 'show', status: :created, location: @bloc }
       else
         format.html { render action: 'new' }
