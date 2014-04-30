@@ -31,6 +31,14 @@
 	                </li>
 	                <li><a href="/webpages">Web Pages</a>
 	                </li>
+	                <% if user_signed_in? %>
+		                <li>Logged in as <%= current_user.email %></li>
+		                <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+		                <li><%= link_to "SignOut", destroy_user_session_path, method: :delete %></li>
+	                <% else %>
+		                <li><%= link_to "SignUp", new_user_registration_path %></li>
+		                <li><%= link_to "SignIn", new_user_session_path %></li>
+	                <% end %>
 	            </ul>
 	        </div>
 	        <!-- /.navbar-collapse -->
@@ -38,6 +46,14 @@
 	    <!-- /.container -->
 	</nav>
 	<br><br><br>
+
+	<!-- Notices/Alerts for devise -->
+	<% if notice %>
+  		<p class="alert alert-success"><%= notice %></p>
+	<% end %>
+	<% if alert %>
+  		<p class="alert alert-danger"><%= alert %></p>
+	<% end %>
 
 	<%= yield %>
 

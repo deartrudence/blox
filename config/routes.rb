@@ -1,5 +1,10 @@
 Blox::Application.routes.draw do
+  devise_for :users
+
+  root to: "webpages#index"
+
   get "dashboard/index"
+
   resources :web_layouts
 
   resources :categories

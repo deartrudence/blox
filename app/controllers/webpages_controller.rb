@@ -4,7 +4,8 @@ class WebpagesController < ApplicationController
   # GET /webpages
   # GET /webpages.json
   def index
-    @webpages = Webpage.all
+    #@webpages = Webpage.all
+    @webpages = current_user.webpages.all
     
   end
 
@@ -27,7 +28,8 @@ class WebpagesController < ApplicationController
   # POST /webpages
   # POST /webpages.json
   def create
-    @webpage = Webpage.new(webpage_params)
+    #@webpage = Webpage.new(webpage_params)
+    @webpage = current_user.webpages.build(webpage_params)
 
     respond_to do |format|
       if @webpage.save
@@ -77,6 +79,6 @@ class WebpagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def webpage_params
-      params.require(:webpage).permit(:name, :bloc_id)
+      params.require(:webpage).permit(:name, :bloc_id, :user_id)
     end
 end
