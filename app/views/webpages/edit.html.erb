@@ -43,17 +43,21 @@
 					<table id="sortable" class="table" data-update_url="<%= sort_web_layouts_path %>">
 						<thead>
 							<tr>
+								<th>Position</th>
 								<th>Bloc</th>
 								<th>Delete</th>
 							</tr>
 						</thead>
 
 						<tbody>
-							<% @webpage.web_layouts.each do |wlayout| %>
+							<% for wlayout in @webpage.web_layouts %>
+							
 								<tr class="item" data-item_id="<%= wlayout.id %>">
+									<td><%= wlayout.position %></td>
 									<td><img src="<%= wlayout.bloc.img_url %>" alt="<%= wlayout.bloc.name %>"></td>
 									<td class="bloc-delete-col"><%= link_to "Delete", web_layout_path(wlayout, webpage: @webpage), method: :delete, class: 'btn btn-danger btn-sm' %></td>
 								</tr>
+						
 							<% end %>
 						</tbody>
 					</table>

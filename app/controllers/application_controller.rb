@@ -4,3 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
 end
+
+def admin
+	if current_user.present?
+		unless current_user.role == "admin"
+		redirect_to webpages_path
+		end
+	end 
+end
