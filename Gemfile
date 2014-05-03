@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'acts_as_list'
+gem 'ranked-model'
+# Or pin ranked-model to git
+# gem 'ranked-model',
+#   :git => 'git@github.com:mixonic/ranked-model.git'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'

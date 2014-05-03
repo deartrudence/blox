@@ -2,20 +2,22 @@ class WebLayoutsController < ApplicationController
   before_action :set_web_layout, only: [:show, :edit, :update, :destroy]
 
   def sort
-    params[:all_layouts].each_with_index do |id, index|
-      WebLayout.update_all(['position=?', index+1], ['id=?', id])
-    end
-    render :nothing => true
-    # params[:scenes].each_with_index do |id, index|
-    # Scene.update_all(['position=?', index+1], ['id=?', id])
-    # end
-    # render :nothing => true
+    @wlayout = WebLayout.find(params[:id])
+
+    # .attributes is a useful shorthand for mass-assigning
+    # values via a hash
+    @wlayout.attributes = params.require(:wlayout).permit(:position_position)
+    @wlayout.save
+
+    # this action will be called via ajax
+    render nothing: true
   end
 
   # GET /web_layouts
   # GET /web_layouts.json
   def index
-    @web_layouts = WebLayout.all
+    #@web_layouts = WebLayout.all
+    @web_layouts = WebLayout.rank(:position).all
   end
 
   # GET /web_layouts/1
@@ -43,18 +45,18 @@ class WebLayoutsController < ApplicationController
       @web = Webpage.find(params[:webpage])
 
       #Increment WebLayout position or add the first one
-      if @web.web_layouts.present?
-        new_index = @web.web_layouts.maximum(:position) + 1
-      else
-        new_index = 1
-      end
+      # if @web.web_layouts.present?
+      #   new_index = @web.web_layouts.maximum(:position) + 1
+      # else
+      #   new_index = 1
+      # end
       #set bloc for WebLayout
       @b = Bloc.find(params[:bloc])
 
       #Set and save WebLayout
       @web_layout.webpage = @web
       @web_layout.bloc = @b
-      @web_layout.position = new_index
+      #@web_layout.position = new_index
       @web_layout.save
     
     #Redirect to Webpage Edit page
