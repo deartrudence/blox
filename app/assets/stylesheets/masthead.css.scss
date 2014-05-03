@@ -1,0 +1,36 @@
+.navbar .user-actions > * {
+	display: inline-block;
+}
+
+.navbar .user-actions .profile-details{
+	text-align: right;
+	color: #999999;
+}
+
+.navbar .user-actions .profile-details *{
+	line-height: 30px;
+}
+
+.navbar .user-actions .profile-details h5{
+	margin-bottom: 0;
+	display: inline-block;
+}
+
+.navbar .user-actions .profile-details a{
+	color: white;
+}
+
+.navbar .user-actions .profile-details a:hover{
+	color: #0099ff;
+	text-decoration: none;
+}
+
+.navbar .user-actions .profile-image img{
+	height: 40px;
+}
+
+.navbar .user-actions .profile-image{
+	vertical-align: top;
+	padding-top: 5px;
+	margin-left: 10px;
+}

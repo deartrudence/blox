@@ -2,8 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* WEB PAGE LISTING
+================================== */
+.web-page-listing{
+  margin: auto auto;
+}
+
+.web-page-listing .table-striped > tbody > tr:nth-child(odd) > td,
+.web-page-listing .table-striped > tbody > tr:nth-child(odd) > th{
+  background-color: #f5f7fa;
+}
+
+.web-page-listing .table-bordered > thead > tr > th,
+.web-page-listing .table-bordered > tbody > tr > th,
+.web-page-listing .table-bordered > tfoot > tr > th,
+.web-page-listing .table-bordered > thead > tr > td,
+.web-page-listing .table-bordered > tbody > tr > td,
+.web-page-listing .table-bordered > tfoot > tr > td{
+  border: 1px solid #e1e6ef;
+}
+
+/* BLOX BUILDER
+================================== */
 body{
   background-color: #f5f5f5;
+  color: #374767;
 }
 
 #wrapper {
