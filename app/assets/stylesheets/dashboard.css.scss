@@ -116,7 +116,7 @@ margin-bottom: 30px;
 
 .panel .panel-heading {
 
-padding: 0 15px;
+padding: 10px 15px;
 border-bottom: 1px solid #e1e6ef;
 background: #fcfcfd;
 }
@@ -124,6 +124,12 @@ background: #fcfcfd;
 .panel .panel-heading h4{
 	text-transform: uppercase;
 	font-weight: bold;
+  margin: 0;
+}
+
+.panel .panel-heading i{
+  color: #e1e6ef;
+  margin-right: 10px;
 }
 
 .panel .panel-body h4{
@@ -275,3 +281,8 @@ background: #fcfcfd;
   border-color: #252525;
 }
 
+.btn-xs, .btn-group-xs>.btn {
+padding: 1px 5px;
+font-size: 12px;
+line-height: 1.5;
+}

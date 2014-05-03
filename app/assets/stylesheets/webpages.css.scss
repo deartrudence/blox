@@ -2,8 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* WEB PAGE LISTING
+================================== */
+.web-page-listing{
+  margin: auto auto;
+}
+
+.web-page-listing .table-striped > tbody > tr:nth-child(odd) > td,
+.web-page-listing .table-striped > tbody > tr:nth-child(odd) > th{
+  background-color: #f5f7fa;
+}
+
+.web-page-listing .table-bordered > thead > tr > th,
+.web-page-listing .table-bordered > tbody > tr > th,
+.web-page-listing .table-bordered > tfoot > tr > th,
+.web-page-listing .table-bordered > thead > tr > td,
+.web-page-listing .table-bordered > tbody > tr > td,
+.web-page-listing .table-bordered > tfoot > tr > td{
+  border: 1px solid #e1e6ef;
+}
+
+/* BLOX BUILDER
+================================== */
 body{
   background-color: #f5f5f5;
+  color: #374767;
 }
 
 #wrapper {
@@ -203,4 +226,55 @@ body{
   -ms-transition: 0.25s;
   -o-transition: 0.25s;
   transition: 0.25s;
+}
+
+
+
+
+/* SORTABLE TABLE 
+=================================== */
+
+#sortable.table thead{
+  display: none;
+}
+
+#sortable.table > tbody > tr > td{
+  padding: 0;
+  border-top: none;
+}
+
+#sortable.table .bloc-delete-col{
+  vertical-align: top;
+  padding-left: 10px;
+}
+
+#sortable.table .bloc-delete-col .btn{
+  opacity: 0;
+  -webkit-transition: 0.1s;
+  -moz-transition: 0.1s;
+  -ms-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s;
+}
+
+#sortable.table .item:hover .bloc-delete-col .btn{
+  opacity: 1;
+      -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -ms-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+}
+
+#sortable.table .item.ui-sortable-helper *{
+  opacity: 0.8;
+}
+
+#sortable.table .item.ui-sortable-helper .bloc-delete-col .btn{
+  opacity: 0;
+  -webkit-transition: 0.1s;
+  -moz-transition: 0.1s;
+  -ms-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s;
 }

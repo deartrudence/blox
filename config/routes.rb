@@ -5,8 +5,6 @@ Blox::Application.routes.draw do
 
   get "dashboard/index"
 
-  resources :web_layouts
-
   resources :categories
 
   resources :webpages

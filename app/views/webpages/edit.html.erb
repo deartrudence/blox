@@ -26,6 +26,7 @@
 					<i class="icon-reorder"></i>
 				</a>
 				Editing webpage
+
 			</h1>
 		</div>
 
@@ -39,12 +40,25 @@
 
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
-						<% for wlayout in @webpage.web_layouts %>
-							<div class="bloc-item">
-								<img src="<%= wlayout.bloc.img_url %>" alt="<%= wlayout.bloc.name %>">
-								<%= link_to "Delete", web_layout_path(wlayout, webpage: @webpage), method: :delete, class: 'btn btn-danger btn-sm' %>
-							</div>
-					    <% end %>
+					<table id="sortable" class="table" data-update_url="<%= sort_web_layouts_path %>">
+						<thead>
+							<tr>
+								<th>Bloc</th>
+								<th>Delete</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<% @webpage.web_layouts.each do |wlayout| %>
+								<tr class="item" data-item_id="<%= wlayout.id %>">
+									<td><img src="<%= wlayout.bloc.img_url %>" alt="<%= wlayout.bloc.name %>"></td>
+									<td class="bloc-delete-col"><%= link_to "Delete", web_layout_path(wlayout, webpage: @webpage), method: :delete, class: 'btn btn-danger btn-sm' %></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+
+						
 
 				</div>
 			</div>
