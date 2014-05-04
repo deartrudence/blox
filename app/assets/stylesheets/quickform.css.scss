@@ -1,0 +1,50 @@
+.quickform{
+	width: 400px;
+	margin: 0 auto;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	/*border-top: 3px solid #0099ff;*/
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.18);
+}
+
+.quickform .panel-header{
+	text-align: center;
+	padding: 15px 0 0;
+}
+
+.quickform .panel-body{
+	padding: 25px;
+}
+
+.quickform .line-height-30{
+	line-height: 30px;
+}
+
+.quickform .panel-body .btn{
+	padding: 6px 24px;
+}
+
+.quickform .panel-footer a{
+	font-size: 12px;
+	color: #333;
+}
+
+.quickform .panel-footer a:hover{
+	color: #428bca;
+	text-decoration: none;
+}
+
+.form-follow-up{
+	padding: 30px 0;
+}
+
+.form-follow-up a{
+	font-weight: bold;
+	color: #333;
+}
+
+.form-follow-up a:hover{
+	color: #428bca;
+	text-decoration: none;
+}

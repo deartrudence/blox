@@ -1,8 +1,6 @@
-
-
 <div id="wrapper">
 	
-	<!-- Sidebar -->
+	<!-- SIDEBAR -->
 	<div id="sidebar-wrapper">
 		<ul class="sidebar-nav">
 			<li class="sidebar-brand"><a href="#">Blox Categories</a></li>
@@ -17,7 +15,7 @@
 	<div id="sidebar-submenu">
 		<%= render @categories %>
 	</div>
-	<!-- /Sidebar -->
+	<!-- /SIDEBAR -->
 
 	<div id="page-content-wrapper">
 		<div class="content-header">
@@ -29,15 +27,33 @@
 
 			</h1>
 		</div>
-
+		
+		<!-- INSET CONTENT -->
 		<div class="page-content inset">
+
+			<!-- FLASH + ALERTS -->
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<% if notice %>
+				  		<p class="alert alert-success"><%= notice %></p>
+					<% end %>
+					<% if alert %>
+				  		<p class="alert alert-danger"><%= alert %></p>
+					<% end %>
+				</div>
+			</div>
+			<!-- /FLASH + ALERTS -->
+			
+			<!-- FORM RENDER -->
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
 					<%= render 'form' %>
 				</div>
 			</div>
 			<br><br><br>
-
+			<!-- /FORM RENDER -->
+			
+			<!-- SORTABLE -->
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
 					<table id="sortable" class="table" data-update_url="<%= sort_web_layouts_path %>">
@@ -49,7 +65,7 @@
 						</thead>
 
 						<tbody>
-							<% @webpage.web_layouts.each do |wlayout| %>
+							<% for wlayout in @webpage.web_layouts %>
 								<tr class="item" data-item_id="<%= wlayout.id %>">
 									<td><img src="<%= wlayout.bloc.img_url %>" alt="<%= wlayout.bloc.name %>"></td>
 									<td class="bloc-delete-col"><%= link_to "Delete", web_layout_path(wlayout, webpage: @webpage), method: :delete, class: 'btn btn-danger btn-sm' %></td>
@@ -57,13 +73,12 @@
 							<% end %>
 						</tbody>
 					</table>
-
-						
-
 				</div>
 			</div>
 			<br><br><br>
-
+			<!-- /SORTABLE -->
+			
+			<!-- QUICK LINKS -->
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
 					<hr>
@@ -71,8 +86,10 @@
 					<%= link_to 'Back', webpages_path %>
 				</div>
 			</div>
+			<!-- /QUICK LINKS -->
 
 		</div>
+		<!-- /INSET CONTENT -->
 
 	</div>
 	<!-- /Page content -->
