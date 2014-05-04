@@ -6,5 +6,6 @@ class DashboardController < ApplicationController
   	@blocs = Bloc.all
   	@categories = Category.all
   	@webpages = Webpage.count
+  	@users = User.all
   end
 end
