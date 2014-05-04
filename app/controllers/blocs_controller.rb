@@ -1,6 +1,6 @@
 class BlocsController < ApplicationController
   before_action :set_bloc, only: [:show, :edit, :update, :destroy]
-
+  before_filter :admin
   # GET /blocs
   # GET /blocs.json
   def index
