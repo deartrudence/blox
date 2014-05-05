@@ -1,0 +1,22 @@
+<!-- User Info -->
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Role</th>
+      <th  style="width: 15%">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |thisuser| %>
+      <tr>
+        <td><%= thisuser.email %></td>
+        <td><%= thisuser.role %></td>
+        <td>
+          <%= link_to "Edit", edit_user_registration_path(thisuser), class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

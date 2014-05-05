@@ -1,0 +1,14 @@
+<div id="sidebar-wrapper">
+	<ul class="sidebar-nav">
+		<li <% if @whichstuff == "overview" or @whichstuff.nil? %> class="active" <% end %> >
+			<%= link_to "Overview", dashboard_show_path(:whichstuff => "overview")  %>
+		</li>
+		<li <% if @whichstuff == "userlist" %> class="active" <% end %>>
+			<%= link_to "Users", dashboard_show_path(:whichstuff => "userlist") %>
+		</li>
+	</ul>
+</div>
+
+<style>
+	
+</style>

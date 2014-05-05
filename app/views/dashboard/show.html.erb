@@ -1,0 +1,23 @@
+<div id="wrapper" class="dashboard_page">
+		
+	<!-- SIDEBAR -->
+	<%= render "dashboard_sidebar" %>
+	<!-- /SIDEBAR -->
+	
+	<div id="page-content-wrapper">
+		<div class="page-content">
+			<%= render "dashboard_masthead" %>			
+			<div class="inset">
+
+				<% if @whichstuff == "overview" or @whichstuff.nil? %>
+					<%= render "dashboard_overview" %>
+				<% elsif @whichstuff == "userlist" %>
+					<%= render "dashboard_userlist" %>
+				<% end %>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+

@@ -16,6 +16,14 @@ Teal 			#36B1B9
 
 $boxchart: #0099FF;
 
+.dashboard_page .sidebar-nav li.active a{
+  color: white;
+}
+
+.dashboard_page .sidebar-nav li.active{
+  background-color: #15b374;
+}
+
 /*#masthead{
 	background-color: #f8f8f8;
 	background-image: -moz-linear-gradient(top, #ffffff, #ededed);

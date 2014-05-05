@@ -4,7 +4,7 @@ Blox::Application.routes.draw do
 
   root to: "webpages#index"
 
-  get "dashboard/index"
+  get "dashboard/show"
 
   resources :categories
 

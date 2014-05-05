@@ -1,0 +1,93 @@
+<!-- QUICK STATS -->
+				<div class="row">
+					<!-- NUMBER OF USERS -->
+					<div class="col-lg-3 col-sm-6 col-xs-6 col-xxs-12">
+						<div class="smallstat">
+							<div class="boxchart-overlay boxchart-color">
+								<i class="fa fa-users fa-lg"></i>
+							</div>
+							<span class="value"><%= @users.count %></span>
+							<span class="title">Users</span>
+						</div>
+					</div>
+					<!-- /NUMBER OF USERS -->
+					
+					<!-- NUMBER OF WEBSITES CREATED -->
+					<div class="col-lg-3 col-sm-6 col-xs-6 col-xxs-12">
+						<div class="smallstat">
+							<div class="boxchart-overlay boxchart-color">
+								<i class="fa fa-copy fa-lg"></i>
+							</div>
+							<span class="value"><%=@webpages%></span>
+							<span class="title">Webpages</span>
+						</div>
+					</div>
+					<!-- /NUMBER OF WEBSITES CREATED -->
+					
+					<!-- NUMBER OF CATEGORIES -->
+					<div class="col-lg-3 col-sm-6 col-xs-6 col-xxs-12">
+						<div class="smallstat">
+							<div class="boxchart-overlay boxchart-color">
+								<i class="fa fa-columns fa-lg"></i>
+							</div>
+							<span class="value"><%=@categories.count%></span>
+							<span class="title">Categories</span>
+						</div>
+					</div>
+					<!-- /NUMBER OF CATEGORIES -->
+
+					<!-- NUMBER OF TOTAL BLOX -->
+					<div class="col-lg-3 col-sm-6 col-xs-6 col-xxs-12">
+						<div class="smallstat">
+							<div class="boxchart-overlay boxchart-color">
+								<i class="fa fa-align-justify fa-lg"></i>
+							</div>
+							<span class="value"><%=@blocs.count%></span>
+							<span class="title">Blocs</span>
+						</div>
+					</div>
+					<!-- /NUMBER OF TOTAL BLOX -->
+				</div>
+				<!-- /QUICK STATS -->
+
+
+				<div class="row">
+					<div class="col-md-9">
+						<div class="panel">
+							<div class="panel-heading"><h4>Categories + Blocs</h4></div>
+							<div class="panel-body">
+								<% @categories.each do |category| %>
+									<h4>
+										<%= link_to "Edit", edit_category_path(category), class: 'btn btn-primary btn-xs' %>
+										<%= category.name %>s
+
+									</h4>
+									<% for bloc in category.blocs %>
+										<div class="row">
+											<div class="col-md-9">
+												<img src="<%= bloc.img_url %>" alt="<%= bloc.name %>" class="img-responsive">
+											</div>
+											<div class="col-md-3">
+												<h5><b>Name:</b> <%= bloc.name %></h5>
+												<h5><b>ID:</b> <%= bloc.id %></h5>
+												<%= link_to "Edit Bloc", edit_bloc_path(bloc), class: 'btn btn-primary btn-sm' %>
+												<%= link_to "Delete Bloc", bloc_path(bloc), method: :delete, class: 'btn btn-danger btn-sm' %>
+											</div>
+										</div>
+										<% if bloc != category.blocs.last %> <br> <% end %>
+									<% end %>
+									<% if category != @categories.last %> <br><hr> <% end %>
+								<% end %>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="panel">
+							<div class="panel-heading"><h4>Quick Links</h4></div>
+							<div class="panel-body">
+								<%= link_to "Add Category", new_category_path, class: 'btn btn-inverse btn-block' %>
+								<%= link_to "Add Bloc", new_bloc_path, class: 'btn btn-inverse btn-block' %>
+							</div>
+						</div>
+					</div>
+				</div>
