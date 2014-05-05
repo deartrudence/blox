@@ -6,12 +6,13 @@
 </p>
 
 
-<ul>
+	
 	<% for bloc in @webpage.blocs %>
-        <!-- <li><%= bloc.img_url %></li> -->
-		<img src="<%= bloc.img_url %>" alt="<%= bloc.name %>">
+	
+        <pre><code data-language="html"><%= bloc.code %></code></pre> 
+		<!--<img src="<%= bloc.img_url %>" alt="<%= bloc.name %>">-->
+	
     <% end %>
-</ul>
+    
 
-<%= link_to 'Edit', edit_webpage_path(@webpage) %> |
-<%= link_to 'Back', webpages_path %>
+<%= link_to 'Back', edit_webpage_path(@webpage), class: 'btn btn-primary btn-sm' %>
