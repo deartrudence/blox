@@ -1,6 +1,10 @@
 Blox::Application.routes.draw do
   
+  get "user/edit"
+  get "user/update"
   devise_for :users
+
+  resources :users
 
   root to: "webpages#index"
 

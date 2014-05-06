@@ -1,18 +1,19 @@
 /**
- * Solarized Light theme
+ * Monokai theme
  *
- * Adaptation of Solarized Light from ethanschoonover.com/solarized
+ * Adapted from Wimer Hazenberg's TextMate theme of the same name
  *
- * @author Ethan Schoonover
- * @author David Litmark
+ * @author Wimer Hazenberg
+ * @author Michael Fasani
+ * @author Craig Campbell
  * @version 1.0.0
  */
 pre {
-    background: #fdf6e3; /* base3 */
+    background: #272822;
     word-wrap: break-word;
     margin: 0px;
     padding: 10px;
-    color: #657b83; /* base00 */
+    color: #fff;
     font-size: 14px;
     margin-bottom: 20px;
 }
@@ -22,65 +23,59 @@ pre, code {
 }
 
 pre .comment {
-    color: #93a1a1; /* base1 */
+    color: #75715E;
 }
 
 pre .constant {
-    color: #657b83; /* base00 */
-}
-
-pre .constant.language {
-    color: #268bd2; /* blue */
-}
-
-pre .constant.regexp {
-    color: #2aa198; /* cyan */
+    color: #AE81FF;
 }
 
 pre .storage {
-    color: #268bd2; /* blue */
+    color: #66D9EF;
 }
 
 pre .string, pre .comment.docstring {
-    color: #2aa198; /* cyan */
+    color: #E6DB74;
 }
 
-pre .support.tag.script, pre .support.tag.style {
-    color: #2aa198; /* cyan */
+pre .support.tag {
+    color: #fff;
 }
 
-pre .string.regexp {
-    color: #2aa198; /* cyan */
+pre .keyword {
+    /* @todo some keywords use this light blue, most use the pink */
+    /*color: #66D9EF;*/
+    color: #F92672;
 }
 
-pre .string.regexp.open, pre .string.regexp.close {
-    color: #2aa198; /* cyan */
-}
-
-pre .keyword, pre .selector {
-    color: #859900; /* green */
+pre .selector {
+    color: #F92672;
 }
 
 pre .inherited-class {
     font-style: italic;
 }
 
-pre .entity {
-    color: #b58900; /* yellow */
+pre .operator, pre .support.tag-name , pre .entity.tag {
+    color: #F92672;
+}
+
+pre .entity, pre .support.attribute, pre .entity.attribute {
+    color: #A6E22E;
 }
 
 pre .support, *[data-language="c"] .function.call {
-    color: #859900; /* green */
+    color: #66D9EF;
 }
 
-pre .support.method {
-    color: #657b83; /* base00 */
+*[data-language="html"] .support.operator {
+    color: #fff;
 }
 
-pre .support.property {
-    color: #657b83; /* base00 */
+pre .css-property, pre .storage.function {
+    font-style: italic;
 }
 
 pre .variable.global, pre .variable.class, pre .variable.instance {
-    color: #657b83; /* base00 */
+    color: #A6E22E;
 }

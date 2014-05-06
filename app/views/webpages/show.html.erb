@@ -6,13 +6,17 @@
 </p>
 
 
-	
-	<% for bloc in @webpage.blocs %>
-	
-        <pre><code data-language="html"><%= bloc.code %></code></pre> 
-		<!--<img src="<%= bloc.img_url %>" alt="<%= bloc.name %>">-->
-	
+	<% if @webpage.blocs.present? %>
+		
+		<pre><code data-language="html">
+		
+		<% for bloc in @webpage.blocs %>
+		
+	        <%= bloc.code %>
+		
+	    <% end %>
+	    
+	    </code></pre> 
     <% end %>
-    
 
 <%= link_to 'Back', edit_webpage_path(@webpage), class: 'btn btn-primary btn-sm' %>
