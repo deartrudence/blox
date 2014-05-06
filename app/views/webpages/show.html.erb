@@ -6,38 +6,29 @@
 </p>
 
 
+	<!-- Shown Code -->
 	<% if @webpage.blocs.present? %>
 		
-		<pre><code data-language="html">
-		
-		<% for bloc in @webpage.blocs %>
-		
-	        <%= bloc.code %>
-		
-	    <% end %>
-	    
-	    </code></pre> 
+		<pre><code data-language="html"><%= @webpage.blocs.map(&:code).join("\n") %></code></pre> 
     <% end %>
 
 
+	<!-- Hidden Text Area for Clipboard -->	
+    <% if @webpage.blocs.present? %>
+		
+		<textarea id='fe_text'><%= @webpage.blocs.map(&:code).join("\n") %></textarea> 
+    <% end %>
+	<style>#fe_text{display:none;}</style>
+
 <%= link_to 'Back', edit_webpage_path(@webpage), class: 'btn btn-primary btn-sm' %>
 
-<div class='demo-area'>
-  <button class='my_clip_button' data-clipboard-target='fe_text' data-clipboard-text='Default clipboard text from attribute' id='d_clip_button' title='Click me to copy to clipboard.'>
+
+  <button class='my_clip_button btn btn-primary' data-clipboard-target='fe_text' data-clipboard-text='Default clipboard text from attribute' id='d_clip_button' title='Click me to copy to clipboard.'>
     <b>Copy To Clipboard...</b>
   </button>
-  <h4>
-    <label for='fe_text'>Change Copy Text Here</label>
-  </h4>
-  <textarea cols='50' id='fe_text' rows='3'>Copy me!</textarea>
-  <h4>
-    <label for='testarea'>Paste Text Here</label>
-  </h4>
-  <textarea cols='50' id='testarea' rows='3'></textarea>
-  <p>
-    <button id='clear-test'>Clear Test Area</button>
-  </p>
-</div>
+  
+  
+
 <script>
   $(document).ready(function() {
     var clip = new ZeroClipboard($("#d_clip_button"))
