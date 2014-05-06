@@ -14,6 +14,9 @@ gem 'pg'
 #for Authentification
 gem 'devise'
 
+#Copy to Clipboard function
+gem 'zeroclipboard-rails'
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
