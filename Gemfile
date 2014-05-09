@@ -17,6 +17,13 @@ gem 'devise'
 #Copy to Clipboard function
 gem 'zeroclipboard-rails'
 
+#Sign in with Twitter
+gem 'omniauth-twitter'
+
+gem 'twitter'
+
+#gem 'dotenv-rails', :groups =>[:development, :test]
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
