@@ -7,7 +7,7 @@
 					<h4>Edit User Account Info</h4>
 				</div>
 				<div class="panel-body">
-					<%= form_for(@user) do |f| %>
+					<%= form_for(@otheruser) do |f| %>
 						<div class="form-group">
 						    <%= f.label :email %><br>
 						    <%= f.email_field :email , {class: 'form-control'}%>
@@ -21,14 +21,15 @@
 				          <% end %>
 
 				          <br>
-            			<div><%= f.submit "Update", class: "btn btn-primary btn-block" %></div>
+            			
+            			<%= button_to "Update", user_path(@otheruser), method: :update, class: "btn btn-primary btn-block" %>
 					<% end %>
 				</div>
 				<div class="panel-header">
 		          <h4>Cancel User Account</h4>
 		        </div>
 				<div class="panel-body">
-					<%= button_to "Cancel user account", user_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-block" %>
+					<%= button_to "Cancel user account", user_path(@otheruser), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-block" %>
 				</div>
 			</div>
 		</div>

@@ -1,14 +1,41 @@
 class UsersController < ApplicationController
+  # before_action :set_user
+
+
   def edit
-  	@user = User.find_by(params[:thisuser])
+  	@otheruser = User.find(params[:id])
   end
 
   def update
-  	#TODO
+
+    @otheruser = User.find(params[:id])
+
+  	respond_to do |format|
+      if @otheruser.update(user_params)
+        format.html { redirect_to dashboard_show_path, notice: "User was successfully updated."}
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @otheruser.errors, status: :unprocessable_entity }
+      end
+    end
+
+
   end
 
   def destroy
-  	User.find_by(@user).destroy
-  	redirect_to edit_webpage_path(@webpage)
+  	User.find(params[:id]).destroy
+  	redirect_to dashboard_show_path
   end
+
+
+    # def set_user
+    #   @otheruser = User.find(params[:id])
+    # end
+
+    def user_params
+      params.require(:user).permit(:email, :encrypted_password, :role)
+    end
+
+
 end
