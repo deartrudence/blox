@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def destroy
   	User.find_by(@user).destroy
-  	redirect_to edit_webpage_path(@webpage)
+  	#redirect_to edit_webpage_path(@webpage)
+    redirect_to dashboard_show_path
   end
 end
