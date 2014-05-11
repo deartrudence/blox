@@ -1,43 +1,57 @@
-<div class="container">
-	<br><br>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default quickform">
-				<div class="panel-header">
-					<h4>Sign Up</h4>
+<div class="polygon" width="300" height="200"></div>
+
+<div id="welcome-page">
+
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="text-center col-md-8 col-md-offset-2">
+					<%= image_tag("weblox-branding.png", class: "weblox-main-branding") %>
 				</div>
-				<div class="panel-body">
-					<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-						<%= devise_error_messages! %>
+				<div class="intro-text col-md-8 col-md-offset-2">
+					<p>Weblox is an easy-to-use webpage template builder. Use Weblox to generate a fully responsive webpage based on <%=link_to "Bootstrap","http://www.getbootstrap.com"%>.</p>
+					<p>You choose the blox, we build the code.</p>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-default quickform">
+					<div class="panel-header">
+						<h4>Sign Up</h4>
+					</div>
+					<div class="panel-body">
+						<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+							<%= devise_error_messages! %>
 
-						<div class="form-group"><%= f.label :email %><br />
-						<%= f.email_field :email, autofocus: true, class: "form-control" %></div>
+							<div class="form-group"><!-- <%= f.label :email %><br /> -->
+							<%= f.email_field :email, placeholder: "Email", autofocus: true, class: "form-control" %></div>
 
-						<div class="form-group"><%= f.label :password %><br />
-						<%= f.password_field :password, autocomplete: "off", class: "form-control" %></div>
+							<div class="form-group"><!-- <%= f.label :password %><br /> -->
+							<%= f.password_field :password, placeholder: "Password", autocomplete: "off", class: "form-control" %></div>
 
-						<div class="form-group"><%= f.label :password_confirmation %><br />
-						<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control"  %></div>
-						
-						<hr>
-						<div> <%= f.submit "Sign Me Up!", class: "btn btn-primary btn-block" %> </div>
-					<% end %>
+							<div class="form-group"><!-- <%= f.label :password_confirmation %><br /> -->
+							<%= f.password_field :password_confirmation, placeholder: "Confirm Password", autocomplete: "off", class: "form-control"  %></div>
+							
+							<div> <%= f.submit "Sign Me Up!", class: "btn btn-primary btn-block" %> </div>
+						<% end %>
+					</div>
+				</div>
+
+				<div class="form-follow-up text-center">
+					<%- if controller_name != 'sessions' %>
+					Already have an account?
+					<%= link_to "Sign in", new_session_path(resource_name) %><br />
+				<% end -%>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2 text-center form-follow-up">
-			<%- if controller_name != 'sessions' %>
-				Already have an account?
-				<%= link_to "Sign in", new_session_path(resource_name) %><br />
-			<% end -%>
-		</div>
+
 	</div>
 
-	<%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
-  <% end -%>
-<% end -%>
+</div>
+
+<div class="builders">
+	<p>A project by</p>
+	<%= link_to( image_tag("https://pbs.twimg.com/profile_images/464623408991330304/Oc35DbTJ.jpeg"), "http://www.twitter.com/harismahmood89" )  %>
+	<%= link_to( image_tag("https://pbs.twimg.com/profile_images/447594224372838400/h9piTdxu.jpeg"), "http://www.twitter.com/dear_trudence")  %>
 </div>

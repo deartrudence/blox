@@ -18,7 +18,23 @@ body{
 	font-family: "Gotham Rounded A","Gotham Rounded B",Helvetica,Arial,sans-serif !important;
 }
 
-/* 466 */
+.weblox-nav-brand img{
+	width: 150px;
+	margin-top: -9px;
+}
+
+.page-border{
+	position: fixed;
+	height:5px;
+	width: 100%;
+	left:0;
+	top: 0;
+	background-image: url("polygon.jpg");
+	background-size: cover;
+	background-position: 50% 50%;
+	z-index: 10;
+	
+}
 
 #welcome-page{
 	position: absolute;
@@ -32,6 +48,16 @@ body{
 #welcome-page .intro-text{
 	font-size: 24px;
 	color: #fff;
+}
+
+#welcome-page .intro-text a{
+	color: #583F7E;
+	font-weight: bold;
+}
+
+#welcome-page .intro-text a:hover{
+	color: #7453a7;
+	text-decoration: none;
 }
 
 .weblox-main-branding{

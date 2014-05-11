@@ -48,7 +48,7 @@ class WebpagesController < ApplicationController
 
       respond_to do |format|
         if @webpage.update(webpage_params)
-          format.html { redirect_to @webpage, notice: 'Webpage was successfully updated.' }
+          format.html { redirect_to edit_webpage_path, notice: 'Webpage was successfully updated.' }
           format.html { redirect_to edit_webpage_path, notice: 'Webpage was successfully updated.' }
           format.json { head :no_content }
         else

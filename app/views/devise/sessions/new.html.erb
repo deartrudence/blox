@@ -9,7 +9,7 @@
 					<%= image_tag("weblox-branding.png", class: "weblox-main-branding") %>
 				</div>
 				<div class="intro-text col-md-8 col-md-offset-2">
-					<p>Weblox is an easy-to-use website template builder. Use Weblox to generate a fully responsive website based on <%=link_to "Bootstrap","http://www.getbootstrap.com"%>.</p>
+					<p>Weblox is an easy-to-use webpage template builder. Use Weblox to generate a fully responsive webpage based on <%=link_to "Bootstrap","http://www.getbootstrap.com"%>.</p>
 					<p>You choose the blox, we build the code.</p>
 				</div>
 			</div>
@@ -54,14 +54,13 @@
 						<% end -%>
 					</div>
 				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-6 col-md-offset-6 text-center form-follow-up">
-				<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-					Don't have an account yet? 
-					<%= link_to "Sign up", new_registration_path(resource_name) %><br />
-				<% end -%>
+
+				<div class="form-follow-up text-center">
+					<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+						Don't have an account yet? 
+						<%= link_to "Sign up", new_registration_path(resource_name) %><br />
+					<% end -%>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -73,5 +72,4 @@
 	<p>A project by</p>
 	<%= link_to( image_tag("https://pbs.twimg.com/profile_images/464623408991330304/Oc35DbTJ.jpeg"), "http://www.twitter.com/harismahmood89" )  %>
 	<%= link_to( image_tag("https://pbs.twimg.com/profile_images/447594224372838400/h9piTdxu.jpeg"), "http://www.twitter.com/dear_trudence")  %>
-
 </div>

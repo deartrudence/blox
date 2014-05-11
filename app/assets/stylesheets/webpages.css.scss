@@ -38,12 +38,16 @@ body{
   margin-left: -250px;
   left: 250px;
   width: 250px;
-  background: #000;
+  background: #222222;
   position: fixed;
   height: 100%;
   overflow-y: auto;
   z-index: 1000;
   transition: all 0.4s ease 0s;
+}
+
+.navbar.navbar-fixed-top{
+  border-bottom: 0;
 }
 
 #page-content-wrapper {
@@ -97,15 +101,23 @@ body{
 }
 
 .content-header {
-  height: 65px;
-  line-height: 65px;
+  /*height: 65px;
+  line-height: 65px;*/
 }
 
-.content-header h1 {
-  margin: 0;
-  margin-left: 20px;
-  line-height: 65px;
-  display: inline-block;
+.content-header .webpage-name {
+margin: 0;
+display: inline-block;
+background: none;
+border: none;
+padding: 15px;
+font-size: 36px;
+margin: 15px 0;
+width: auto;
+}
+
+.content-header .webpage-name:hover{
+  background-color:#e5e5e5;
 }
 
 #menu-toggle {
@@ -155,7 +167,7 @@ body{
   position: fixed;
   width: 330px;
   left: -80px;
-  top: 60px;
+  top: 55px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   height: 100%;

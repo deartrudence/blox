@@ -9,71 +9,8 @@
   <link rel="stylesheet" type="text/css" href="http://cloud.typography.com/7055252/762022/css/fonts.css">
 </head>
 <body>
-	<% if current_user.present? %>
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	    <div class="container">
-	        <div class="navbar-header">
-	            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-	                <span class="sr-only">Toggle navigation</span>
-	                <span class="icon-bar"></span>
-	                <span class="icon-bar"></span>
-	                <span class="icon-bar"></span>
-	                <span class="icon-bar"></span>
-	                <span class="icon-bar"></span>
-	            </button>
-	            <a class="navbar-brand test-image" href="#">Blox</a>
-	            <style type="text/css">
-					
-	            </style>
-	        </div>
 
-	        <!-- Collect the nav links, forms, and other content for toggling -->
-	        <div class="collapse navbar-collapse navbar-ex1-collapse">
-	            <ul class="nav navbar-nav">
-	            	<% if current_user.present? && current_user.role == "admin" %>
-	            	<li><a href="/dashboard/show">Dashboard</a></li>
-	            	<% end %>
-	                <!-- <li><a href="/blocs">Blocs</a></li>
-	                <li><a href="/categories">Categories</a></li> -->
-	                <li><a href="/webpages">Web Pages</a></li>
-	            </ul>
-				
-				<% if user_signed_in? %>
-				<div class="nav navbar-right user-actions">
-						<div class="profile-details">
-							<!-- <h5>Signed in as <%= current_user.email %></h5> -->
-							<h5>Signed in as <%= link_to "#{current_user.email}", edit_user_registration_path %>  </h5> //
-							<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-						</div>
-						<div class="profile-image">
-							<% if current_user.avatar_url.present? %>
-								<%= image_tag current_user.avatar_url, class: "img-circle" %>
-							<% else %>
-								<%= image_tag gravatar_url(current_user), class: "img-circle" %>
-							<% end %>
-						</div>
-				</div>
-				<% else %>
-				<ul class="nav navbar-nav navbar-right">
-						<li><%= link_to "Sign Up", new_user_registration_path %></li>
-						<li><%= link_to "Sign In", new_user_session_path%></li>
-				</ul>
-				<% end %>
-
-				
-
-	        </div>
-	        <!-- /.navbar-collapse -->
-	    </div>
-	    <!-- /.container -->
-	</nav>
-	<br><br><br>
-	<% end %>
-
-
-	<!-- Notices/Alerts for devise -->
-	
-
+	<%= render 'layouts/navbar' %>
 	<%= yield %>
 
 </body>

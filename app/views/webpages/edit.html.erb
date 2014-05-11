@@ -1,3 +1,11 @@
+<div class="page-border" width="300" height="200"></div>
+
+<style>
+.navbar-fixed-top{
+	margin-top: 5px;
+}
+</style>
+
 <div id="wrapper">
 	
 	<!-- SIDEBAR -->
@@ -19,13 +27,12 @@
 
 	<div id="page-content-wrapper">
 		<div class="content-header">
-			<h1>
-				<a href="#" id="menu-toggle" class="btn btn-default">
-					<i class="icon-reorder"></i>
-				</a>
-				Editing webpage
-
-			</h1>
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<%= render 'form' %>
+				</div>
+			</div>
+			
 		</div>
 		
 		<!-- INSET CONTENT -->
@@ -44,14 +51,6 @@
 			</div>
 			<!-- /FLASH + ALERTS -->
 			
-			<!-- FORM RENDER -->
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-					<%= render 'form' %>
-				</div>
-			</div>
-			<br><br><br>
-			<!-- /FORM RENDER -->
 			
 			<!-- SORTABLE -->
 			<div class="row">
@@ -59,7 +58,6 @@
 					<table id="sortable" class="table" data-update_url="<%= sort_web_layouts_path %>">
 						<thead>
 							<tr>
-								<th>Position</th>
 								<th>Bloc</th>
 								<th>Delete</th>
 							</tr>
@@ -68,7 +66,6 @@
 						<tbody>
 							<% for wlayout in @webpage.web_layouts %>
 								<tr class="item" data-item_id="<%= wlayout.id %>">
-									<td><%= wlayout.position %></td>
 									<td><img src="<%= wlayout.bloc.img_url %>" alt="<%= wlayout.bloc.name %>"></td>
 									<td class="bloc-delete-col"><%= link_to "Delete", web_layout_path(wlayout, webpage: @webpage), method: :delete, class: 'btn btn-danger btn-sm' %></td>
 								</tr>
@@ -136,4 +133,8 @@ $("#menu-toggle").click(function(e) {
 </div>
 
 
-
+<style>
+	#wrapper{
+		margin-top: 50px;
+	}
+</style>
