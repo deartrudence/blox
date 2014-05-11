@@ -113,10 +113,14 @@ background-image: linear-gradient(top,#4d90fe,#4787ed);
 	width: 40px;
 	border-radius: 50%;
 	opacity: 0.7;
+	transition: 0.5s;
+	-webkit-transition: 0.5s;
 }
 
 .builders img:hover{
 	opacity: 1;
+	transition: 0.5s;
+	-webkit-transition: 0.5s;
 }
 
 .builders img:first-child{
