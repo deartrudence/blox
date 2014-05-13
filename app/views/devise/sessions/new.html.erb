@@ -28,8 +28,8 @@
 
 							<div class="form-group">
 								<% if devise_mapping.rememberable? -%>
-									<div><%= f.check_box :remember_me %> 
-									<%= f.label :remember_me %></div>
+									<div><%= f.check_box :remember_me, class: "css-checkbox" %> 
+									<%= f.label :remember_me, class: "css-label" %></div>
 								<% end -%>
 							</div>
 							
@@ -69,7 +69,7 @@
 
 
 <div class="builders">
-	<p>A project by</p>
+	<p>a project by</p>
 	<%= link_to( image_tag("https://pbs.twimg.com/profile_images/464623408991330304/Oc35DbTJ.jpeg"), "http://www.twitter.com/harismahmood89" )  %>
 	<%= link_to( image_tag("https://pbs.twimg.com/profile_images/447594224372838400/h9piTdxu.jpeg"), "http://www.twitter.com/dear_trudence")  %>
 </div>

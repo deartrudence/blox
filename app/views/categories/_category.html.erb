@@ -1,11 +1,13 @@
 <ul id="list-<%=category.name%>">
 <% for bloc in category.blocs %>
     <li class="bloc_element">
-      <p class="bloc_title"><%= bloc.name %></p>
       <img src="<%=bloc.img_url%>" alt="<%=bloc.name%>">
-      <% if @webpage.present? %>
-      <%= link_to "+", web_layouts_path(:webpage => @webpage, :bloc => bloc), method: :post %>
-      <% end %>
+	   <% if @webpage.present? %>
+	      <%= link_to web_layouts_path(:webpage => @webpage, :bloc => bloc), method: :post do%>
+				<i class="fa fa-plus-square"></i>
+	      <% end %>
+	   <% end %>
+      <span class="bloc_title"><%= bloc.name %></span>
   </li>
       
 <% end %>

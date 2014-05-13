@@ -59,6 +59,7 @@
 								<% @categories.each do |category| %>
 									<h4>
 										<%= link_to "Edit", edit_category_path(category), class: 'btn btn-primary btn-xs' %>
+										<%= link_to "Destroy", category_path(category), class: 'btn btn-danger btn-xs', method: :delete, data: { confirm: "Are you sure?" } %>
 										<%= category.name %>s
 
 									</h4>

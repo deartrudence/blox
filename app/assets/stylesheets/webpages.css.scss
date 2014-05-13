@@ -197,13 +197,12 @@ width: auto;
 
 #sidebar-submenu ul li.bloc_element{
   position: relative;
+  margin-bottom: 20px;
 }
 
 #sidebar-submenu ul li.bloc_element .bloc_title{
   z-index: 60;
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+  color: white;
 }
 
 #sidebar-submenu ul li.bloc_element img{
