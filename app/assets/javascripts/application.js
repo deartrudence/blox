@@ -15,5 +15,4 @@
 //= require jquery-ui-1.10.4
 //= require sort
 //= require zeroclipboard
-//= require turbolinks
 //= require_tree .
