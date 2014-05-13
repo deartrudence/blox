@@ -11,7 +11,13 @@ class DashboardController < ApplicationController
   end
 
   def show_user_list
-  	@users = User.all
+    @whichstuff = params[:whichstuff] 
+    if params[:search]
+      @users = User.search(params[:search])
+    else
+      @users = User.all
+    end
+    #redirect_to dashboard_show_path(:whichstuff => "userlist")
   end
 
 end

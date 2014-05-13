@@ -2,13 +2,16 @@ Blox::Application.routes.draw do
   
   get "user/edit"
   get "user/update"
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } do
+    get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru' end
 
   resources :users
 
   root to: "webpages#index"
 
   get "dashboard/show"
+
+  get "dashboard/show_user_list"
 
   resources :categories
 

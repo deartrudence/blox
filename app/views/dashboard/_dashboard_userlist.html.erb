@@ -1,4 +1,12 @@
 <!-- User Info -->
+
+<%= form_tag(dashboard_show_user_list_path, :method => "get",  class: "navbar-form",id: "search-form") do %>
+    <div class="input-append">
+      <%= text_field_tag :search, params[:search], class: "col-md-2", placeholder: "Search Users" %>
+      <input type="submit" class="btn btn-primary"></input>
+    </div>
+  <% end %>
+
 <table class='table'>
   <thead>
     <tr>

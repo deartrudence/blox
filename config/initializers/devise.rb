@@ -231,6 +231,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :twitter, 'YI9Xmwlk0xSc0z96ytVLizRFW' , 'uuwlA2FUI1u0pfhzAoLkrEBu9VbM1GvMZGhuLk4bRKN1zuzAde'
+  config.omniauth :facebook, '781129978578522', '94f170213710e1ce38778e28ae00d4ca', {:client_options => {:ssl => {:ca_path => "/etc/ssl/certs"}}}
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
