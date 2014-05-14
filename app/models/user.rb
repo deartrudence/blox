@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     return user
   end
 
-  def self.find_for_facebook_oauth(auth)
+  def self.from_facebook_auth(auth)
     user = User.where(provider: auth.provider, uid: auth.uid).first_or_create(email: auth.info.name, avatar_url: auth.info.image)
     user.update(token: auth.credentials.token, secret: auth.credentials.secret)
     return user

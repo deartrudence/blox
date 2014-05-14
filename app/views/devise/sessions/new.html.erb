@@ -36,6 +36,7 @@
 							<div><%= f.submit "Sign in", class: "btn btn-primary btn-block" %></div>
 						<% end %>
 						<br />
+						<!--Loop through all OmniAuth Providers -->
 						<%- if devise_mapping.omniauthable? %>
 					  		<%- resource_class.omniauth_providers.each do |provider| %>
 					    		<%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-#{provider} btn-block" do%>

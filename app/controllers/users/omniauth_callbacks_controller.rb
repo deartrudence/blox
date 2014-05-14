@@ -7,7 +7,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 	end
 
 	def facebook
-		@user = User.find_for_facebook_oauth request.env['omniauth.auth']
+		@user = User.from_facebook_auth request.env['omniauth.auth']
 		sign_in_and_redirect @user
 	end
 end

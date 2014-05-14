@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
 
-	before_filter :admin
+	before_filter :authorize_admin
 
   def show
   	@blocs = Bloc.all
