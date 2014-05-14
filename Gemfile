@@ -22,6 +22,12 @@ gem 'omniauth-twitter'
 
 gem 'twitter'
 
+#Sign in with Facebook
+gem 'omniauth'
+gem 'omniauth-facebook'
+
+gem 'fb_graph'
+
 #gem 'dotenv-rails', :groups =>[:development, :test]
 
 

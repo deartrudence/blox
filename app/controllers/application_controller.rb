@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 end
 
-def admin
+def authorize_admin
 	if current_user.present?
 		unless current_user.role == "admin"
 		redirect_to webpages_path
