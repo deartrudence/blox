@@ -81,17 +81,6 @@ body{
 	opacity: 1;
 }
 
-/*.polygon{
-	min-width: 100%;
-	min-height: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: -2;
-	background-image: url("patt-1.png");
-	background-repeat: repeat;
-}*/
-
 .quickform .panel-body .btn.btn-block{
 	padding: 8px 24px;
 }
@@ -136,7 +125,7 @@ background-image: linear-gradient(top,#4d90fe,#4787ed);
 	background-image: linear-gradient(top,#2cb8e7,#27b0dd);
 }
 
-.builders{
+/*.builders{
 	position: absolute;
 	bottom: 20px;
 	width: 100%;
@@ -158,11 +147,26 @@ background-image: linear-gradient(top,#4d90fe,#4787ed);
 	opacity: 1;
 	transition: 0.5s;
 	-webkit-transition: 0.5s;
+}*/
+
+.about_us{
+	position: absolute;
+	padding: 20px;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	text-align: right;
 }
 
+.about_us a{
+	color: white;
+	margin-right: 10px;
+}
 
-
-
+.about_us a:hover{
+	color: #9f9f9f;
+	text-decoration: none;
+}
 
 
 input[type=checkbox].css-checkbox {
