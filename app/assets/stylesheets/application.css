@@ -81,6 +81,16 @@ body{
 	opacity: 1;
 }
 
+.polygon-inner{
+	position: fixed;
+	background-color: #f9f9f9;
+	z-index: -1;
+	top: 30px;
+	left: 30px;
+	right: 30px;
+	bottom: 30px;
+}
+
 .quickform .panel-body .btn.btn-block{
 	padding: 8px 24px;
 }
