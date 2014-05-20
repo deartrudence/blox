@@ -11,22 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name , {class: 'form-control'}%>
+  <div class="form-group">
+    <%= f.text_field :name ,autofocus: true, placeholder: "Name", class: 'form-control'%>
   </div>
-  <div class="field">
-    <%= f.label :code %><br>
-    <%= f.text_area :code, {class: 'form-control'} %>
+  <div class="form-group">
+    <%= f.text_area :code, placeholder: "Code", class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :img_url %><br>
-    <%= f.text_area :img_url, {class: 'form-control'} %>
+  <div class="form-group">
+    <%= f.text_area :img_url, placeholder: "Image URL", class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Select a category"}, {class: "form-control"} %>
+  <div class="form-group">
+    <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Weblox Category"}, class: "form-control" %>
   </div>
   <div class="actions">
-    <%= f.submit  class: "btn btn-primary" %>
+    <%= f.submit  class: "btn btn-primary btn-block" %>
   </div>
 <% end %>

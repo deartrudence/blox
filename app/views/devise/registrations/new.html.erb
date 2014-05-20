@@ -1,60 +1,88 @@
-<div class="polygon" width="300" height="200"></div>
+<div class="polygon"></div>
 
-<div id="welcome-page">
-
+<div id="landing-content">
 	<div class="container">
-
 		<div class="row">
-			<div class="col-md-6">
-				<div class="text-center col-md-8 col-md-offset-2">
-					<%= image_tag("weblox-branding.png", class: "weblox-main-branding") %>
-				</div>
-				<div class="intro-text col-md-8 col-md-offset-2">
-					<p>Weblox is an easy-to-use webpage template builder. Use Weblox to generate a fully responsive webpage based on <%=link_to "Bootstrap","http://www.getbootstrap.com"%>.</p>
-					<p>You choose the blox, we build the code.</p>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="panel panel-default quickform">
-					<div class="panel-header">
-						<h4>Sign Up</h4>
-					</div>
-					<div class="panel-body">
-						<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-							<%= devise_error_messages! %>
-
-							<div class="form-group"><!-- <%= f.label :email %><br /> -->
-							<%= f.email_field :email, placeholder: "Email", autofocus: true, class: "form-control" %></div>
-
-							<div class="form-group"><!-- <%= f.label :password %><br /> -->
-							<%= f.password_field :password, placeholder: "Password", autocomplete: "off", class: "form-control" %></div>
-
-							<div class="form-group"><!-- <%= f.label :password_confirmation %><br /> -->
-							<%= f.password_field :password_confirmation, placeholder: "Confirm Password", autocomplete: "off", class: "form-control"  %></div>
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="landing-panel weblox-panel">
+							<div class="weblox-branding">
+								<%= image_tag("weblox-branding.png", class: "weblox-main-branding") %>
+								<div class="arrow-down"></div>
+							</div>
 							
-							<div> <%= f.submit "Sign Me Up!", class: "btn btn-primary btn-block" %> </div>
-						<% end %>
-					</div>
-				</div>
+							<div class="weblox-text panel-padding">
+								<p>Weblox is an easy-to-use webpage template builder. Use Weblox to generate a fully responsive webpage based on <%=link_to "Bootstrap","http://www.getbootstrap.com", class: "bootstrap-link"%>.</p>
+								<p>You choose the blox, we build the code.</p>
+							</div>
 
-				<div class="form-follow-up text-center">
-					<%- if controller_name != 'sessions' %>
-					Already have an account?
-					<%= link_to "Sign in", new_session_path(resource_name) %><br />
-				<% end -%>
+							<div class="weblox-social">
+								<ul class="social text-center">
+								<li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
+							</ul>
+							</div>
+
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="landing-panel form-panel panel-padding">
+							<h4>Sign Up</h4>
+							<div class="weblox-form">
+								<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+									<%= devise_error_messages! %>
+
+									<div class="form-group">
+									<%= f.email_field :email, placeholder: "Email", autofocus: true, class: "form-control" %></div>
+
+									<div class="form-group">
+									<%= f.password_field :password, placeholder: "Password", autocomplete: "off", class: "form-control" %></div>
+
+									<div class="form-group">
+									<%= f.password_field :password_confirmation, placeholder: "Confirm Password", autocomplete: "off", class: "form-control"  %></div>
+									
+									<div> <%= f.submit "Sign Me Up!", class: "btn btn-primary btn-block" %> </div>
+								<% end %>
+
+								<div class="or-divider">
+									<div class="or-text">
+										<%= image_tag("or-divider.png") %>
+									</div>
+									<hr>
+								</div>
+
+								<%- if devise_mapping.omniauthable? %>
+							  		<%- resource_class.omniauth_providers.each do |provider| %>
+							    		<%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-social btn-block" do%>
+											<i class="fa fa-<%=provider%>"></i>
+											Sign up with <%= provider %>
+										<% end %>
+							  		<% end -%>
+								<% end -%>
+								<!-- END OmniAuth -->
+
+							</div>
+							<!-- END weblox form -->
+
+							<div class="form-footer-info text-center">
+								<%- if controller_name != 'sessions' %>
+									Already have an account?
+									<%= link_to "Sign in", new_session_path(resource_name)%><br />
+								<% end -%>
+							</div>
+
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-
 	</div>
-
 </div>
 
-<!-- <div class="builders">
-	<p>a project by</p>
-	<%= link_to( image_tag("https://pbs.twimg.com/profile_images/464623408991330304/Oc35DbTJ.jpeg"), "http://www.twitter.com/harismahmood89" )  %>
-	<%= link_to( image_tag("https://pbs.twimg.com/profile_images/447594224372838400/h9piTdxu.jpeg"), "http://www.twitter.com/dear_trudence")  %>
-</div> -->
+
+
+
 
 <div class="about_us">
 	<a href="/about_us" class="">About Us</a>

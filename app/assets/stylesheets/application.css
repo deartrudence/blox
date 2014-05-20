@@ -18,6 +18,19 @@ body{
 	font-family: "Gotham Rounded A","Gotham Rounded B",Helvetica,Arial,sans-serif !important;
 }
 
+.polygon{
+	min-width: 100%;
+	min-height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -2;
+	background-image: url("polygon.jpg");
+	background-size: cover;
+	background-position: 50% 50%;
+	opacity: 1;
+}
+
 .weblox-nav-brand img{
 	width: 150px;
 	margin-top: -9px;
@@ -36,64 +49,211 @@ body{
 	
 }
 
-#welcome-page{
+#landing-content, #web-pages-content{
 	position: absolute;
-	height: 466px;
+	height: 600px;
 	margin: 0 auto;
 	left: 0;
 	right: 0;
-	top: calc(50% - 233px);
+	top: calc(50% - 300px);
 }
 
-#welcome-page .intro-text{
-	font-size: 24px;
-	color: #222;
+
+
+.landing-panel{
+	background-color: #fff;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.18);
+	position: relative;
+	height: 600px;
+
 }
 
-#welcome-page .intro-text a{
+.panel-padding{
+	padding: 35px;
+}
+
+.weblox-panel .weblox-branding{
+	padding: 20px 0;
+	background-color: #000;
+	position: relative;
+}
+
+
+.weblox-panel .weblox-branding img{
+	width: 100%;
+}
+
+.weblox-panel .weblox-branding:after {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(0, 0, 0, 0);
+	border-top-color: #000;
+	border-width: 15px;
+	margin-left: -15px;
+}
+
+
+.weblox-panel .weblox-text{
+	font-size: 22px;
+}
+
+.weblox-panel .bootstrap-link{
 	color: #583F7E;
 	font-weight: bold;
 }
 
-#welcome-page .intro-text a:hover{
-	color: #7453a7;
+.weblox-panel .bootstrap-link:hover{
+	color: #6f5daf;
 	text-decoration: none;
 }
 
-.weblox-main-branding{
-	width: 100%
-}
-
-#welcome-page .weblox-main-branding{
-	margin-bottom: 40px;
-}
-
-.polygon{
-	min-width: 100%;
-	min-height: 100%;
-	position: fixed;
-	top: 0;
+.weblox-panel .weblox-social{
+	position: absolute;
+	bottom: 15px;
 	left: 0;
-	z-index: -2;
-	background-image: url("polygon.jpg");
-	background-size: cover;
-	background-position: 50% 50%;
-	opacity: 1;
+	width: 100%;
 }
 
-.polygon-inner{
-	position: fixed;
-	background-color: #fafafa;
-	z-index: -1;
-	top: 80px;
-	left: 80px;
-	right: 80px;
-	bottom: 80px;
+.weblox-social ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	margin-top: 35px;
 }
 
-.quickform .panel-body .btn.btn-block{
-	padding: 8px 24px;
+.weblox-social ul li{
+	display: inline-block;
+	padding: 0 25px;
 }
+
+.weblox-social ul li:first-child{
+	padding-left: 0px;
+}
+
+.weblox-social ul li:last-child{
+	padding-right: 0px;
+}
+
+.weblox-social ul li a{
+	color: #9f9f9f;
+}
+.weblox-social ul li a:hover{
+	color: #428bca;
+}
+
+
+
+.form-panel h4{
+	padding-bottom: 35px;
+	text-align: center;
+}
+
+.form-panel .form-control{
+	height: 40px;
+}
+
+.form-panel .btn{
+	height: 45px;
+	text-transform: uppercase;
+}
+
+.form-panel .or-divider{
+	position: relative;
+	padding: 20px 0;
+}
+
+.form-panel .or-divider .or-text{
+	position: absolute;
+	border: 1px solid #e5e5e5;
+	height: 30px;
+	width: 30px;
+	top: 50%;
+	left: 50%;
+	margin-top: -15px;
+	margin-left: -15px;
+}
+
+.form-panel .or-divider .or-text img{
+	width: 100%;
+}
+
+.form-panel .weblox-form a{
+	color: #428bca;
+}
+
+.form-panel .weblox-form a:hover{
+	color: #666;
+	text-decoration: none;
+}
+
+.btn.btn-social{
+	position: relative;
+	line-height: 35px;
+}
+
+.form-panel .btn i{
+	padding-right: 10px;
+}
+
+.btn.btn-new{
+	border: 1px solid #4d90fe;
+	background-color: #fff;
+	color: #222;
+}
+
+.btn.btn-social{
+	border: 1px solid #e5e5e5;
+	background-color: #f9f9f9;
+	color: #444;
+	text-shadow: 0 1px rgba(0,0,0,0.1);
+}
+
+.btn.btn-social:hover{
+	border-color: #e1e1e1;
+	background-color: #f5f5f5;
+}
+
+.form-panel .form-footer-info{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 50px;
+	line-height: 49px;
+	background-color: #f9f9f9;
+	width: 100%;
+	border-top: 1px solid #e5e5e5;
+	font-size: 12px;
+}
+
+.form-panel .form-footer-info a{
+	color: #666;
+	font-size: 12px;
+}
+
+.form-panel .form-footer-info a:hover{
+	color: #428bca;
+	text-decoration: none;
+}
+
+
+.form-footer-info div:first-child{
+	border-right: 1px solid #e5e5e5;
+}
+
+
+
+
+
+
+
+
+
 
 .btn.btn-primary{
 border: 1px solid #3079ed;
@@ -155,29 +315,7 @@ background-image: linear-gradient(top,#4d90fe,#4787ed);
 	background-image: linear-gradient(top,#3B5998,#2A4378);
 }
 
-/*.builders{
-	position: absolute;
-	bottom: 20px;
-	width: 100%;
-	text-align: center;
-	font-size: 10px;
-	color: white;
-}
 
-.builders img{
-	height: 30px;
-	width: 30px;
-	border-radius: 50%;
-	opacity: 0.7;
-	transition: 0.5s;
-	-webkit-transition: 0.5s;
-}
-
-.builders img:hover{
-	opacity: 1;
-	transition: 0.5s;
-	-webkit-transition: 0.5s;
-}*/
 
 .about_us{
 	position: absolute;
