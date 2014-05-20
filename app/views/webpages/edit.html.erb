@@ -62,8 +62,19 @@
 								<th>Delete</th>
 							</tr>
 						</thead>
-
 						<tbody>
+							<tr>
+								<td><%= image_tag("browser.png") %></td>
+								<td></td>
+							</tr>
+
+							<% if not @webpage.web_layouts.present?%>
+							<tr>
+								<td><%= image_tag("placeholder.png") %></td>
+								<td></td>
+							</tr>
+							<% end %>
+						
 							<% for wlayout in @webpage.web_layouts %>
 								<tr class="item" data-item_id="<%= wlayout.id %>">
 									<td><img src="<%= wlayout.bloc.img_url %>" alt="<%= wlayout.bloc.name %>"></td>

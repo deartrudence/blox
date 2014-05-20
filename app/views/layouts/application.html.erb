@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Weblox Builder</title>
+  <title>Weblox Builder 
+  <% if @title.present? %>
+    - <%= @title %>
+  <% end %>
+  </title>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico' %>
   <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="http://cloud.typography.com/7055252/762022/css/fonts.css">
 </head>
