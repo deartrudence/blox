@@ -28,6 +28,8 @@ gem 'omniauth-facebook'
 
 gem 'fb_graph'
 
+gem 'newrelic_rpm'
+
 #gem 'dotenv-rails', :groups =>[:development, :test]
 
 

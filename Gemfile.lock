@@ -83,6 +83,7 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     naught (1.0.0)
+    newrelic_rpm (3.8.1.221)
     oauth (0.4.7)
     oauth2 (0.9.3)
       faraday (>= 0.8, < 0.10)
@@ -191,6 +192,7 @@ DEPENDENCIES
   fb_graph
   jbuilder (~> 1.2)
   jquery-rails
+  newrelic_rpm
   omniauth
   omniauth-facebook
   omniauth-twitter
