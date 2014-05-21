@@ -25,7 +25,7 @@ body{
 	top: 0;
 	left: 0;
 	z-index: -2;
-	background-image: url("polygon.jpg");
+	background-image: image-url("polygon.jpg");
 	background-size: cover;
 	background-position: 50% 50%;
 	opacity: 1;
@@ -42,7 +42,7 @@ body{
 	width: 100%;
 	left:0;
 	top: 0;
-	background-image: url("polygon.jpg");
+	background-image: image-url("polygon.jpg");
 	background-size: cover;
 	background-position: 50% 50%;
 	z-index: 10;
