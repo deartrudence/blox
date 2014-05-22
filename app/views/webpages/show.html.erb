@@ -9,14 +9,14 @@
 	<!-- Shown Code -->
 	<% if @webpage.blocs.present? %>
 		
-		<pre><code data-language="html"><%= @webpage.blocs.map(&:code).join("\n") %></code></pre> 
+		<pre><code data-language="html"><%= render 'header' %><%= @webpage.blocs.map(&:code).join("\n") %><%= render 'footer' %></code></pre> 
     <% end %>
 
 
 	<!-- Hidden Text Area for Clipboard -->	
     <% if @webpage.blocs.present? %>
 		
-		<textarea id='fe_text'><%= @webpage.blocs.map(&:code).join("\n") %></textarea> 
+		<textarea id='fe_text'><%= render 'header' %><%= @webpage.blocs.map(&:code).join("\n") %><%= render 'footer' %></textarea> 
     <% end %>
 	<style>#fe_text{display:none;}</style>
 
