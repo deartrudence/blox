@@ -1,6 +1,7 @@
 class BlocsController < ApplicationController
   before_action :set_bloc, only: [:show, :edit, :update, :destroy]
   before_filter :authorize_admin
+
   # GET /blocs
   # GET /blocs.json
   def index
@@ -69,6 +70,6 @@ class BlocsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bloc_params
-      params.require(:bloc).permit(:name, :code, :img_url, :category_id)
+      params.require(:bloc).permit(:name, :code, :bloc_img, :category_id)
     end
 end

@@ -1,7 +1,7 @@
 <%= form_for(@bloc) do |f| %>
   <% if @bloc.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@bloc.errors.count, "error") %> prohibited this bloc from being saved:</h2>
+      <h2><%= pluralize(@bloc.errors.count, "error") %> prohibited this @bloc from being saved:</h2>
 
       <ul>
       <% @bloc.errors.full_messages.each do |msg| %>
@@ -17,9 +17,11 @@
   <div class="form-group">
     <%= f.text_area :code, placeholder: "Code", class: 'form-control' %>
   </div>
+ 
   <div class="form-group">
-    <%= f.text_area :img_url, placeholder: "Image URL", class: 'form-control' %>
+    <%=f.file_field :bloc_img %>
   </div>
+
   <div class="form-group">
     <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Weblox Category"}, class: "form-control" %>
   </div>
