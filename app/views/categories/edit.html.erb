@@ -1,5 +1,33 @@
-<h1>Editing category</h1>
+<div class="polygon"></div>
 
-<%= render 'form' %>
+<div id="web-pages-content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="landing-panel form-panel weblox-panel">
+						<div class="weblox-branding">
+			            	<%= image_tag("weblox-branding.png", class: "weblox-main-branding") %>
+			            	<div class="arrow-down"></div>
+			            </div>
 
-<%= link_to 'Back', '/dashboard/show', class: 'btn btn-primary'  %>
+			            <div class="weblox-form panel-padding">
+			            	<h4>Edit Category</h4>
+			            	<%= render 'form' %>
+			            </div>
+
+			            <div class="form-footer-info text-center">
+			            	<%= link_to 'Return to Dashboard', '/dashboard/show'  %>
+			            </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
