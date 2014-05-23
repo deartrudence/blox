@@ -9,7 +9,7 @@
 	<!-- Shown Code -->
 	<% if @webpage.blocs.present? %>
 		
-		<pre><code data-language="html"><%= render 'header' %><%= @webpage.blocs.map(&:code).join("\n") %><%= render 'footer' %></code></pre> 
+		<pre><code data-language="html"><%= @webpage.blocs.map(&:code).join("\n") %></code></pre> 
     <% end %>
 
 
