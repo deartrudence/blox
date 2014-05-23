@@ -1,7 +1,7 @@
 <ul id="list-<%=category.name%>">
 <% for bloc in category.blocs %>
     <li class="bloc_element">
-      <img src="<%=bloc.img_url%>" alt="<%=bloc.name%>">
+      <img src="<%=bloc.bloc_img%>" alt="<%=bloc.name%>">
 	   <% if @webpage.present? %>
 	      <%= link_to web_layouts_path(:webpage => @webpage, :bloc => bloc), method: :post do%>
 				<i class="fa fa-plus-square"></i>

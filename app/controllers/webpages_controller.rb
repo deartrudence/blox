@@ -1,5 +1,6 @@
 class WebpagesController < ApplicationController
   before_action :set_webpage, only: [:show, :edit, :update, :destroy]
+  newrelic_ignore :only => [:show]
 
   # GET /webpages
   # GET /webpages.json

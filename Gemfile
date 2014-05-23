@@ -19,6 +19,10 @@ gem 'devise'
 #Copy to Clipboard function
 gem 'zeroclipboard-rails'
 
+#for image management
+gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
+gem 'aws-sdk'
+
 #Sign in with Twitter
 gem 'omniauth-twitter'
 
@@ -32,7 +36,7 @@ gem 'fb_graph'
 
 gem 'newrelic_rpm'
 
-#gem 'dotenv-rails', :groups =>[:development, :test]
+gem 'dotenv-rails', :groups =>[:development, :test]
 
 
 # Use SCSS for stylesheets

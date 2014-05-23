@@ -37,19 +37,6 @@
 		
 		<!-- INSET CONTENT -->
 		<div class="page-content inset">
-
-			<!-- FLASH + ALERTS -->
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-					<% if notice %>
-				  		<p class="alert alert-success"><%= notice %></p>
-					<% end %>
-					<% if alert %>
-				  		<p class="alert alert-danger"><%= alert %></p>
-					<% end %>
-				</div>
-			</div>
-			<!-- /FLASH + ALERTS -->
 			
 			
 			<!-- SORTABLE -->
@@ -77,7 +64,7 @@
 						
 							<% for wlayout in @webpage.web_layouts %>
 								<tr class="item" data-item_id="<%= wlayout.id %>">
-									<td><img src="<%= wlayout.bloc.img_url %>" alt="<%= wlayout.bloc.name %>"></td>
+									<td><img src="<%= wlayout.bloc.bloc_img.url %>" alt="<%= wlayout.bloc.name %>"></td>
 									<td class="bloc-delete-col"><%= link_to "Delete", web_layout_path(wlayout, webpage: @webpage), method: :delete, class: 'btn btn-danger btn-sm' %></td>
 								</tr>
 						
