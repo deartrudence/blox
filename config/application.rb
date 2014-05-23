@@ -14,6 +14,7 @@ module Blox
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    #Add fonts folder to asset pipeline
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.

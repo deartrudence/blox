@@ -126,3 +126,11 @@ p{
 	border-bottom: 1px dotted #428bca;
 
 }
+
+
+
+
+.terms{
+	height: 500px;
+	overflow: auto;
+}
