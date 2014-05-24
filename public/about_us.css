@@ -131,6 +131,5 @@ p{
 
 
 .terms{
-	height: 500px;
-	overflow: auto;
+	margin-bottom: 16px;
 }
