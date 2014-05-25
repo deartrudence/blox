@@ -200,6 +200,10 @@ width: auto;
   margin-bottom: 20px;
 }
 
+#sidebar-submenu ul li.bloc_element:last-child{
+  margin-bottom: 50px;
+}
+
 #sidebar-submenu ul li.bloc_element .bloc_title{
   z-index: 60;
   color: white;

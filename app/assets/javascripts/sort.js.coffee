@@ -18,7 +18,7 @@ jQuery ->
         ui.item.children('td').effect('highlight', {}, 1000)
       update: (e, ui) ->
         item_id = ui.item.data('item_id')
-        position = ui.item.index()
+        position = ui.item.index('.item')
         $.ajax(
           type: 'POST'
           url: $(this).data('update_url')

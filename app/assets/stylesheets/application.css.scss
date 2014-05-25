@@ -14,8 +14,19 @@
  */
 
 
+
+@font-face {
+	font-family: 'GothamRounded-Medium';
+	src: font-url('GothamRounded-Medium.eot?') format('eot'), 
+	     font-url('GothamRounded-Medium.otf')  format('opentype'),
+	     font-url('GothamRounded-Medium.woff') format('woff'), 
+	     font-url('GothamRounded-Medium.ttf')  format('truetype'),
+	     font-url('GothamRounded-Medium.svg#GothamRounded-Medium') format('svg');
+}
+
+
 body{
-	font-family: "Gotham Rounded A","Gotham Rounded B",Helvetica,Arial,sans-serif !important;
+	font-family: 'GothamRounded-Medium', Helvetica, Arial, sans-serif !important;
 }
 
 .polygon{
