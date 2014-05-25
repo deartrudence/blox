@@ -13,6 +13,8 @@ Blox::Application.routes.draw do
 
   get "about_us" => 'static#about_us'
 
+  get "terms" => 'static#terms'
+
   resources :categories
 
   resources :webpages
