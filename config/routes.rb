@@ -11,6 +11,8 @@ Blox::Application.routes.draw do
 
   get "dashboard/show"
 
+  get "about_us" => 'static#about_us'
+
   resources :categories
 
   resources :webpages
