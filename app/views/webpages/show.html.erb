@@ -1,33 +1,64 @@
-<p id="notice"><%= notice %></p>
+<div class="polygon"></div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @webpage.name %>
-</p>
+<div id="generate-code">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="landing-panel">
+          <div class="text-center">
+            <h4>Webpage Code</h4>
+          </div>
+          
+          <p>Below is the generated code based on your webpage blox. Ensure to copy both the HTML and the CSS code into separate files, and to make any changes to the stylesheet link if both files do not reside in the same directory.</p>
+          <p>Please note that the HTML below does not show the opening and closing code for the website, but it will be included in the copied code.</p>
+          <hr>
 
+          <p>
+            <strong>Webpage Name:</strong>
+            <%= @webpage.name %>
+          </p>
 
-	<!-- Shown Code -->
-	<% if @webpage.blocs.present? %>
-		
-		<pre><code data-language="html"><%= @webpage.blocs.map(&:code).join("\n") %></code></pre> 
-    <% end %>
+          <p class="code-type-html">HTML</p>
+          <!-- Shown Code -->
+          <% if @webpage.blocs.present? %>
+            <pre><code data-language="html"><%= @webpage.blocs.map(&:code).join("\n") %></code></pre> 
+          <% end %>
 
+          <!-- Hidden Text Area for Clipboard --> 
+          <% if @webpage.blocs.present? %>
+            <textarea id='fe_text'><%= render 'header' %><%= @webpage.blocs.map(&:code).join("\n") %><%= render 'footer' %></textarea> 
+          <% end %>
+          <style>#fe_text{display:none;}</style>
 
-	<!-- Hidden Text Area for Clipboard -->	
-    <% if @webpage.blocs.present? %>
-		
-		<textarea id='fe_text'><%= render 'header' %><%= @webpage.blocs.map(&:code).join("\n") %><%= render 'footer' %></textarea> 
-    <% end %>
-	<style>#fe_text{display:none;}</style>
+          <button class='my_clip_button btn btn-primary' data-clipboard-target='fe_text' data-clipboard-text='Default clipboard text from attribute' id='d_clip_button' title='Click me to copy to clipboard.'>
+            Copy HTML To Clipboard
+          </button>
+          <%= link_to 'Back', edit_webpage_path(@webpage), class: 'btn btn-primary' %>
 
-<%= link_to 'Back', edit_webpage_path(@webpage), class: 'btn btn-primary btn-sm' %>
+          
+          <p class="code-type-css">CSS</p>
+          <!-- Shown Code -->
+          <% if @webpage.blocs.present? %>
+            <pre><code data-language="css"><%= render 'styles' %></code></pre> 
+          <% end %>
 
+          <!-- Hidden Text Area for Clipboard --> 
+          <% if @webpage.blocs.present? %>
+            <textarea id='css_text'><%= render 'styles' %></textarea> 
+          <% end %>
+          <style>#css_text{display:none;}</style>
 
-  <button class='my_clip_button btn btn-primary' data-clipboard-target='fe_text' data-clipboard-text='Default clipboard text from attribute' id='d_clip_button' title='Click me to copy to clipboard.'>
-    <b>Copy To Clipboard...</b>
-  </button>
-  
-  
+          <button class='my_clip_button btn btn-primary' data-clipboard-target='css_text' data-clipboard-text='Default clipboard text from attribute' id='css_clip_button' title='Click me to copy to clipboard.'>
+            Copy CSS To Clipboard
+          </button>
+          <%= link_to 'Back', edit_webpage_path(@webpage), class: 'btn btn-primary' %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <script>
   $(document).ready(function() {
@@ -39,3 +70,43 @@
     $("#testarea").val("");
   });
 </script>
+
+<script>
+  $(document).ready(function() {
+    var clip = new ZeroClipboard($("#css_clip_button"))
+  });
+
+  $("#clear-test").on("click", function(){
+    $("#css_text").val("Copy me!");
+    $("#testarea").val("");
+  });
+</script>
+
+
+<style>
+  #generate-code{
+    margin: 100px 0 50px 0;
+  }
+
+  #generate-code .landing-panel{
+    padding: 35px;
+    height: auto;
+  }
+
+  #generate-code h4{
+    margin: 20px 0 40px 0;
+  }
+
+  #generate-code pre{
+    height: 300px;
+    overflow: auto;
+  }
+
+  #generate-code .code-type-html{
+    margin: 0px 0 15px 0;
+  }
+
+  #generate-code .code-type-css{
+    margin: 40px 0 15px 0;
+  }
+</style>

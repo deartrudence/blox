@@ -1,20 +1,17 @@
 /**
- * Monokai theme
+ * Kimbie (Light)
  *
- * Adapted from Wimer Hazenberg's TextMate theme of the same name
- *
- * @author Wimer Hazenberg
- * @author Michael Fasani
- * @author Craig Campbell
+ * @author Jan T. Sott
  * @version 1.0.0
+ * @url http://github.com/idleberg/Kimbie-Rainbow
  */
 pre {
-    background: #272822;
+    background-color: #f7f7f9;
     word-wrap: break-word;
     margin: 0px;
     padding: 10px;
-    color: #fff;
-    font-size: 14px;
+    color: #221a0f;
+    font-size: 12px;
     margin-bottom: 20px;
 }
 
@@ -23,59 +20,29 @@ pre, code {
 }
 
 pre .comment {
-    color: #75715E;
-}
-
-pre .constant {
-    color: #AE81FF;
-}
-
-pre .storage {
-    color: #66D9EF;
-}
-
-pre .string, pre .comment.docstring {
-    color: #E6DB74;
-}
-
-pre .support.tag {
-    color: #fff;
-}
-
-pre .keyword {
-    /* @todo some keywords use this light blue, most use the pink */
-    /*color: #66D9EF;*/
-    color: #F92672;
-}
-
-pre .selector {
-    color: #F92672;
-}
-
-pre .inherited-class {
-    font-style: italic;
-}
-
-pre .operator, pre .support.tag-name , pre .entity.tag {
-    color: #F92672;
-}
-
-pre .entity, pre .support.attribute, pre .entity.attribute {
-    color: #A6E22E;
-}
-
-pre .support, *[data-language="c"] .function.call {
-    color: #66D9EF;
-}
-
-*[data-language="html"] .support.operator {
-    color: #fff;
-}
-
-pre .css-property, pre .storage.function {
-    font-style: italic;
+    color: #999;
 }
 
 pre .variable.global, pre .variable.class, pre .variable.instance {
-    color: #A6E22E;
+    color: #00AA88; /* green */
+}
+
+pre .constant.numeric, pre .constant.language, pre .constant.hex-color, pre .keyword.unit {
+    color: #FF6600; /* orange */
+}
+
+pre .constant, pre .entity, pre .entity.class, pre .support {
+    color: #00AA88; /* green */
+}
+
+pre .constant.symbol, pre .string {
+    color: #006699; /* blue */
+}
+
+pre .entity.function, pre .support.css-property, pre .selector {
+    color: #006699; 
+}
+
+pre .keyword, pre .storage {
+    color: #98676a; /* purple */
 }

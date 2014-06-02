@@ -13,8 +13,9 @@ Blox::Application.routes.draw do
 
   get "about_us" => 'static#about_us'
 
-  match '/contacts',     to: 'contacts#new',             via: 'get'
+
   resources "contacts", only: [:new, :create]
+  get "terms" => 'static#terms'
 
   resources :categories
 
