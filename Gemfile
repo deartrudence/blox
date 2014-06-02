@@ -16,6 +16,10 @@ gem 'rails_12factor'
 #for Authentification
 gem 'devise'
 
+#contact form
+gem 'mail_form'
+gem 'simple_form'
+
 #Copy to Clipboard function
 gem 'zeroclipboard-rails'
 
