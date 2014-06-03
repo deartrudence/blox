@@ -72,7 +72,7 @@
 								<% end -%>
 							</div>
 							<!-- FLASH + ALERTS -->
-								<div class="row">
+								<!-- <div class="row">
 									<div class="col-md-8 col-md-offset-2">
 										<% if notice %>
 									  		<p class="alert alert-success"><%= notice %></p>
@@ -81,7 +81,7 @@
 									  		<p class="alert alert-danger"><%= alert %></p>
 										<% end %>
 									</div>
-								</div>
+								</div> -->
 							<!-- /FLASH + ALERTS -->
 
 						</div>
@@ -99,5 +99,5 @@
 <div class="about_us">
 	<a href="/about_us" class="">About Us</a>
 	<a href="/terms">Terms</a>
-	<a href="/contact">Contact</a>
+	<a href="<%=new_contact_path%>">Contact</a>
 </div>

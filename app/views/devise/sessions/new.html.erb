@@ -19,7 +19,6 @@
 
 							<div class="weblox-social">
 								<ul class="social text-center">
-<!-- 									<li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li> -->
 									<li><a href="https://twitter.com/buildweblox"><i class="fa fa-twitter fa-2x"></i></a></li>
 								</ul>
 							</div>
@@ -67,12 +66,12 @@
 							<!-- END weblox-form -->
 							
 							<div class="form-footer-info text-center">
-								<div class="col-md-8">
+								<div class="col-xs-8 col-sm-8 col-md-8">
 									<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
 									<%= link_to "Oops, I forgot my password", new_password_path(resource_name) %><br />
 								<% end -%>
 								</div>
-								<div class="col-md-4">
+								<div class="col-xs-4 col-sm-4 col-md-4">
 									<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
 									<%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-primary btn-sign-up" %><br />
 								<% end -%>
@@ -94,5 +93,5 @@
 <div class="about_us">
 	<a href="/about_us" class="">About Us</a>
 	<a href="/terms">Terms</a>
-	<a href="/contact">Contact</a>
+	<a href="<%=new_contact_path%>">Contact</a>
 </div>

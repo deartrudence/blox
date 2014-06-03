@@ -223,7 +223,6 @@ body{
 	border: 1px solid #e5e5e5;
 	background-color: #f9f9f9;
 	color: #444;
-	// text-shadow: 0 1px rgba(0,0,0,0.1);
 }
 
 .btn.btn-social:hover{
@@ -267,8 +266,46 @@ body{
     color:  white;
 }
 
+.about_us{
+	position: absolute;
+	padding: 20px;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	text-align: right;
+}
+
+.about_us a{
+	color: white;
+	margin-right: 10px;
+}
+
+.about_us a:hover{
+	color: #9f9f9f;
+	text-decoration: none;
+}
 
 
+@media screen and (max-width: 992px){
+	#landing-content .landing-panel{
+		margin-bottom: 30px;
+	}
+
+	#landing-content{
+		position: relative;
+		top: 30px;
+		height: auto;
+	}
+
+	.about_us{
+		position: relative;
+		text-align: center;
+	}
+
+	.about_us a:last-child{
+		margin-right: 0;
+	}
+}
 
 
 
@@ -336,24 +373,7 @@ background-image: linear-gradient(top,#4d90fe,#4787ed);
 
 
 
-.about_us{
-	position: absolute;
-	padding: 20px;
-	width: 100%;
-	bottom: 0;
-	left: 0;
-	text-align: right;
-}
 
-.about_us a{
-	color: white;
-	margin-right: 10px;
-}
-
-.about_us a:hover{
-	color: #9f9f9f;
-	text-decoration: none;
-}
 
 
 input[type=checkbox].css-checkbox {
