@@ -20,6 +20,8 @@ gem 'devise'
 gem 'mail_form'
 gem 'simple_form'
 
+gem 'mandrill'
+
 #Copy to Clipboard function
 gem 'zeroclipboard-rails'
 
