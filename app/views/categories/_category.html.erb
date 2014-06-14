@@ -11,9 +11,12 @@
       <span class="bloc_title"><%= bloc.name %></span>
 
       <script>
-			var img = document.getElementById('img-<%=bloc.name%>'); 
-			var imgheight = (278/img.width)*img.height;
-			document.getElementById('<%= bloc.name %>').style.lineHeight = imgheight + 'px';
+      		$(window).bind("load", function() {
+      			var img = document.getElementById('img-<%=bloc.name%>'); 
+				var imgheight = (278/img.width)*img.height;
+				document.getElementById('<%= bloc.name %>').style.lineHeight = imgheight + 'px';
+      		});
+			
 		</script>
 
   </li>
