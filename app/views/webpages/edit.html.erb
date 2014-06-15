@@ -45,21 +45,14 @@
 					<table id="sortable" class="table" data-update_url="<%= sort_web_layouts_path %>">
 						<thead>
 							<tr>
-								<th>Bloc</th>
-								<th>Delete</th>
+								<th>Bloc</th> <th>Delete</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td><%= image_tag("browser.png") %></td>
-								<td></td>
-							</tr>
+							<tr> <td><%= image_tag("browser.png") %></td> <td></td> </tr>
 
 							<% if not @webpage.web_layouts.present?%>
-							<tr>
-								<td><%= image_tag("placeholder.png") %></td>
-								<td></td>
-							</tr>
+								<tr> <td><%= image_tag("placeholder.png") %></td> <td></td> </tr>
 							<% end %>
 						
 							<% for wlayout in @webpage.web_layouts %>
@@ -67,7 +60,6 @@
 									<td><img src="<%= wlayout.bloc.bloc_img.url %>" alt="<%= wlayout.bloc.name %>"></td>
 									<td class="bloc-delete-col"><%= link_to "Delete", web_layout_path(wlayout, webpage: @webpage), method: :delete, class: 'btn btn-danger btn-sm' %></td>
 								</tr>
-						
 							<% end %>
 						</tbody>
 					</table>
@@ -75,9 +67,6 @@
 			</div>
 			<br><br><br>
 			<!-- /SORTABLE -->
-			
-
-
 		</div>
 		<!-- /INSET CONTENT -->
 
