@@ -10,12 +10,12 @@ class DashboardController < ApplicationController
     if params[:search]
       @users = User.search(params[:search])
     else
-      @users = User.all
+      @users = User.all.sort_by(&:created_at)
     end 
   end
 
   def show_user_list 
-      @users = User.all
+      @users = User.all.sort_by(&:created_at)
   end
 
 end
