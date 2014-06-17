@@ -26,7 +26,7 @@
 
           <!-- Hidden Text Area for Clipboard --> 
           <% if @webpage.blocs.present? %>
-            <textarea id='fe_text'><%= render 'header' %><%= @webpage.blocs.map(&:code).join("\n") %><%= render 'footer' %></textarea> 
+            <textarea id='fe_text'><%= render 'html_header' %><%= @webpage.blocs.map(&:code).join("\n") %><%= render 'html_footer' %></textarea> 
           <% end %>
           <style>#fe_text{display:none;}</style>
 
@@ -39,12 +39,12 @@
           <p class="code-type-css">CSS</p>
           <!-- Shown Code -->
           <% if @webpage.blocs.present? %>
-            <pre><code data-language="css"><%= render 'styles' %></code></pre> 
+            <pre><code data-language="css"><%=render 'styles'%></code></pre> 
           <% end %>
 
           <!-- Hidden Text Area for Clipboard --> 
           <% if @webpage.blocs.present? %>
-            <textarea id='css_text'><%= render 'styles' %></textarea> 
+            <textarea id='css_text'><%=render 'styles'%></textarea> 
           <% end %>
           <style>#css_text{display:none;}</style>
 
