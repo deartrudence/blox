@@ -39,12 +39,12 @@
           <p class="code-type-css">CSS</p>
           <!-- Shown Code -->
           <% if @webpage.blocs.present? %>
-            <pre><code data-language="css"><%=render 'styles'%></code></pre> 
+            <pre><code data-language="css"><%=render 'styles_header'%><%= @webpage.blocs.map(&:styles).join("\n") %></code></pre> 
           <% end %>
 
           <!-- Hidden Text Area for Clipboard --> 
           <% if @webpage.blocs.present? %>
-            <textarea id='css_text'><%=render 'styles'%></textarea> 
+            <textarea id='css_text'><%=render 'styles_header'%><%= @webpage.blocs.map(&:styles).join("\n") %></textarea> 
           <% end %>
           <style>#css_text{display:none;}</style>
 
