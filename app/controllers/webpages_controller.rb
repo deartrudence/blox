@@ -23,7 +23,11 @@ class WebpagesController < ApplicationController
 
   # GET /webpages/1/edit
   def edit
-    @categories = Category.all
+    if user_owns_webpage?
+      @categories = Category.all
+    else
+      redirect_to webpages_path
+    end
   end
 
   # POST /webpages
@@ -79,8 +83,14 @@ class WebpagesController < ApplicationController
       @webpage = Webpage.find(params[:id])
     end
 
+    def user_owns_webpage?
+      @webpage.user == current_user
+    end
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def webpage_params
       params.require(:webpage).permit(:name, :bloc_id, :user_id)
     end
 end
+
+
