@@ -13,11 +13,4 @@ def authorize_admin
 	end 
 end
 
-def authorize_user(item)
-	if current_user.present?
-		unless current_user.id == item.user_id
-			redirect_to webpages_path
-		end
-	end
-end
  
