@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
 
    has_many :webpages
+   has_many :blocs
    has_one :profile
 
   def self.from_twitter_auth(auth)

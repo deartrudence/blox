@@ -10,6 +10,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    @blocs = Bloc.where(:user_id => @profile.user_id)
   end
 
   # GET /profiles/new

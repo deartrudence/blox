@@ -1,5 +1,6 @@
 class Bloc < ActiveRecord::Base
 	belongs_to :category
+	belongs_to :user
 	has_many :web_layouts
 	has_many :webpages, through: :web_layouts
 	has_attached_file :bloc_img

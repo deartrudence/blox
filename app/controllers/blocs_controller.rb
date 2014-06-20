@@ -1,6 +1,6 @@
 class BlocsController < ApplicationController
   before_action :set_bloc, only: [:show, :edit, :update, :destroy]
-  before_filter :authorize_admin
+  # before_filter :authorize_admin
 
   # GET /blocs
   # GET /blocs.json
@@ -20,6 +20,10 @@ class BlocsController < ApplicationController
 
   # GET /blocs/1/edit
   def edit
+    if user_owns_bloc?
+    else 
+      redirect_to bloc_path(params[:id])
+    end
   end
 
   # POST /blocs
@@ -66,6 +70,10 @@ class BlocsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_bloc
       @bloc = Bloc.find(params[:id])
+    end
+
+    def user_owns_bloc?
+      @bloc.user == current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
