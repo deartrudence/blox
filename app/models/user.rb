@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
 
    has_many :webpages
+   has_one :profile
 
   def self.from_twitter_auth(auth)
     #if a user exists in the system with auth.uid and auth.provider, return it.
