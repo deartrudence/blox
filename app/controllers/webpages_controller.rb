@@ -13,6 +13,10 @@ class WebpagesController < ApplicationController
   # GET /webpages/1
   # GET /webpages/1.json
   def show
+    if user_owns_webpage?
+    else
+      redirect_to webpages_path
+    end
   end
 
   # GET /webpages/new
