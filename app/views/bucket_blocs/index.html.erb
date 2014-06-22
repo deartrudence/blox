@@ -1,0 +1,31 @@
+<h1>Listing bucket_blocs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Bloc</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bucket_blocs.each do |bucket_bloc| %>
+      <tr>
+        <td><%= bucket_bloc.user %></td>
+        <td><%= bucket_bloc.bloc %></td>
+        <td><%= link_to 'Show', bucket_bloc %></td>
+        <td><%= link_to 'Edit', edit_bucket_bloc_path(bucket_bloc) %></td>
+        <td><%= link_to 'Destroy', bucket_bloc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= render 'listblocs' %>
+
+<%= link_to 'New Bucket bloc', new_bucket_bloc_path %>

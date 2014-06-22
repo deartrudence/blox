@@ -7,9 +7,11 @@
       <th>Code</th>
       <th>Category ID</th>
       <th>Image<th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>User</th>
+      <th>show</th>
+      <th>edit</th>
+      <th>delete</th>
+      <th>add</th>
     </tr>
   </thead>
 
@@ -20,9 +22,11 @@
         <td><%= bloc.code %></td>
         <td><%= bloc.category.name %></td>
         <td><%= bloc.img_url %></td>
+        <td><%= bloc.user.email %></td>
         <td><%= link_to 'Show', bloc %></td>
         <td><%= link_to 'Edit', edit_bloc_path(bloc) %></td>
         <td><%= link_to 'Destroy', bloc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Add', bucket_blocs_path(:user => current_user, :bloc => bloc), id: bloc.id ,method: :post%></td>
       </tr>
     <% end %>
   </tbody>

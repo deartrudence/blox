@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
    has_many :webpages
    has_many :blocs
+   has_many :bucket_blocs
+   #has_many :blocs, through: :bucket_blocs
    has_one :profile
 
   def self.from_twitter_auth(auth)

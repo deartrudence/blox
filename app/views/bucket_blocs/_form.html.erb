@@ -1,0 +1,25 @@
+<%= form_for(@bucket_bloc) do |f| %>
+  <% if @bucket_bloc.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bucket_bloc.errors.count, "error") %> prohibited this bucket_bloc from being saved:</h2>
+
+      <ul>
+      <% @bucket_bloc.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :bloc_id %><br>
+    <%= f.text_field :bloc_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

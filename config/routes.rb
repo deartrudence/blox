@@ -1,5 +1,7 @@
 Blox::Application.routes.draw do
   
+  resources :bucket_blocs
+
   resources :profiles
 
   get "user/edit"
