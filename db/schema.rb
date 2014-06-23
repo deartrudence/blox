@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620001648) do
+ActiveRecord::Schema.define(version: 20140622185804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20140620001648) do
   end
 
   add_index "blocs", ["user_id"], name: "index_blocs_on_user_id", using: :btree
+
+  create_table "bucket_blocs", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "bloc_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bucket_blocs", ["bloc_id"], name: "index_bucket_blocs_on_bloc_id", using: :btree
+  add_index "bucket_blocs", ["user_id"], name: "index_bucket_blocs_on_user_id", using: :btree
 
   create_table "categories", force: true do |t|
     t.string   "name"
