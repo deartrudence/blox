@@ -1,46 +1,79 @@
-<br><br><br><br>
+
+
+<div class="profile">
+
+
+
+
+<div class="profile-heading">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 profile-info">
+        <div class="avatar">
+          <% if current_user.avatar_url.present? %>
+            <%= image_tag current_user.avatar_url, class: "img-circle" %>
+          <% else %>
+            <%= image_tag gravatar_url(current_user), class: "img-circle" %>
+          <% end %>
+        </div>
+        <h3><%= @profile.handle %></h3>
+        <h5 class="profile-bio">
+          <%= @profile.bio %>
+        </h5>
+
+        <% if @profile.company.present? %>
+        <h5 class="profile-quicklink">
+          <i class="fa fa-globe fa-lg"></i>
+          <%= @profile.company %>
+        </h5>
+        <% end %>
+
+        <% if @profile.website.present? %>
+        <h5 class="profile-quicklink">
+          <a href="<%= @profile.website %>">
+            <i class="fa fa-laptop fa-lg"></i>
+            <%= @profile.website %>
+          </a>
+        </h5>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="profile-border" width="300" height="200"></div>
+
+
+
+
+<div class="container bloc-listing">
+  <div id="box" class="row js-isotope" data-isotope-options='{ "columnWidth": 200, "itemSelector": ".item" }'>
+
+    <% @blocs.each do |bloc| %>
+      <div class="item">
+          <a href="#" class="item-content">
+            <img class="img-responsive" src="<%= bloc.bloc_img.url %>" title="<%= bloc.id %>-<%= bloc.name %>">
+            <div class="bloc-info">
+              <span><%= bloc.name %></span>
+              <ul class="tools">
+                <li class="views"><i class="fa fa-eye"></i>193</li>
+                <li class="heartsss"><i class="fa fa-heart"></i>23</li>
+              </ul>
+            </div>
+          </a>
+
+
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+<br><br><br><br><br><br><br><br>
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<!-- <%= link_to 'Back', profiles_path %> -->
+
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Handle:</strong>
-  <%= @profile.handle %>
-</p>
-
-<p>
-  <strong>Company:</strong>
-  <%= @profile.company %>
-</p>
-
-<p>
-  <strong>Bio:</strong>
-  <%= @profile.bio %>
-</p>
-
-<p>
-  <strong>Website:</strong>
-  <%= @profile.website %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @profile.user %>
-</p>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-10">
-      <ul>
-
-        <% @blocs.each do |bloc| %>
-          <li class="col-md-3"> <img class="img-responsive" src="<%= bloc.bloc_img.url %>"></li>
-        <% end %>
-
-      </ul>
-    </div>  
-  </div>
-
 </div>
-
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
