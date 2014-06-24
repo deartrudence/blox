@@ -26,7 +26,11 @@
     <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Weblox Category"}, class: "form-control" %>
   </div>
 
+  
+
+
   <div class="actions">
     <%= f.submit  class: "btn btn-primary btn-block" %>
+    <%= hidden_field_tag :user_id,  current_user.id %>
   </div>
 <% end %>

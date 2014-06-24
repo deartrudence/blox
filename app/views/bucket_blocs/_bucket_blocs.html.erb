@@ -1,0 +1,34 @@
+
+
+
+<% for category in categories %>
+<ul id="list-<%=category.name%>">
+<% for bucket_bloc in current_user.bucket_blocs %>
+  <% if bucket_bloc.bloc.category == category %>
+    <li class="bloc_element">
+      <img src="<%=bucket_bloc.bloc.bloc_img%>" alt="<%=bucket_bloc.bloc.name%>" id="img-<%=bucket_bloc.bloc.name%>">
+     <% if @webpage.present? %>
+        <%= link_to web_layouts_path(:webpage => @webpage, :bloc => bucket_bloc.bloc), class: "add-hitspace", id: bucket_bloc.bloc.name ,method: :post do%>
+        <i class="fa fa-plus"></i>
+        click to add
+        <% end %>
+     <% end %>
+      <span class="bloc_title"><%= bucket_bloc.bloc.name %></span>
+
+      <script>
+          $(window).bind("load", function() {
+            var img = document.getElementById('img-<%=bucket_bloc.bloc.name%>'); 
+        var imgheight = (278/img.width)*img.height;
+        document.getElementById('<%= bucket_bloc.bloc.name %>').style.lineHeight = imgheight + 'px';
+          });
+      
+    </script>
+
+  </li>
+<% end %>
+      
+<% end %>
+</ul>
+<% end %>
+
+

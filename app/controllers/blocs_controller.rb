@@ -20,7 +20,7 @@ class BlocsController < ApplicationController
 
   # GET /blocs/1/edit
   def edit
-    if user_owns_bloc?
+    if user_owns_bloc? or current_user.role == 'admin'
     else 
       redirect_to bloc_path(params[:id])
     end
@@ -30,6 +30,7 @@ class BlocsController < ApplicationController
   # POST /blocs.json
   def create
     @bloc = Bloc.new(bloc_params)
+    @bloc.user_id = params[:user_id]
 
     respond_to do |format|
       if @bloc.save
@@ -78,6 +79,6 @@ class BlocsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bloc_params
-      params.require(:bloc).permit(:name, :code, :bloc_img, :category_id)
+      params.require(:bloc).permit(:name, :code, :bloc_img, :category_id, :user_id)
     end
 end
