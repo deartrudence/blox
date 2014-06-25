@@ -1,37 +1,43 @@
-<h1>Listing blocs</h1>
+<div class="bloc-index">
 
-<table class='table'>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Code</th>
-      <th>Category ID</th>
-      <th>Image<th>
-      <th>User</th>
-      <th>show</th>
-      <th>edit</th>
-      <th>delete</th>
-      <th>add</th>
-    </tr>
-  </thead>
+  <div class="index-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10">
+        <h3>Below is a listing of all available blox part of the Weblox project. Add your favorite blox to your bucket and use them to build your next webpage!</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="polygon-divider" width="300" height="200"></div>
 
-  <tbody>
-    <% @blocs.each do |bloc| %>
-      <tr>
-        <td><%= bloc.name %></td>
-        <td><%= bloc.code %></td>
-        <td><%= bloc.category.name %></td>
-        <td><%= bloc.img_url %></td>
-        <td><%= bloc.user.email %></td>
-        <td><%= link_to 'Show', bloc %></td>
-        <td><%= link_to 'Edit', edit_bloc_path(bloc) %></td>
-        <td><%= link_to 'Destroy', bloc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Add', bucket_blocs_path(:user => current_user, :bloc => bloc), id: bloc.id ,method: :post%></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+  <div class="container bloc-listing">
+    <div id="box" class="row js-isotope" data-isotope-options='{ "columnWidth": 200, "itemSelector": ".item" }'>
 
-<%= link_to 'New Bloc', new_bloc_path %>
+      <% @blocs.each do |bloc| %>
+        <% builder = @users.find(bloc.user_id) %>
+        <div class="item">
+            <a href="#" class="item-content">
+              <img class="img-responsive" src="<%= bloc.bloc_img.url %>" title="<%= bloc.id %>-<%= bloc.name %>">
+              <div class="bloc-info">
+                <span><%= bloc.name %></span>
+              </div>
+            </a>
+            <div class="bloc-builder">
+                  <% if builder.avatar_url.present? %>
+                    <%= image_tag builder.avatar_url, class: "img-circle" %>
+                  <% else %>
+                    <%= image_tag gravatar_url(builder), class: "img-circle" %>
+                  <% end %>
+                  <%= link_to builder.profile.handle, profile_path(builder.profile.id), class: "builder-profile" %>
+                </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+
+  <%= link_to 'New Bloc', new_bloc_path %>
+
+</div>

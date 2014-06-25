@@ -517,9 +517,78 @@ label.css-label {
 
 }
 
-
-
-
 .static-page .terms{
 	margin-bottom: 16px;
+}
+
+.bloc-listing{
+
+	margin: 50px auto;
+
+	.item {
+			display: inline-block;
+			width:  25%; 
+			padding:  0.50rem;
+			
+
+			.item-content{
+				padding: 0.70rem;
+				background-color: #fff;
+				border-radius: 3px;
+				box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.18);
+				box-sizing: border-box;
+				display: block;
+
+				.bloc-info{
+					padding: 1rem 0 0.3rem;
+					border-top: 1px solid #f5f5f5;
+
+					span{
+						display: inline-block;
+						color: #666;
+						font-size: 12px;
+					}
+				}
+			}
+
+			.bloc-builder{
+				padding: 5px 10px 20px;
+
+				img{
+					width: 25px;
+				}
+
+				a.builder-profile{
+					display: inline-block;
+					font-size: 0.8em;
+					color: #777;
+				}
+
+				a.builder-profile:hover{
+					text-decoration: none;
+					color: #333;
+					cursor: pointer;
+				}
+			}
+
+		}
+
+		@media screen and (max-width: 1200px){
+			.item{
+				width: 33%;
+			}
+		}
+
+		@media screen and (max-width: 760px){
+			.item{
+				width: 50%;
+			}
+		}
+
+		@media screen and (max-width: 600px){
+			.item{
+				width: 100%;
+			}
+		}
+
 }

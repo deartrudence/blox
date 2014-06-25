@@ -1,3 +1,29 @@
 // Place all the styles related to the blocs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.bloc-index{
+	margin-top: 50px;
+
+	.index-top{
+		background-color: #fff;
+		padding: 40px;
+
+		.col-md-10{
+			padding-left: 0;
+
+			h3{
+				line-height: 1.5em;
+			}
+		}
+	}
+
+	.polygon-divider{
+		height: 5px;
+		width: 100%;
+		background-image: url(/assets/polygon.jpg);
+		background-size: cover;
+		background-position: 50% 50%;
+	}
+}

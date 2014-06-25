@@ -6,6 +6,7 @@ class BlocsController < ApplicationController
   # GET /blocs.json
   def index
     @blocs = Bloc.includes(:category).all
+    @users = User.all
   end
 
   # GET /blocs/1
