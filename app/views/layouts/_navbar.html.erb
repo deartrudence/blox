@@ -24,7 +24,9 @@
 	            	<li><a href="/dashboard/show">Dashboard</a></li>
 	            	<% end %>
 	            	<li><a href="/blocs">Blox</a></li>
+	            	<% if current_user.profile.present? %>
 	                <li><a href="<%= profile_path(current_user.profile) %>">Profile</a></li>
+	                <% end %>
 	                <li><a href="/webpages">Web Pages</a></li>
 
 	            </ul>

@@ -9,9 +9,10 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
 			p = Profile.new
 			p.save
 			resource.profile = p
+			resource.save
 			p.handle = resource.email
 			p.save
-			resource.save
+			
 			bloc.each do |bloc|
 				if bloc.user.email == 'buildweblox@gmail.com'
 					bucket_bloc = BucketBloc.new
