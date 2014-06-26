@@ -25,6 +25,9 @@ gem 'mandrill'
 #Copy to Clipboard function
 gem 'zeroclipboard-rails'
 
+#adding tags to things
+gem 'acts-as-taggable-on'
+
 #for image management
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 gem 'aws-sdk'

@@ -25,7 +25,8 @@
   <div class="form-group">
     <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Weblox Category"}, class: "form-control" %>
   </div>
-
+  <div class="form-group">
+    <%= f.text_field :tag_list, placeholder:"add tags seperated by commas", class: "form-control" %>
   
 
 

@@ -5,8 +5,12 @@ class BlocsController < ApplicationController
   # GET /blocs
   # GET /blocs.json
   def index
-    @blocs = Bloc.includes(:category).all
     @users = User.all
+    if params[:search]
+      @blocs = Bloc.tagged_with(params[:search], :any => true)
+    else
+      @blocs = Bloc.includes(:category).all
+    end
   end
 
   # GET /blocs/1
@@ -68,6 +72,15 @@ class BlocsController < ApplicationController
     end
   end
 
+  def tagged
+    @users = User.all
+    if params[:tag].present?
+      @blocs = Bloc.tagged_with(params[:tag])
+    else
+      @blocs = Bloc.all
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bloc
@@ -78,8 +91,10 @@ class BlocsController < ApplicationController
       @bloc.user == current_user
     end
 
+
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def bloc_params
-      params.require(:bloc).permit(:name, :code, :bloc_img, :category_id, :user_id)
+      params.require(:bloc).permit(:name, :code, :bloc_img, :category_id, :user_id, :tag_list)
     end
 end

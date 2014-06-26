@@ -25,6 +25,7 @@ Blox::Application.routes.draw do
   resources :webpages
 
   resources :blocs
+  get 'tagged' => 'blocs#tagged', :as => 'tagged'
 
   resources :web_layouts do
     post :sort, on: :collection
