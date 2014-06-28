@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
    has_many :bucket_blocs
    #has_many :blocs, through: :bucket_blocs
    has_one :profile
+   has_many :likes
+   
 
   def self.from_twitter_auth(auth)
     #if a user exists in the system with auth.uid and auth.provider, return it.

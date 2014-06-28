@@ -30,6 +30,11 @@
     <%= link_to tag.name, tagged_url(:tag => tag.name) %>
   <% end %>
 </p>
+<p>
+  <%= link_to "Like", bloc_likes_path(@bloc, @like), method: :post %>
+</p>
+<p>
+  Count: <%= @bloc.likes.count %>
 
 <%= link_to 'Edit', edit_bloc_path(@bloc) %> |
 <%= link_to 'Back', blocs_path %>
