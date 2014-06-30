@@ -33,6 +33,13 @@
 <p>
   <%= link_to "Like", bloc_likes_path(@bloc, @like), method: :post %>
 </p>
+
+<p>
+  <%= link_to "UnLike", bloc_like_path(@bloc, current_user.id), method: :delete %>
+</p>
+
+
+
 <p>
   Count: <%= @bloc.likes.count %>
 

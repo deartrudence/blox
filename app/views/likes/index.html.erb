@@ -18,9 +18,7 @@
         <td><%= like.likeable_id %></td>
         <td><%= like.likeable_type %></td>
         <td><%= like.user_id %></td>
-        <td><%= link_to 'Show', like %></td>
-        <td><%= link_to 'Edit', edit_like_path(like) %></td>
-        <td><%= link_to 'Destroy', like, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= like.id %></td>
       </tr>
     <% end %>
   </tbody>

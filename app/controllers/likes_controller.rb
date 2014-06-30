@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_action :set_like, only: [:show, :edit, :update, :destroy]
+  before_action :set_like, only: [:show, :edit, :update]
 
   # GET /likes
   # GET /likes.json
@@ -62,9 +62,16 @@ class LikesController < ApplicationController
   # DELETE /likes/1
   # DELETE /likes/1.json
   def destroy
+    #@like_id = params[:id]
+    #@like_array = @like_id.pluck(:id)
+    #@like_record = Like.where(:likeable_id => @bloc, :user_id => current_user.id)
+    #@like_array = @like_record.pluck(:id)
+    #@like_id = @like_array[0]
+    @bloc = Bloc.find(params[:bloc_id])
+    @like = @bloc.likes.find_by(user_id: current_user)
     @like.destroy
     respond_to do |format|
-      format.html { redirect_to likes_url }
+      format.html { redirect_to bloc_path(@bloc) }
       format.json { head :no_content }
     end
   end
