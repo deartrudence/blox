@@ -1,5 +1,6 @@
 Blox::Application.routes.draw do
   
+
   resources :bucket_blocs
 
   resources :profiles
@@ -9,7 +10,7 @@ Blox::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "my_devise/registrations" } #do
     #get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru' end
 
-  resources :users
+  resources :users 
 
   root to: "webpages#index"
 
@@ -24,7 +25,11 @@ Blox::Application.routes.draw do
 
   resources :webpages
 
-  resources :blocs
+  resources :blocs do
+    resources :likes
+  end
+
+  get 'tagged' => 'blocs#tagged', :as => 'tagged'
 
   resources :web_layouts do
     post :sort, on: :collection
