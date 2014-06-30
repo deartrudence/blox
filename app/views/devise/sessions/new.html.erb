@@ -1,100 +1,149 @@
 <script>
-  mixpanel.track("Visited Weblox Homepage");
+	function toggleSignIn(){
+		if ($("#signin-modal-container").hasClass("active") == false)
+		{
+			document.getElementById("signin-modal-container").classList.add("active");
+		}
+		else
+		{
+			document.getElementById("signin-modal-container").classList.remove("active");
+		}
+		
+	}
 </script>
 
-<div class="polygon"></div>
+<div id="signin-modal-container">
+	<div class="signin-modal form-panel">
+		<a onclick="toggleSignIn()" class="modal-close"><%= image_tag("modal-close.png") %></a>
+		<h4>Sign In to your Account</h4>
+		<div class="weblox-form">
+			<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+				<div class="form-group" >
+				<%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control" %></div>
+				
+				<div class="form-group" >
+				<%= f.password_field :password, placeholder: "Password", autocomplete: "off", class: "form-control" %></div>
 
-<div id="landing-content">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="row">
-					<div class="col-md-6">
-						<div class="landing-panel weblox-panel">
-							<div class="weblox-branding">
-								<%= image_tag("weblox-branding.png", class: "weblox-main-branding") %>
-								<div class="arrow-down"></div>
-							</div>
-							
-							<div class="weblox-text panel-padding">
-								<p>Weblox is an easy-to-use webpage template builder. Use Weblox to generate a fully responsive webpage based on <%=link_to "Bootstrap","http://www.getbootstrap.com", class: "bootstrap-link"%>.</p>
-								<p>You choose the blox, we build the code.</p>
-							</div>
+				<!-- <% if devise_mapping.rememberable? -%>
+					<div><%= f.check_box :remember_me, class: "css-checkbox" %> 
+					<%= f.label :remember_me, class: "css-label" %></div>
+				<% end -%> -->
 
-							<div class="weblox-social">
-								<ul class="social text-center">
-									<li><a href="https://twitter.com/buildweblox"><i class="fa fa-twitter fa-2x"></i></a></li>
-								</ul>
-							</div>
+				<%= f.submit "Sign in", class: "btn btn-primary btn-block" %>
+				
+				<div class="or-divider">
+					<div class="or-text">
+						<%= image_tag("or-divider.png") %>
+					</div>
+					<hr>
+				</div>
 
+				<!-- btn-#{provider} -->
+				<!--Loop through all OmniAuth Providers -->
+				<%- if devise_mapping.omniauthable? %>
+			  		<%- resource_class.omniauth_providers.each do |provider| %>
+			    		<%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-social btn-block" do%>
+							<i class="fa fa-<%=provider%>"></i>
+							Sign in with <%= provider %>
+						<% end %>
+			  		<% end -%>
+				<% end -%>
+				<!-- END OmniAuth -->
+			<% end %>
+		</div>
+		<!-- END weblox-form -->
+
+		<div class="form-footer-info text-center">
+			<div class="col-xs-8 col-sm-8 col-md-8">
+				<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+				<%= link_to "Oops, I forgot my password", new_password_path(resource_name) %><br />
+			<% end -%>
+			</div>
+			<div class="col-xs-4 col-sm-4 col-md-4">
+				<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+				<%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-primary btn-sign-up" %><br />
+			<% end -%>
+			</div>
+			
+		</div>	
+
+
+	</div>
+</div>
+
+<div class="weblox-landing">
+	<header>
+	    <div><h1><%= image_tag("weblox-branding.png", class: "branding-nav") %></h1></div>
+	    <nav>
+		    <a data-scroll href="#about">Features</a>
+		    <a data-scroll href="#portfolio">Contact</a>
+		    <a data-scroll href="#testimonials">About</a>
+		    <a data-scroll onclick="toggleSignIn()">Sign In</a>
+	    </nav>
+	</header>
+
+	<div class="hero">
+		<div class="hero-content">
+			<h1>Weblox is the fastest and simplest webpage template builder.</h1>
+			<h3>Use Weblox to generate a fully responsive webpage based on Bootstrap. You choose the blox, we build the code.</h3><br><br>
+			<a href="#" class="btn btn-primary btn-lg">Sign Up</a>
+			<a href="#" class="btn btn-primary btn-lg">How It Works</a>
+		</div>
+	</div>
+	<div class="polygon-divider" width="300" height="200"></div>
+
+	<div class="home-content-container">
+		<div class="container">
+			<h2><small>Getting started with Weblox is easy</small>How It Works</h2>
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<div class="row gs-blox">
+						<div class="col-md-4">
+							<h3>Blox</h3>
+							<p>Blox come in all shapes and sizes, and are created by designers and developers in the community. Browse through the blox listing and add your favorites to your personal bucket! Blox can be sorted based on popularity, when they were created, or based on tags.</p>
+						</div>
+						<div class="col-md-8">
+							<%= image_tag("layout-graphic-blox.png", class: "img-responsive") %>
 						</div>
 					</div>
-					<div class="col-md-6">
-						<div class="landing-panel form-panel panel-padding">
-							<h4>Sign In to your Account</h4>
-							<div class="weblox-form">
-								<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-									<div class="form-group" >
-									<%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control" %></div>
-									
-									<div class="form-group" >
-									<%= f.password_field :password, placeholder: "Password", autocomplete: "off", class: "form-control" %></div>
 
-									<!-- <% if devise_mapping.rememberable? -%>
-										<div><%= f.check_box :remember_me, class: "css-checkbox" %> 
-										<%= f.label :remember_me, class: "css-label" %></div>
-									<% end -%> -->
-
-									<%= f.submit "Sign in", class: "btn btn-primary btn-block" %>
-									
-									<div class="or-divider">
-										<div class="or-text">
-											<%= image_tag("or-divider.png") %>
-										</div>
-										<hr>
-									</div>
-
-									<!-- btn-#{provider} -->
-									<!--Loop through all OmniAuth Providers -->
-									<%- if devise_mapping.omniauthable? %>
-								  		<%- resource_class.omniauth_providers.each do |provider| %>
-								    		<%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-social btn-block" do%>
-												<i class="fa fa-<%=provider%>"></i>
-												Sign in with <%= provider %>
-											<% end %>
-								  		<% end -%>
-									<% end -%>
-									<!-- END OmniAuth -->
-								<% end %>
-							</div>
-							<!-- END weblox-form -->
-							
-							<div class="form-footer-info text-center">
-								<div class="col-xs-8 col-sm-8 col-md-8">
-									<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-									<%= link_to "Oops, I forgot my password", new_password_path(resource_name) %><br />
-								<% end -%>
-								</div>
-								<div class="col-xs-4 col-sm-4 col-md-4">
-									<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-									<%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-primary btn-sign-up" %><br />
-								<% end -%>
-								</div>
-								
-							</div>	
+					<div class="row gs-webpage">
+						<div class="col-md-8">
+							<%= image_tag("layout-graphic-webpage.png", class: "img-responsive") %>
 						</div>
-						<!-- END panel -->
-						
+						<div class="col-md-4">
+							<h3>Webpages</h3>
+							<p>Blox that you added to your bucket are available in your sidepanel to add to your canvas. Add, rearrange, and delete blox to your heart's content. <br><br>Once you're satisfied, hit the 'Generate' button - and voila! The entire code for your page is generated and available for you to use.</p>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+
 </div>
 
+<!-- NAV COLLAPSE
+===================================== -->
+<script>
+	var pageheight;
+	$(window).scroll(function() {
+		pageheight = $(window).height()*.7;
+		pageheight = 60;
+	    if ($("header").offset().top > pageheight) {
+	        $("header").addClass("nav-collapse");
+	    } else {
+	        $("header").removeClass("nav-collapse");
+	    }
+	});
+</script>
 
 
-<div class="about_us">
+
+
+
+<div class="about_usx">
 	<a href="/about_us" class="">About Us</a>
 	<a href="/terms">Terms</a>
 	<a href="<%=new_contact_path%>">Contact</a>

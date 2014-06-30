@@ -1,0 +1,101 @@
+<script>
+  mixpanel.track("Visited Weblox Homepage");
+</script>
+
+<div class="polygon"></div>
+
+<div id="landing-content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="landing-panel weblox-panel">
+							<div class="weblox-branding">
+								<%= image_tag("weblox-branding.png", class: "weblox-main-branding") %>
+								<div class="arrow-down"></div>
+							</div>
+							
+							<div class="weblox-text panel-padding">
+								<p>Weblox is an easy-to-use webpage template builder. Use Weblox to generate a fully responsive webpage based on <%=link_to "Bootstrap","http://www.getbootstrap.com", class: "bootstrap-link"%>.</p>
+								<p>You choose the blox, we build the code.</p>
+							</div>
+
+							<div class="weblox-social">
+								<ul class="social text-center">
+									<li><a href="https://twitter.com/buildweblox"><i class="fa fa-twitter fa-2x"></i></a></li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="landing-panel form-panel panel-padding">
+							<h4>Sign In to your Account</h4>
+							<div class="weblox-form">
+								<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+									<div class="form-group" >
+									<%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control" %></div>
+									
+									<div class="form-group" >
+									<%= f.password_field :password, placeholder: "Password", autocomplete: "off", class: "form-control" %></div>
+
+									<!-- <% if devise_mapping.rememberable? -%>
+										<div><%= f.check_box :remember_me, class: "css-checkbox" %> 
+										<%= f.label :remember_me, class: "css-label" %></div>
+									<% end -%> -->
+
+									<%= f.submit "Sign in", class: "btn btn-primary btn-block" %>
+									
+									<div class="or-divider">
+										<div class="or-text">
+											<%= image_tag("or-divider.png") %>
+										</div>
+										<hr>
+									</div>
+
+									<!-- btn-#{provider} -->
+									<!--Loop through all OmniAuth Providers -->
+									<%- if devise_mapping.omniauthable? %>
+								  		<%- resource_class.omniauth_providers.each do |provider| %>
+								    		<%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-social btn-block" do%>
+												<i class="fa fa-<%=provider%>"></i>
+												Sign in with <%= provider %>
+											<% end %>
+								  		<% end -%>
+									<% end -%>
+									<!-- END OmniAuth -->
+								<% end %>
+							</div>
+							<!-- END weblox-form -->
+							
+							<div class="form-footer-info text-center">
+								<div class="col-xs-8 col-sm-8 col-md-8">
+									<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+									<%= link_to "Oops, I forgot my password", new_password_path(resource_name) %><br />
+								<% end -%>
+								</div>
+								<div class="col-xs-4 col-sm-4 col-md-4">
+									<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+									<%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-primary btn-sign-up" %><br />
+								<% end -%>
+								</div>
+								
+							</div>	
+						</div>
+						<!-- END panel -->
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="about_us">
+	<a href="/about_us" class="">About Us</a>
+	<a href="/terms">Terms</a>
+	<a href="<%=new_contact_path%>">Contact</a>
+</div>

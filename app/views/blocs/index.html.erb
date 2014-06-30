@@ -18,12 +18,26 @@
       <% @blocs.each do |bloc| %>
         <% builder = @users.find(bloc.user_id) %>
         <div class="item">
-            <a href="#" class="item-content">
-              <img class="img-responsive" src="<%= bloc.bloc_img.url %>" title="<%= bloc.id %>-<%= bloc.name %>">
+            <div class="item-content">
+              <%= link_to bloc_path(bloc) do %>
+                <img class="img-responsive" src="<%= bloc.bloc_img.url %>" title="<%= bloc.id %>-<%= bloc.name %>">
+              <% end %>
               <div class="bloc-info">
-                <span><%= bloc.name %></span>
+                <%= link_to bloc_path(bloc), class: "bloc-info-name" do %>
+                  <%= bloc.name %>
+                <% end %>
+
+                <% if !current_user.bucket_blocs.where(:bloc_id => bloc.id).present? %>
+                  <%= link_to bucket_blocs_path(:user => current_user, :bloc => bloc), class: "add-to-bucket" ,method: :post do %>
+                  <i class="fa fa-plus"></i>
+                  <% end %>
+                <% end %>
+
+                
+
+
               </div>
-            </a>
+            </div>
             <div class="bloc-builder">
                   <% if builder.avatar_url.present? %>
                     <%= image_tag builder.avatar_url, class: "img-circle" %>
