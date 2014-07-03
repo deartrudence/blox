@@ -108,18 +108,109 @@
 					</div>
 
 					<div class="row gs-webpage">
+						<div class="col-md-4 float-right">
+							<h3>Webpages</h3>
+							<p>Blox that you added to your bucket are available in your sidepanel to add to your canvas. Add, rearrange, and delete blox to your heart's content. <br><br>Once you're satisfied, hit the 'Generate' button - and voila! The entire code for your page is generated and available for you to use.</p>
+						</div>
 						<div class="col-md-8">
 							<%= image_tag("layout-graphic-webpage.png", class: "img-responsive") %>
 						</div>
+					</div>
+
+					<div class="row gs-create">
 						<div class="col-md-4">
-							<h3>Webpages</h3>
-							<p>Blox that you added to your bucket are available in your sidepanel to add to your canvas. Add, rearrange, and delete blox to your heart's content. <br><br>Once you're satisfied, hit the 'Generate' button - and voila! The entire code for your page is generated and available for you to use.</p>
+							<h3>Build Your Own</h3>
+							<p>As a user you can design and create your own blox to give back to the Weblox community. There are no restrictions on what you submit, although other community members will rate your code, which will further determine its popularity.</p>
+						</div>
+						<div class="col-md-8">
+							<%= image_tag("layout-graphic-create.png", class: "img-responsive") %>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="home-about-us">
+			<h2>About Us</h2>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-10 col-xs-offset-1 col-md-12 col-md-offset-0">
+						<div class="about-me row">
+							<div class="col-md-3">
+								<div class="text-center">
+									<img src="https://pbs.twimg.com/profile_images/464623408991330304/Oc35DbTJ.jpeg" alt="Haris" class="img-responsive img-circle">
+									<h4>Haris Mahmood<br>
+									<small>Co Developer</small></h4>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<div class="about-me-text">
+									<p>Haris currently works as a front end UI/UX designer + developer at OMERS. He has also been freelancing for the past five years offering various design and front end development services. He is a recent graduate from Hackeryou's part time Ruby on Rails course where Weblox was born.</p>
+									<p>In his free time, he enjoys longboarding, playing soccer, and eating whatever he can get his hands on.</p>
+								</div>
+								<br>
+								<ul class="social">
+									<li><a href="http://meetharis.com"><i class="fa fa-desktop fa-lg"></i></a></li>
+									<li><a href="http://ca.linkedin.com/pub/haris-mahmood/50/b66/1b0"><i class="fa fa-linkedin fa-lg"></i></a></li>
+									<li><a href="https://github.com/harismahmood89"><i class="fa fa-github fa-lg"></i></a></li>
+									<li><a href="https://twitter.com/harismahmood89"><i class="fa fa-twitter fa-lg"></i></a></li>
+								</ul>
+							</div>
+						</div>
+
+						<br>
+					
+						<div class="about-me row">
+							<div class="col-md-3">
+								<div class="text-center">
+									<img src="https://pbs.twimg.com/profile_images/447594224372838400/h9piTdxu.jpeg" alt="Trudy" class="img-responsive img-circle">
+									<h4>Trudy MacNabb<br>
+									<small>Co Developer</small></h4>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<div class="about-me-text">
+									<p>Trudy has worked as a mainframe developer at RBC for the past five years and decided to further expand her development skillset by joining Hackeryou's part time Ruby on Rails course.</p>
+									<p>Trudy is extremely passionate about dance parties, tomatoes, and public transportation.</p>
+								</div>
+								<br>
+								<ul class="social">
+									<li><a href="http://ca.linkedin.com/pub/trudy-macnabb/4a/910/7b1"><i class="fa fa-linkedin fa-lg"></i></a></li>
+								<li><a href="https://github.com/deartrudence"><i class="fa fa-github fa-lg"></i></a></li>
+								<li><a href="https://twitter.com/dear_trudence"><i class="fa fa-twitter fa-lg"></i></a></li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<div class="special-thanks text-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<p>Weblox began as a final project during the Rails Development course at Hackeryou, and is now continuously growing due to the immense support it has received. A super-big thanks to <a href="https://twitter.com/_bradrobertson">Professor Brad Robertson</a>, <a href="https://twitter.com/ryanbrunner">Professor Ryan Brunner</a> + <a href="https://twitter.com/enric_ribas">Enric Ribas</a> for their continuous help and support throughout the project.</p>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					Made with <i class="fa fa-heart"></i> in Toronto
+				</div>
+				<div class="col-md-2 text-right">
+					<a href="/terms">Terms</a>
+					<a href="<%=new_contact_path%>">Contact</a>
+				</div>
+			</div>
+		</div>
+	</footer>
 
 
 </div>
@@ -143,8 +234,8 @@
 
 
 
-<div class="about_usx">
+<!-- <div class="about_usx">
 	<a href="/about_us" class="">About Us</a>
 	<a href="/terms">Terms</a>
 	<a href="<%=new_contact_path%>">Contact</a>
-</div>
+</div> -->
