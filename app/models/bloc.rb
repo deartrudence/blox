@@ -13,7 +13,7 @@ class Bloc < ActiveRecord::Base
 
   # def self.search(query)
   #   # where(:name, query) -> This would return an exact match of the query
-  #   where("bloc.tag like ?", "%#{query}%") 
+  #   where("tagged_with like ?", "%#{query}%") 
   # end
 
 end
