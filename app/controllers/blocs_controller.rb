@@ -7,7 +7,7 @@ class BlocsController < ApplicationController
   def index
     @users = User.all
     if params[:search]
-      @blocs = Bloc.tagged_with(params[:search], :any => true)
+      @blocs = Bloc.tagged_with(params[:search], :any => :true)
     else
       @blocs = Bloc.includes(:category).all
     end
