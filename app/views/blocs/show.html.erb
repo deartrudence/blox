@@ -30,14 +30,22 @@
     <%= link_to tag.name, tagged_url(:tag => tag.name) %>
   <% end %>
 </p>
-<p>
-  <%= link_to "Like", bloc_likes_path(@bloc, @like), method: :post %>
-</p>
 
-<p>
-  <%= link_to "UnLike", bloc_like_path(@bloc, current_user.id), method: :delete %>
-</p>
+  <p>
+    <% if liked?(@bloc, current_user) %>
+    
+      <%= link_to bloc_like_path(@bloc, current_user.id), method: :delete do%>
+        <i class="fa fa-heart">
+      <% end %>
 
+    <% else %>
+
+      <%= link_to bloc_likes_path(@bloc, @like), method: :post,class: "add-to-bucket" ,method: :post do%>
+       <i class="fa fa-heart"> 
+      <% end %>
+    
+    <% end %>
+  </p>
 
 
 <p>
