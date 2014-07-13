@@ -20,17 +20,23 @@
   </div>
   <div class="polygon-divider" width="300" height="200"></div>
 
+  <!-- data-isotope-options='{"itemSelector": ".item" }' -->
 
-  <div class="container bloc-listing">
-    <div id="box" class="row js-isotope" data-isotope-options='{ "columnWidth": 200, "itemSelector": ".item" }'>
+  <div class=" bloc-listing">
+    <div id="box" class=" js-isotope" >
 
       <% @blocs.each do |bloc| %>
         <% builder = @users.find(bloc.user_id) %>
         <div class="item">
             <div class="item-content">
-              <%= link_to bloc_path(bloc) do %>
-                <img class="img-responsive" src="<%= bloc.bloc_img.url %>" title="<%= bloc.id %>-<%= bloc.name %>">
-              <% end %>
+                <!-- <img class="img-responsive" src="<%= bloc.bloc_img.url %>" title="<%= bloc.id %>-<%= bloc.name %>"> -->
+                <%= link_to bloc_path(bloc), id: "show-iframe-"+bloc.id.to_s, class: "iframe-container" do %>
+                  <div class="glasspanel" height="2" width="2"></div>
+                  <textarea id="code-<%=bloc.id%>" class="hidden"><%= raw bloc.code %></textarea>
+                  <textarea id="styles-<%=bloc.id%>" class="hidden"><%= raw bloc.styles %></textarea>
+                  <iframe id="iframe-<%=bloc.id%>" class="bloc-iframe" height="2"></iframe>
+
+                <% end %>
               <div class="bloc-info">
                 <%= link_to bloc_path(bloc), class: "bloc-info-name" do %>
                   <%= bloc.name %>
@@ -42,7 +48,18 @@
                   <% end %>
                 <% end %>
 
-                
+                <script>
+                $(window).bind("load", function(){
+                  var contents = $('#iframe-<%=bloc.id%>').contents(),
+                  body = contents.find('body'),
+                  headerTag = $(returnHeaderTag()).appendTo(contents.find('head')),
+                  styleTag = $('<style></style>').appendTo(contents.find('head'));
+                  styleTag.text($('#styles-<%= bloc.id %>').val());
+                  body.html($('#code-<%= bloc.id %>').val());
+                  updateIframeSize('iframe-<%=bloc.id%>');
+                  updateContainerSize('<%=bloc.id%>', 0.2175);
+                });
+                </script>
 
 
               </div>
@@ -74,3 +91,49 @@
   <%= link_to 'New Bloc', new_bloc_path %>
 
 </div>
+
+<style>
+                 iframe{
+                  border: none;
+                  width: 1200px;
+                    -moz-transform: scale(0.2175);
+                  -moz-transform-origin: 0 0;
+                  -o-transform: scale(0.2175);
+                  -o-transform-origin: 0 0;
+                  -webkit-transform: scale(0.2175);
+                  -webkit-transform-origin: 0 0;
+                 }
+
+                 a.iframe-container{ overflow: hidden; display: block; cursor: pointer; position: relative;}
+
+                 .glasspanel{
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  z-index: 1000;
+                  cursor: pointer;
+                  background-color: #fff;
+                  opacity: 0;
+                 }
+
+                 .glasspanel:hover{opacity: 0.3;}
+
+                 .hidden{ display: none; }
+
+                </style>
+
+
+<script>
+$(window).bind("load", function(){
+  
+  $('.js-isotope').isotope({
+    itemSelector: '.item',
+    masonry: {
+      columnWidth: 285
+    }
+  });
+
+});
+</script>

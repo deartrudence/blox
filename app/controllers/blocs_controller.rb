@@ -31,21 +31,35 @@ class BlocsController < ApplicationController
     end
   end
 
+  def crop
+
+  end
+
+  def crop_submit
+    redirect_to bloc_show_path(params[:id]), notice: 'Bloc was successfully created.'
+  end
+
   # POST /blocs
   # POST /blocs.json
   def create
     @bloc = Bloc.new(bloc_params)
     @bloc.user_id = params[:user_id]
 
-    respond_to do |format|
+    # respond_to do |format|
       if @bloc.save
-        format.html { redirect_to dashboard_show_path, notice: 'Bloc was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @bloc }
+        if params[:bloc][:bloc_img].blank?
+          redirect_to @bloc
+        else
+          render action: "crop"
+        end
+        # format.html { redirect_to dashboard_show_path, notice: 'Bloc was successfully created.' }
+        # format.json { render action: 'show', status: :created, location: @bloc }
       else
-        format.html { render action: 'new' }
-        format.json { render json: @bloc.errors, status: :unprocessable_entity }
+        render action: "new"
+        # format.html { render action: 'new' }
+        # format.json { render json: @bloc.errors, status: :unprocessable_entity }
       end
-    end
+    # end
   end
 
   # PATCH/PUT /blocs/1
@@ -95,6 +109,6 @@ class BlocsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bloc_params
-      params.require(:bloc).permit(:name, :code, :bloc_img, :category_id, :user_id, :tag_list)
+      params.require(:bloc).permit(:name, :code, :styles, :bloc_img, :category_id, :user_id, :tag_list, :crop_x, :crop_y, :crop_w, :crop_h)
     end
 end

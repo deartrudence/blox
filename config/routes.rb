@@ -16,6 +16,8 @@ Blox::Application.routes.draw do
 
   get "dashboard/show"
 
+  post "crop_submit" => "blocs#crop_submit"
+
   get "about_us" => 'static#about_us'
 
   resources "contacts", only: [:new, :create]
