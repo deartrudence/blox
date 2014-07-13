@@ -4,7 +4,7 @@
 <% for category in categories %>
 <ul id="list-<%=category.name%>">
 <% for bucket_bloc in current_user.bucket_blocs %>
-  <% if bucket_bloc.bloc.category == category.name %>
+  <% if bucket_bloc.bloc.category == category %>
     <li class="bloc_element">
       <img src="<%=bucket_bloc.bloc.bloc_img%>" alt="<%=bucket_bloc.bloc.name%>" id="img-<%=bucket_bloc.bloc.name%>">
      <% if @webpage.present? %>
