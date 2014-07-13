@@ -1,0 +1,43 @@
+<h1>Crop your Bloc, fool</h1>
+
+<% content_for(:head) do %>
+	<%= stylesheet_link_tag "jquery.Jcrop.min" %>
+	<%= javascript_include_tag "jquery.Jcrop.min" %>
+<% end %>
+<script type="text/javascript">
+	$(function () {
+		$("#cropbox").Jcrop({
+			onChange: update_crop,
+			onSelect: update_crop,
+			setSelect: [0, 0, 800, 300]
+		});
+	});
+
+	function update_crop(coords) {
+		$("#crop_x").val(coords.x);
+		$("#crop_y").val(coords.y);
+		$("#crop_w").val(coords.w);
+		$("#crop_h").val(coords.h);
+	}
+</script>
+
+<div class="cropbox-container">
+<%= image_tag @bloc.bloc_img.url, :id => "cropbox", :class => "img-responsive" %>
+</div>
+
+<%= form_for(@bloc, :url => crop_submit_path, :method => "post") do |f|  %>
+	<% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
+		<%= f.hidden_field attribute, :id => attribute %>
+	<% end %>
+	<p><%= f.submit "Crop" , class: "btn btn-primary btn-large" %></p>
+	
+<% end %>
+
+
+<style>
+.cropbox-container{
+	width: 80%;
+}
+
+
+</style>

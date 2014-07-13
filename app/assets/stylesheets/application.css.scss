@@ -528,10 +528,11 @@ label.css-label {
 .bloc-listing{
 
 	margin: 50px auto;
+	width: 1140px;
 
 	.item {
 			display: inline-block;
-			width:  25%; 
+			width:  285px; 
 			padding:  0.50rem;
 			
 
@@ -587,26 +588,43 @@ label.css-label {
 
 		}
 
-		@media screen and (max-width: 1200px){
-			.item{
-				width: 33%;
-			}
-		}
+		// @media screen and (max-width: 1200px){
+		// 	.item{
+		// 		width: 33%;
+		// 	}
+		// }
 
-		@media screen and (max-width: 760px){
-			.item{
-				width: 50%;
-			}
-		}
+		// @media screen and (max-width: 760px){
+		// 	.item{
+		// 		width: 50%;
+		// 	}
+		// }
 
-		@media screen and (max-width: 600px){
-			.item{
-				width: 100%;
-			}
-		}
+		// @media screen and (max-width: 600px){
+		// 	.item{
+		// 		width: 100%;
+		// 	}
+		// }
 
 }
 
+@media screen and (max-width: 1140px){
+	.bloc-listing{
+		width: 855px;
+	}
+}
+
+@media screen and (max-width: 855px){
+	.bloc-listing{
+		width: 570px;
+	}
+}
+
+@media screen and (max-width: 570px){
+	.bloc-listing{
+		width: 285px;
+	}
+}
 
 
 /* WEBLOX LANDING PAGE
