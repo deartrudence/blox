@@ -27,6 +27,9 @@ Blox::Application.routes.draw do
 
   resources :webpages
 
+  resources :blocs, :path => "blox"
+
+
   resources :blocs do
     resources :likes
   end

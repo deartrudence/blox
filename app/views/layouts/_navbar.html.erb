@@ -23,7 +23,7 @@
 	            	<% if current_user.present? && current_user.role == "admin" %>
 	            	<li><a href="/dashboard/show">Dashboard</a></li>
 	            	<% end %>
-	            	<li><a href="/blocs">Blox</a></li>
+	            	<li><a href="/blox">Blox</a></li>
 	            	<% if current_user.profile.present? %>
 	                <li><a href="<%= profile_path(current_user.profile) %>">Profile</a></li>
 	                <% end %>
