@@ -6,4 +6,7 @@ class WebLayout < ActiveRecord::Base
   ranks :position,
   	:with_same => :webpage_id
 
+  validates :bloc, presence: true
+  validates :webpage, presence: true
+
 end

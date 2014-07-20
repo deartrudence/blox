@@ -1,39 +1,50 @@
-<div class="container">
-	<br><br>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default quickform">
-				<div class="panel-header">
+<div class="user">
+
+<div class="user-heading">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 profile-info">
+        <div class="avatar">
+          <% if @otheruser.profile.avatar.present? %>
+            <%= image_tag @otheruser.profile.avatar.url, class: "img-circle"%>
+          <% elsif @otheruser.avatar_url.present? %>
+            <%= image_tag @otheruser.avatar_url, class: "img-circle" %>
+          <% else %>
+            <%= image_tag gravatar_url(@otheruser), class: "img-circle" %>
+          <% end %>
+        </div>
+
 					<h4>Edit User Account Info</h4>
-				</div>
-				<div class="panel-body">
-					<%= form_for(@otheruser) do |f| %>
-						<div class="form-group">
-						    <%= f.label :email %><br>
-						    <%= f.email_field :email , {class: 'form-control'}%>
-						  </div>
 
-						  <% if current_user.present? && current_user.role == "admin" %>
-				              <div class="form-group">
-				                <%= f.label :role %>
-				                <%= f.select :role, [["Administrator", "admin"], ["Designer", "designer"]], {}, {class: "form-control"} %>
-				              </div>
-				          <% end %>
 
-				          <br>
-            			
-            			<%= button_to "Update", user_path(@otheruser), method: :update, class: "btn btn-primary btn-block" %>
-					<% end %>
 				</div>
-				<div class="panel-header">
-		          <h4>Cancel User Account</h4>
-		        </div>
-				<div class="panel-body">
-					<%= button_to "Cancel user account", user_path(@otheruser), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-block" %>
-				</div>
-				
-				
 			</div>
 		</div>
 	</div>
+	<div class="user-border" width="300" height="200"></div>
 </div>
+
+					
+<br><br>	
+				<div class="col-md-8 col-md-offset-2">
+					<%= form_for(@otheruser) do |f| %>
+						<div class="form-group">
+						 	<%= f.email_field :email , placeholder: "email", class: 'form-control'%>
+						</div>
+
+						<% if current_user.present? && current_user.role == "admin" %>
+				   		<div class="form-group">
+				        <%= f.select :role, [["Administrator", "admin"], ["Designer", "designer"]], {},{class: "form-control"} %>
+				      </div>
+				    <% end %>
+
+				    <br>
+            <div class="form-group">			
+            	<%= button_to "Update", user_path(@otheruser), method: :update, class: "btn btn-primary btn-block" %>
+          	</div>
+						<% end %>
+
+		       	<div class="form-group">
+							<%= button_to "Cancel user account", user_path(@otheruser), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-block" %>
+						</div>
+				</div>

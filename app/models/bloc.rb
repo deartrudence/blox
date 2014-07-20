@@ -10,8 +10,13 @@ class Bloc < ActiveRecord::Base
     validates_attachment_content_type :bloc_img, :content_type => /\Aimage\/.*\Z/
     acts_as_taggable # Alias for acts_as_taggable_on :tags
 
-  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
-  after_update :reprocess_bloc_img, :if => :cropping?
+  validates :name, presence: true
+  validates :category, presence: true
+  validates :user, presence: true
+  validates :code, presence: true
+
+  # attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  # after_update :reprocess_bloc_img, :if => :cropping?
 
   def cropping?
     !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?

@@ -42,6 +42,12 @@ body{
 	opacity: 1;
 }
 
+.weblox-footer{
+	padding: 20px 0;
+	color: #fff;
+	background-color: #444;
+}
+
 .weblox-nav-brand img{
 	width: 150px;
 	margin-top: -9px;
@@ -947,25 +953,26 @@ label.css-label {
 	}
 
 
-	footer{
-		background-color: #fff;
-		padding: 25px 0;
 
-		a{
-			color: #888;
-			margin-left: 10px;
-		}
+}
 
-		a:hover{
-			color: #555;
-			text-decoration: none;
-		}
+footer{
+	background-color: #fff;
+	padding: 25px 0;
 
-		.fa-heart{
-			color: #C61D38;
-		}
+	a{
+		color: #888;
+		margin-left: 10px;
 	}
 
+	a:hover{
+		color: #555;
+		text-decoration: none;
+	}
+
+	.fa-heart{
+		color: #C61D38;
+	}
 }
 
 #signin-modal-container{

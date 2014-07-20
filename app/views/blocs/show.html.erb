@@ -1,51 +1,128 @@
-<div id="web-pages-content">
+<div class="show-bloc">
+  <div class="show-bloc-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+
+          <% builder = @bloc.user %>
+          <% if builder.avatar_url.present? %>
+            <%= image_tag builder.avatar_url, class: "img-circle bloc-profile-avatar" %>
+          <% else %>
+            <%= image_tag gravatar_url(builder), class: "img-circle bloc-profile-avatar" %>
+          <% end %>
+
+
+          <h3 class="bloc-name">
+            <%= @bloc.name %>
+            <small><%= @bloc.category.name %></small>
+          </h3>
+          By <%= link_to profile_path(@bloc.user.profile.id), class: "bloc-profile-link" do %>
+          <%=@bloc.user.profile.handle%>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <div class="bloc-preview">
+            <div class="iframe-container" id="show-iframe-<%= @bloc.id %>">
+              <textarea id="code-<%=@bloc.id%>" class="hidden"><%= raw @bloc.code %></textarea>
+              <textarea id="styles-<%=@bloc.id%>" class="hidden"><%= raw @bloc.styles %></textarea>
+              <iframe id="iframe-<%=@bloc.id%>" class="bloc-iframe" height="2"></iframe>
+            </div>
+
+            <script>
+            $(window).bind("load", function(){
+              var contents = $('#iframe-<%=@bloc.id%>').contents(),
+              body = contents.find('body'),
+              headerTag = $(returnHeaderTag()).appendTo(contents.find('head')),
+              styleTag = $('<style></style>').appendTo(contents.find('head'));
+              styleTag.text($('#styles-<%= @bloc.id %>').val());
+              body.html($('#code-<%= @bloc.id %>').val());
+              updateIframeSize('iframe-<%=@bloc.id%>');
+              updateContainerSize('<%=@bloc.id%>', 0.6);
+            });
+            </script>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="bloc-tags">
+          <h4>Tags</h4>
+          <% @bloc.tags.any? %>
+            <i class="fa fa-tags fa-lg"></i>
+            <% @bloc.tags.each do |tag| %>
+              <%= link_to tag.name, tagged_url(:tag => tag.name), class: "bloc-tag" %>
+          <% end %>
+          </div>
+          <hr>
+          
+          <div class="bloc-likes">
+
+            <% if liked?(@bloc, current_user) %>
+    
+              <%= link_to bloc_like_path(@bloc, current_user.id), method: :delete, class: "bloc-unlike" do%>
+                <i class="fa fa-heart fa-lg"></i> Liked!
+              <% end %>
+
+            <% else %>
+
+              <%= link_to bloc_likes_path(@bloc, @like), method: :post,class: "bloc-like" ,method: :post do%>
+               <i class="fa fa-heart fa-lg"></i> Like?
+              <% end %>
+            
+            <% end %>
+
+            <span class="right"><%= @bloc.likes.count %></span>
+          </div>
+          <hr>
+
+          <div class="bloc-addtobucket">
+            Add to bucket goes here
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="polygon-divider" width="300" height="200"></div>
+
+  <div class="container">
+    <div class="row render-code-container">
+      <div class="col-md-12">
+
+        <div class="render-code">
+          <h4><i class="fa fa-code"></i>  HTML</h4>
+          <pre><code data-language="html"><%= @bloc.code %></code></pre>
+        </div>
+        <br><br><br>
+
+        <div class="render-code">
+          <h4><i class="fa fa-code"></i>  CSS</h4>
+          <pre><code data-language="css"><%= @bloc.styles %></code></pre>
+        </div>
+
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<%= render 'layouts/footer' %>
+
+<div id="web-pages-content" class="hidden">
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @bloc.name %>
-</p>
 
-<p>
-  <strong>Code:</strong>
-  <%= @bloc.code %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @bloc.img_url %><br>
-  <img src="<%= @bloc.img_url %>" alt=" <%= @bloc.name %> ">
-
-</p>
 
 <p>
   <strong>Category:</strong>
   <%= @bloc.category_id %> :: <%= @bloc.category.name %>
 </p>
 
-<p>
-  <% @bloc.tags.any? %>
-    <% @bloc.tags.each do |tag| %>
-    <%= link_to tag.name, tagged_url(:tag => tag.name) %>
-  <% end %>
-</p>
 
-  <p>
-    <% if liked?(@bloc, current_user) %>
-    
-      <%= link_to bloc_like_path(@bloc, current_user.id), method: :delete do%>
-        <i class="fa fa-heart">
-      <% end %>
-
-    <% else %>
-
-      <%= link_to bloc_likes_path(@bloc, @like), method: :post,class: "add-to-bucket" ,method: :post do%>
-       <i class="fa fa-heart"> 
-      <% end %>
-    
-    <% end %>
-  </p>
 
 
 <p>

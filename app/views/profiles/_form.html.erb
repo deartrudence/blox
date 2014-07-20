@@ -1,3 +1,6 @@
+<br>
+<br>
+<div class="col-md-8 col-md-offset-2">
 <%= form_for(@profile) do |f| %>
   <% if @profile.errors.any? %>
     <div id="error_explanation">
@@ -11,27 +14,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :handle %><br>
-    <%= f.text_field :handle %>
+  <div class="form-group">
+    <%= f.text_field :handle ,autofocus: true, placeholder: "handle", class: 'form-control'%>
   </div>
-  <div class="field">
-    <%= f.label :company %><br>
-    <%= f.text_field :company %>
+  <div class="form-group">
+    <%= f.text_field :company, placeholder: "company", class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :bio %><br>
-    <%= f.text_area :bio %>
+
+  <div class="form-group">
+    <%= f.text_area :bio, placeholder: "bio", class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :website %><br>
-    <%= f.text_field :website %>
+
+   <div class="form-group">
+    <%= f.text_field :website, placeholder: "website", class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+
+  <div class="form-group">
+    <%= f.label :avatar %><br>
+    <%=f.file_field :avatar %>
   </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary btn-block" %>
   </div>
+
 <% end %>
+
+
+</div>

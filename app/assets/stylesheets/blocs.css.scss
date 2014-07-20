@@ -2,6 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* COMMON
+===================================== */
+
+.polygon-divider{
+	height: 5px;
+	width: 100%;
+	background-image: url(/assets/polygon.jpg);
+	background-size: cover;
+	background-position: 50% 50%;
+}
+
+
+
+/* INDEX BLOC
+===================================== */
 
 .bloc-index{
 	margin-top: 50px;
@@ -18,12 +33,178 @@
 			}
 		}
 	}
+}
 
-	.polygon-divider{
-		height: 5px;
-		width: 100%;
-		background-image: url(/assets/polygon.jpg);
-		background-size: cover;
-		background-position: 50% 50%;
+
+
+
+/* SHOW BLOC
+===================================== */
+
+.show-bloc{
+	margin-top: 50px;
+
+	.show-bloc-top{
+		background-color: #fff;
+		padding: 50px 0 75px;
+
+
+		.bloc-name{
+			margin-bottom: 0;
+			margin-top: 3px;
+		}
+
+		.bloc-profile-avatar{
+			float: left;
+			margin-right: 20px;
+			height: 50px;
+		}
+
+		.bloc-profile-link{
+			margin-bottom: 20px;
+			display: inline-block;
+		}
+
 	}
+
+	.bloc-preview{
+
+		.iframe-container{
+			overflow: hidden;
+			display: block;
+			cursor: pointer;
+			position: relative;
+			border: 1px solid #e5e5e5;
+		}
+
+		iframe{
+		    border: none;
+		    width: 1200px;
+		    -moz-transform: scale(0.6);
+		    -moz-transform-origin: 0 0;
+		    -o-transform: scale(0.6);
+		    -o-transform-origin: 0 0;
+		    -webkit-transform: scale(0.6);
+		    -webkit-transform-origin: 0 0;
+		}
+
+
+
+	}
+
+	.render-code-container{
+		padding: 75px 0;
+
+		.render-code{
+			background-color: #fff;
+			border: 1px solid #e5e5e5;
+
+			h4{
+				padding: 15px;
+				border-bottom: 1px solid #f5f5f5;
+				margin-top: 6px;
+				margin-bottom: 0;
+			}
+
+			i{
+				height: 30px;
+				width: 30px;
+				background-color: #e5e5e5;
+				text-align: center;
+				line-height: 30px;
+				border-radius: 3px;
+				margin-right: 5px;
+			}
+		}
+
+		pre{
+			margin-bottom: 0;
+		    background-color: #f8f8f8;
+		    border-left-width: 0;
+		    border-right-width: 0;
+		    border-top-width: 0;
+		    border-bottom-width: 3px;
+		    height: 300px;
+		    border-color: #e5e5e5;
+		    overflow: scroll;
+		    width: calc(100% - 20px);
+		    margin: 10px 0 10px 10px;
+		}
+	}
+
+	.bloc-tags{
+		color: #666;
+		
+		i{
+			margin-right: 5px;
+			width: 20px;
+		}
+
+		.bloc-tag{
+			background-color: #C61D38;
+		    display: inline-block;
+		    color: #fff;
+		    padding: 2px 5px;
+		    border-radius: 3px;
+		    opacity: 0.85;
+		    font-size: 12px;
+		}
+
+		.bloc-tag:hover{
+			text-decoration: none;
+		    opacity: 1;
+		    color: #fff;
+		}
+	}
+
+	.bloc-likes{
+		color: #666;
+
+		i{
+			width: 20px;
+			margin-right: 5px;
+		}
+
+		.bloc-unlike{
+			opacity: 0.8;
+			color: #666;
+
+			i{
+				color: #C61D38;
+			}
+
+			&:hover{
+				opacity: 1;
+				text-decoration: none;
+			}
+		}
+
+		.bloc-like{
+			color: #666;
+			opacity: 0.8;
+
+			&:hover{
+				opacity: 1;
+				text-decoration: none;
+			}
+		}
+
+		.right{
+			float: right;
+		}
+
+		.right:after{
+			content: "";
+			clear: both;
+		}
+
+	}
+
+	.bloc-addtobucket{
+		color: #666;
+	}
+
+	
+
+
 }

@@ -7,10 +7,12 @@
     <div class="row">
       <div class="col-md-8 col-md-offset-2 profile-info">
         <div class="avatar">
-          <% if current_user.avatar_url.present? %>
-            <%= image_tag current_user.avatar_url, class: "img-circle" %>
+          <% if @profile.avatar.present? %>
+            <%= image_tag @profile.avatar.url(:cropped), class: "img-circle" %>
+          <% elsif @profile.user.avatar_url.present? %>
+            <%= image_tag @profile.user.avatar_url, class: "img-circle" %>
           <% else %>
-            <%= image_tag gravatar_url(current_user), class: "img-circle" %>
+            <%= image_tag gravatar_url(@profile.user), class: "img-circle" %>
           <% end %>
         </div>
         <h3><%= @profile.handle %></h3>
@@ -40,10 +42,54 @@
 </div>
 <div class="profile-border" width="300" height="200"></div>
 
+<div class=" bloc-listing">
+  <div id="box" class=" js-isotope" >
+    <% @profile.user.blocs.each do |bloc| %>
+        <div class="item">
+            <div class="item-content">
+                <!-- <img class="img-responsive" src="<%= bloc.bloc_img.url %>" title="<%= bloc.id %>-<%= bloc.name %>"> -->
+                <%= link_to bloc_path(bloc), id: "show-iframe-"+bloc.id.to_s, class: "iframe-container" do %>
+                  <div class="glasspanel" height="2" width="2"></div>
+                  <textarea id="code-<%=bloc.id%>" class="hidden"><%= raw bloc.code %></textarea>
+                  <textarea id="styles-<%=bloc.id%>" class="hidden"><%= raw bloc.styles %></textarea>
+                  <iframe id="iframe-<%=bloc.id%>" class="bloc-iframe" height="2"></iframe>
+
+                <% end %>
+              <div class="bloc-info">
+                <%= link_to bloc_path(bloc), class: "bloc-info-name" do %>
+                  <%= bloc.name %>
+                <% end %>
+
+                <% if !current_user.bucket_blocs.where(:bloc_id => bloc.id).present? %>
+                  <%= link_to bucket_blocs_path(:user => current_user, :bloc => bloc), class: "add-to-bucket" ,method: :post do %>
+                  <i class="fa fa-plus"></i>
+                  <% end %>
+                <% end %>
+
+                <script>
+                $(window).bind("load", function(){
+                  var contents = $('#iframe-<%=bloc.id%>').contents(),
+                  body = contents.find('body'),
+                  headerTag = $(returnHeaderTag()).appendTo(contents.find('head')),
+                  styleTag = $('<style></style>').appendTo(contents.find('head'));
+                  styleTag.text($('#styles-<%= bloc.id %>').val());
+                  body.html($('#code-<%= bloc.id %>').val());
+                  updateIframeSize('iframe-<%=bloc.id%>');
+                  updateContainerSize('<%=bloc.id%>', 0.2175);
+                });
+                </script>
+
+
+              </div>
+            </div>
+          </div>
+      <% end %>
+  </div>
+</div>
 
 
 
-<div class="container bloc-listing">
+<!-- <div class="container bloc-listing">
   <div id="box" class="row js-isotope" data-isotope-options='{ "columnWidth": 200, "itemSelector": ".item" }'>
 
     <% @blocs.each do |bloc| %>
@@ -60,7 +106,7 @@
     <% end %>
 
   </div>
-</div>
+</div> -->
 
 <br><br><br><br><br><br><br><br>
 <%= link_to 'Edit', edit_profile_path(@profile) %> |
@@ -70,3 +116,47 @@
 <p id="notice"><%= notice %></p>
 
 </div>
+
+<style>
+                 iframe{
+                  border: none;
+                  width: 1200px;
+                    -moz-transform: scale(0.2175);
+                  -moz-transform-origin: 0 0;
+                  -o-transform: scale(0.2175);
+                  -o-transform-origin: 0 0;
+                  -webkit-transform: scale(0.2175);
+                  -webkit-transform-origin: 0 0;
+                 }
+
+                 a.iframe-container{ overflow: hidden; display: block; cursor: pointer; position: relative;}
+
+                 .glasspanel{
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  z-index: 1000;
+                  cursor: pointer;
+                  background-color: #fff;
+                  opacity: 0;
+                 }
+
+                 .glasspanel:hover{opacity: 0.3;}
+
+                 .hidden{ display: none; }
+
+                </style>
+<script>
+$(window).bind("load", function(){
+  
+  $('.js-isotope').isotope({
+    itemSelector: '.item',
+    masonry: {
+      columnWidth: 285
+    }
+  });
+
+});
+</script>
