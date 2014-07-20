@@ -39,7 +39,9 @@
 							<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
 						</div>
 						<div class="profile-image">
-							<% if current_user.avatar_url.present? %>
+							<% if current_user.profile.avatar.present? %>
+								<%= image_tag current_user.profile.avatar.url(:thumb), class: "img-circle" %>
+							<% elsif current_user.avatar_url.present? %>
 								<%= image_tag current_user.avatar_url, class: "img-circle" %>
 							<% else %>
 								<%= image_tag gravatar_url(current_user), class: "img-circle" %>
