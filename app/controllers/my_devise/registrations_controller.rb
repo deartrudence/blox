@@ -10,7 +10,7 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
 			p.save
 			resource.profile = p
 			resource.save
-			p.handle = resource.email
+			p.handle = resource.email.split("@").first
 			p.save
 			
 			bloc.each do |bloc|
