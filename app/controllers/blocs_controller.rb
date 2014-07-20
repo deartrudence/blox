@@ -1,5 +1,5 @@
 class BlocsController < ApplicationController
-  before_action :set_bloc, only: [:show, :edit, :update, :destroy]
+  before_action :set_bloc, only: [:show, :edit, :update, :destroy, :preview]
   # before_filter :authorize_admin
 
   # GET /blocs
@@ -16,6 +16,10 @@ class BlocsController < ApplicationController
   # GET /blocs/1
   # GET /blocs/1.json
   def show
+  end
+
+  def preview
+
   end
 
   # GET /blocs/new

@@ -6,7 +6,9 @@
     - <%= @title %>
   <% end %>
   </title>
-  <%= stylesheet_link_tag    "application", media: "all" %>
+  <% if params[:action] != "preview" %>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+  <% end %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag 'favicon.ico' %>
@@ -21,7 +23,9 @@ mixpanel.init("6ffe9d432ee6da085d59d53eee824d84");</script><!-- end Mixpanel -->
 </head>
 <body>
   
-	<%= render 'layouts/navbar' %>
+  <% if params[:action] != "preview" %>
+	 <%= render 'layouts/navbar' %>
+  <% end %>
 	<%= yield %>
 
 </body>

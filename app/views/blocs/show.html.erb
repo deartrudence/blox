@@ -26,20 +26,15 @@
         <div class="col-md-8">
           <div class="bloc-preview">
             <div class="iframe-container" id="show-iframe-<%= @bloc.id %>">
-              <textarea id="code-<%=@bloc.id%>" class="hidden"><%= raw @bloc.code %></textarea>
+              <!-- <textarea id="code-<%=@bloc.id%>" class="hidden"><%= raw @bloc.code %></textarea>
               <textarea id="styles-<%=@bloc.id%>" class="hidden"><%= raw @bloc.styles %></textarea>
-              <iframe id="iframe-<%=@bloc.id%>" class="bloc-iframe" height="2"></iframe>
+              <iframe id="iframe-<%=@bloc.id%>" class="bloc-iframe" height="2"></iframe> -->
+              <iframe id="iframe-<%=@bloc.id%>" src="/blocs/<%=@bloc.id%>/preview" height="2"></iframe>
             </div>
 
             <script>
             $(window).bind("load", function(){
-              var contents = $('#iframe-<%=@bloc.id%>').contents(),
-              body = contents.find('body'),
-              headerTag = $(returnHeaderTag()).appendTo(contents.find('head')),
-              styleTag = $('<style></style>').appendTo(contents.find('head'));
-              styleTag.text($('#styles-<%= @bloc.id %>').val());
-              body.html($('#code-<%= @bloc.id %>').val());
-              updateIframeSize('iframe-<%=@bloc.id%>');
+              updateIframeSize("iframe-<%=@bloc.id%>");
               updateContainerSize('<%=@bloc.id%>', 0.6);
             });
             </script>
