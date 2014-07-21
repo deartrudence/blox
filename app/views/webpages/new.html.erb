@@ -1,6 +1,23 @@
-<div class="polygon"></div>
+<div class="profile">
 
-<div id="web-pages-content">
+<div class="profile-heading">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+
+        <h3 class="webpage-title">New Webpage</h3>
+        <br>
+        <h4> Choose a name for your webpage and enter it below. You can always change it later.</h4>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="profile-border" width="300" height="200"></div>
+
+<!-- <div class="polygon"></div> -->
+
+<!-- <div id="web-pages-content">
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
@@ -9,12 +26,10 @@
             <div class="weblox-branding">
               <%= image_tag("weblox-branding.png", class: "weblox-main-branding") %>
               <div class="arrow-down"></div>
-            </div>
+            </div> -->
             
-            <div class="weblox-form panel-padding">
-              <h4>New Webpage</h4>
-
-              <p>Choose a name for your webpage and enter it below. You can always change it later.</p><br>
+           <!--  <div class="weblox-form panel-padding"> -->
+            <div class="col-md-8 col-md-offset-2">
               <%= form_for(@webpage) do |f| %>
                 <% if @webpage.errors.any? %>
                   <div id="error_explanation">
@@ -28,6 +43,7 @@
                   </div>
                 <% end %>
 
+                <br><br><br>
                 <div class="form-group">
                   <%= f.text_field :name, autofocus: true, placeholder: "Webpage Name", class: "form-control" %>
                 </div>
@@ -36,16 +52,13 @@
                   <%= f.submit 'Create Webpage', :class => "btn btn-primary btn-block"%>
                 </div>
               <% end %>
+            
+              <br>  
+              <div class="form-footer-info text-center">
+                <%= link_to 'Back to my Webpages', webpages_path %>
+              </div>
             </div>
-
-            <div class="form-footer-info text-center">
-              <%= link_to 'Back to my Webpages', webpages_path %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        
 </div>
 
 
