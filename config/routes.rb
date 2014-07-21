@@ -27,6 +27,11 @@ Blox::Application.routes.draw do
 
   resources :webpages
 
+  resources :blocs, :path => "blox"
+
+  get "blocs/:id/preview", :controller => "blocs", :action => "preview"
+  get "blox/:id/preview", :controller => "blocs", :action => "preview"
+
   resources :blocs do
     resources :likes
   end
