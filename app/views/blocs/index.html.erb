@@ -1,19 +1,19 @@
 <div class="bloc-index">
 
-
-
-
   <div class="index-top">
-
-
     <div class="container">
       <div class="row">
         <div class="col-md-10">
+          <h3>Below is a listing of all available blox part of the Weblox project. Add your favorite blox to your bucket and use them to build your next webpage!</h3>
 
-
-
-
-        <h3>Below is a listing of all available blox part of the Weblox project. Add your favorite blox to your bucket and use them to build your next webpage!</h3>
+          <%= form_tag(blocs_path, :method => "get", class: "navbar-form",id: "search-form") do %>
+            <div class="input-append">
+              <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search Tags" %>
+              <input type="submit" class="btn btn-primary"></input>
+              <%= link_to "reset", blocs_path, class: "btn btn-primary" %>
+            </div>
+          <% end %>
+          
         </div>
       </div>
     </div>
@@ -47,6 +47,7 @@
                   <% end %>
                 <% end %>
 
+
                 <script>
                 $(window).bind("load", function(){
                   updateIframeSize('iframe-<%=bloc.id%>');
@@ -72,17 +73,10 @@
     </div>
   </div>
 
-  <%= form_tag(blocs_path, :method => "get", class: "navbar-form",id: "search-form") do %>
-    <div class="input-append">
 
-      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search Tags" %>
-      <input type="submit" class="btn btn-primary"></input>
-       <%= link_to "reset", blocs_path, class: "btn btn-primary" %>
-    </div>
-     
-  <% end %>
 
   <%= link_to 'New Bloc', new_bloc_path %>
+  <%= render 'layouts/footer' %>
 
 </div>
 
