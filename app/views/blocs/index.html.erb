@@ -65,7 +65,7 @@
             </div>
             <div class="bloc-builder">
                   <% if builder.profile.avatar.present? %>
-                    <%= image_tag builder.profile.avatar.url, class: "img-circle" %>
+                    <%= image_tag builder.profile.avatar.url(:thumb), class: "img-circle" %>
                   <% elsif builder.avatar_url.present? %>
                     <%= image_tag builder.avatar_url, class: "img-circle" %>
                   <% else %>
