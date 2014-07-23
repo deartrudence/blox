@@ -6,10 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-weblox = User.where(email: 'buildweblox@gmail.com')
+@weblox = User.where(email: 'buildweblox@gmail.com')
 
 Bloc.all.each do | bloc |
-  bloc.user = weblox
+  bloc.user = @weblox
 end
 
 User.all.each do | user |

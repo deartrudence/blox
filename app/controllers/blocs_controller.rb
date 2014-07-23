@@ -6,6 +6,12 @@ class BlocsController < ApplicationController
   # GET /blocs.json
   def index
     @users = User.all
+    @order = params[:order]
+    if @order == 'liked'
+      @blocs = Bloc.all.order('likes.count')
+    else
+      @blocs = Bloc.all.sort_by(&:created_at)
+    end
     if params[:search]
       @blocs = Bloc.tagged_with(params[:search], :any => :true)
     else
