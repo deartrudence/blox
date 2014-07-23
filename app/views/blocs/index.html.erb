@@ -60,7 +60,9 @@
               </div>
             </div>
             <div class="bloc-builder">
-                  <% if builder.avatar_url.present? %>
+                  <% if builder.profile.avatar.present? %>
+                    <%= image_tag builder.profile.avatar.url, class: "img-circle" %>
+                  <% elsif builder.avatar_url.present? %>
                     <%= image_tag builder.avatar_url, class: "img-circle" %>
                   <% else %>
                     <%= image_tag gravatar_url(builder), class: "img-circle" %>
