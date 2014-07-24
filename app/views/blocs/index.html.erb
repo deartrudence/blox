@@ -14,7 +14,7 @@
             </div>
           <% end %>
           <%= form_tag(@blocs_path, :method => "get", class: "navbar-form") do %>
-            <input type="submit" class="btn btn-default"></input>
+            <input type="submit" class="btn btn-default" value="order by likes"></input>
             <input type="hidden" name="order" value="liked">
           <% end %>
           
@@ -54,13 +54,13 @@
                 <div class="bloc-likes">
 
                   <% if liked?(bloc, current_user) %>
-                    <%= link_to bloc_like_path(bloc, current_user.id),method: :delete, class: "bloc-unlike" do%>
+                    <%= link_to bloc_like_path(bloc, current_user.id, :redirect_to => blocs_path),method: :delete, class: "bloc-unlike" do%>
                       <i class="fa fa-heart fa-lg"></i> Liked!
                     <% end %>
 
                   <% else %>
 
-                    <%= link_to bloc_likes_path(bloc, @like), method: :post, class: "bloc-like"  do%>
+                    <%= link_to bloc_likes_path(bloc, @like, :redirect_to => blocs_path), method: :post, class: "bloc-like"  do%>
                       <i class="fa fa-heart fa-lg"></i> Like?
                     <% end %>
             
@@ -99,7 +99,6 @@
 
 
 
-  <%= link_to 'New Bloc', new_bloc_path %>
   <%= render 'layouts/footer' %>
 
 </div>

@@ -7,15 +7,14 @@ class BlocsController < ApplicationController
   def index
     @users = User.all
     @order = params[:order]
-    if @order == 'liked'
-      @blocs = Bloc.includes(:category).all.sort_by(&:likes_count)
-    else
-      @blocs = Bloc.all.sort_by(&:created_at).reverse
-    end
     if params[:search]
       @blocs = Bloc.tagged_with(params[:search], :any => :true)
     else
-      @blocs = Bloc.includes(:category).all
+      if @order == 'liked'
+        @blocs = Bloc.includes(:category).all.sort_by(&:likes_count).reverse
+      else
+        @blocs = Bloc.includes(:category).all.sort_by(&:created_at).reverse
+      end
     end
   end
 
