@@ -3,7 +3,7 @@ class Like < ActiveRecord::Base
 
 	validates :user, :likeable, { presence: true}
 
-	belongs_to :likeable, :polymorphic => true
+	belongs_to :likeable, :polymorphic => true, :counter_cache => true
 
 	belongs_to :user
 

@@ -1,4 +1,5 @@
 class Bloc < ActiveRecord::Base
+  # default_scope order('created_at DESC')
   belongs_to :category
   belongs_to :user
   has_many :bucket_blocs
@@ -15,21 +16,20 @@ class Bloc < ActiveRecord::Base
   validates :user, presence: true
   validates :code, presence: true
 
-  scope :by_likes, order("")
 
   # attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
   # after_update :reprocess_bloc_img, :if => :cropping?
 
-  def cropping?
-    !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
-  end
+  # def cropping?
+  #   !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
+  # end
 
-  private
+  # private
 
-    def reprocess_bloc_img
-      bloc_img.reprocess!
-    end
-
+  #   def reprocess_bloc_img
+  #     bloc_img.reprocess!
+  #   end
+  
 
 
 

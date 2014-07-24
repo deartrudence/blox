@@ -55,13 +55,13 @@
 
             <% if liked?(@bloc, current_user) %>
     
-              <%= link_to bloc_like_path(@bloc, current_user.id), method: :delete, class: "bloc-unlike" do%>
+              <%= link_to bloc_like_path(@bloc, current_user.id),method: :delete, class: "bloc-unlike" do%>
                 <i class="fa fa-heart fa-lg"></i> Liked!
               <% end %>
 
             <% else %>
 
-              <%= link_to bloc_likes_path(@bloc, @like), method: :post,class: "bloc-like" ,method: :post do%>
+              <%= link_to bloc_likes_path(@bloc, @like), method: :post, class: "bloc-like"  do%>
                <i class="fa fa-heart fa-lg"></i> Like?
               <% end %>
             
@@ -105,6 +105,7 @@
 </div>
 
 <%= render 'layouts/footer' %>
+
 
 <div id="web-pages-content" class="hidden">
 

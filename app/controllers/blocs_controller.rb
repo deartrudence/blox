@@ -8,9 +8,9 @@ class BlocsController < ApplicationController
     @users = User.all
     @order = params[:order]
     if @order == 'liked'
-      @blocs = Bloc.all.order('likes.count')
+      @blocs = Bloc.includes(:category).all.sort_by(&:likes_count)
     else
-      @blocs = Bloc.all.sort_by(&:created_at)
+      @blocs = Bloc.all.sort_by(&:created_at).reverse
     end
     if params[:search]
       @blocs = Bloc.tagged_with(params[:search], :any => :true)
@@ -54,6 +54,7 @@ class BlocsController < ApplicationController
   def create
     @bloc = Bloc.new(bloc_params)
     @bloc.user_id = params[:user_id]
+    @bloc.likes_count = 0
 
     # respond_to do |format|
       if @bloc.save
@@ -119,6 +120,6 @@ class BlocsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bloc_params
-      params.require(:bloc).permit(:name, :code, :styles, :bloc_img, :category_id, :user_id, :tag_list, :crop_x, :crop_y, :crop_w, :crop_h)
+      params.require(:bloc).permit(:name, :code, :styles, :bloc_img, :category_id, :user_id, :tag_list, :likes_count)
     end
 end
