@@ -1,49 +1,59 @@
-<div class="polygon" width="300" height="200"></div>
+<div class="show-bloc">
 
-<div class="container web-page-listing">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      
-      <br><br><br><br><br>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4><i class="fa fa-desktop"></i> My webpages</h4>
-        </div>
-        <div class="panel-body">
-          <table class='table table-striped table-bordered'>
-            <thead>
-              <tr>
-                <th>Webpage</th>
-                <th  style="width: 30%; ">Actions</th>
-              </tr>
-            </thead>
+  <div class="show-bloc-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
 
-            <tbody>
-              <% @webpages.each do |webpage| %>
-                <tr>
-                  <td><%= webpage.name %></td>
-                  <td>
-                    <%= link_to 'Edit', edit_webpage_path(webpage), class: "btn btn-info btn-sm" %>
-                    <%= link_to 'Destroy', webpage, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
-                  </td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-          
-          <%= link_to 'Create New Webpage', new_webpage_path, class: "btn btn-primary" %>
+          <h3 class="webpage-title">My Webpages</h3>
+          <br>
+          <h4> Below is a listing of all the webpages that you have created with Weblox!</h4>
 
         </div>
       </div>
-      
+    </div>
+  </div>
+<div class="polygon-divider" width="300" height="200"></div>
 
-      <br>
 
-      
+<!-- <div class="polygon" width="300" height="200"></div> -->
+  <br><br><br>
+  <div class="container web-page-listing">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+        
+        <div class="panel">
+            <table class='table table-hover'>
+              <thead>
+                <tr>
+                  <th>Webpages</th>
+                  <th style="width: 30%; ">Actions</th>
+                </tr>
+              </thead>
 
-      <br>
+              <tbody>
+                <% @webpages.each do |webpage| %>
+                  <tr>
+                    <td><%= webpage.name %></td>
+                    <td>
+                      <%= link_to 'Edit', edit_webpage_path(webpage), class: "btn btn-info btn-sm" %>
+                      <%= link_to 'Destroy', webpage, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+        </div>
+            
+            <%= link_to 'Create New Webpage', new_webpage_path, class: "btn btn-primary btn-block" %>
+
+        <br><br><br>
+      </div>
     </div>
   </div>
 </div>
+<%= render 'layouts/footer' %>
+
 
 

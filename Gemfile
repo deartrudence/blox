@@ -37,6 +37,9 @@ gem 'mandrill'
 #Copy to Clipboard function
 gem 'zeroclipboard-rails'
 
+#Pagination
+gem 'will_paginate'
+
 #adding tags to things
 gem 'acts-as-taggable-on'
 

@@ -8,14 +8,14 @@ class DashboardController < ApplicationController
   	@webpages = Webpage.count
     @whichstuff = params[:whichstuff]
     if params[:search]
-      @users = User.search(params[:search])
+      @users = User.paginate(:page => params[:page], :per_page => 3).search(params[:search])
     else
-      @users = User.all.sort_by(&:created_at)
+      @users = User.paginate(:page => params[:page], :per_page => 3)
     end 
   end
 
   def show_user_list 
-      @users = User.all.sort_by(&:created_at)
+      @users = User.paginate(:page => params[:page], :per_page => 3) #.sort_by(&:created_at)
   end
 
 end

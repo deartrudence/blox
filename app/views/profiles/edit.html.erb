@@ -7,7 +7,7 @@
       <div class="col-md-8 col-md-offset-2 profile-info">
         <div class="avatar">
           <% if current_user.profile.avatar.present? %>
-            <%= image_tag current_user.profile.avatar.url, class: "img-circle"%>
+            <%= image_tag current_user.profile.avatar.url(:thumb), class: "img-circle"%>
           <% elsif current_user.avatar_url.present? %>
             <%= image_tag current_user.avatar_url, class: "img-circle" %>
           <% else %>
@@ -21,7 +21,8 @@
     </div>
   </div>
 </div>
-<div class="profile-border" width="300" height="200"></div>
+<!-- <div class="profile-border" width="300" height="200"></div> -->
+<div class="polygon-divider" width="300" height="200"></div>
 
 <%= render 'form' %>
 
@@ -29,4 +30,9 @@
 <%= link_to 'Show', @profile %> |
 <%= link_to 'Back', profiles_path %>
 </div>
+
+<br><br><br>
+
+</div>
+
 

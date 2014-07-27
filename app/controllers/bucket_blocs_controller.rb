@@ -36,7 +36,7 @@ class BucketBlocsController < ApplicationController
 
     respond_to do |format|
       #if @bucket_bloc.save
-        format.html { redirect_to @bucket_bloc, notice: 'Bucket bloc was successfully created.' }
+        format.html { redirect_to blocs_path, notice: 'Bucket bloc was successfully created.' }
         #format.json { render action: 'show', status: :created, location: @bucket_bloc }
       # else
       #   format.html { render action: 'new' }

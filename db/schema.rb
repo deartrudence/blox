@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140717004104) do
+ActiveRecord::Schema.define(version: 20140723220435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20140717004104) do
     t.datetime "bloc_img_updated_at"
     t.text     "styles"
     t.integer  "user_id"
+    t.integer  "likes_count"
   end
 
   add_index "blocs", ["user_id"], name: "index_blocs_on_user_id", using: :btree
