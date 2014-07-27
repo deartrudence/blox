@@ -1,295 +1,309 @@
 // Place all the styles related to the webpages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-/* WEB PAGE LISTING
-================================== */
-.web-page-listing{
-  margin: auto auto;
-}
-
-.web-page-listing .table-striped > tbody > tr:nth-child(odd) > td,
-.web-page-listing .table-striped > tbody > tr:nth-child(odd) > th{
-  background-color: #f5f7fa;
-}
-
-.web-page-listing .table-bordered > thead > tr > th,
-.web-page-listing .table-bordered > tbody > tr > th,
-.web-page-listing .table-bordered > tfoot > tr > th,
-.web-page-listing .table-bordered > thead > tr > td,
-.web-page-listing .table-bordered > tbody > tr > td,
-.web-page-listing .table-bordered > tfoot > tr > td{
-  border: 1px solid #e1e6ef;
-}
-
-/* BLOX BUILDER
-================================== */
 body{
   background-color: #f0f0f0;
   color: #374767;
 }
 
-#wrapper {
-  padding-left: 250px;
-  transition: all 0.4s ease 0s;
+
+
+/* WEBPAGE INDEX
+================================== */
+.web-page-listing{
+  margin: auto auto;
+
+  .table-striped > tbody > tr:nth-child(odd) > td,
+  .table-striped > tbody > tr:nth-child(odd) > th{
+    background-color: #f5f7fa;
+  }
+
+  .table-bordered > thead > tr > th,
+  .table-bordered > tbody > tr > th,
+  .table-bordered > tfoot > tr > th,
+  .table-bordered > thead > tr > td,
+  .table-bordered > tbody > tr > td,
+  .table-bordered > tfoot > tr > td{
+    border: 1px solid #e1e6ef;
+  }
 }
 
-#sidebar-wrapper {
-  margin-left: -250px;
-  left: 250px;
-  width: 250px;
-  background: #222222;
-  position: fixed;
-  height: 100%;
-  overflow-y: auto;
-  z-index: 1000;
-  transition: all 0.4s ease 0s;
-}
 
-.navbar.navbar-fixed-top{
-  border-bottom: 0;
-}
 
-#page-content-wrapper {
-  width: 100%;
-}
+/*  WEBPAGE EDIT/SHOW
+================================== */
+.webpage-edit{
+  background-color: #f0f0f0;
+  color: #374767;
 
-.sidebar-nav {
-  position: absolute;
-  top: 0;
-  width: 250px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.sidebar-nav li {
-  line-height: 40px;
-  text-indent: 20px;
-}
-
-.sidebar-nav li a {
-  color: #999999;
-  display: block;
-  text-decoration: none;
-}
-
-.sidebar-nav li a:hover {
-  color: #fff;
-  background: rgba(255,255,255,0.2);
-  text-decoration: none;
-}
-
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
-  text-decoration: none;
-}
-
-.sidebar-nav > .sidebar-brand {
-  height: 65px;
-  line-height: 60px;
-  font-size: 18px;
-}
-
-.sidebar-nav > .sidebar-brand a {
-  color: #999999;
-}
-
-.sidebar-nav > .sidebar-brand a:hover {
-  color: #fff;
-  background: none;
-}
-
-.content-header {
-  /*height: 65px;
-  line-height: 65px;*/
-}
-
-.content-header .webpage-name {
-margin: 0;
-display: inline-block;
-background: none;
-border: none;
-padding: 15px;
-font-size: 36px;
-margin: 15px 0;
-width: auto;
-}
-
-.content-header .webpage-name:hover{
-  background-color:#e5e5e5;
-}
-
-#menu-toggle {
-  display: none;
-}
-
-.inset {
-  padding: 20px;
-}
-
-@media (max-width:767px) {
-
+  .navbar.navbar-fixed-top{
+    border-bottom: 0;
+  }
+  
   #wrapper {
-    padding-left: 0;
+    padding-left: 250px;
+    transition: all 0.4s ease 0s;
+    margin-top: 50px;
   }
 
   #sidebar-wrapper {
-    left: 0;
-  }
-
-  #wrapper.active {
-    position: relative;
-    left: 250px;
-  }
-
-  #wrapper.active #sidebar-wrapper {
+    margin-left: -250px;
     left: 250px;
     width: 250px;
+    background: #222222;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 1000;
     transition: all 0.4s ease 0s;
   }
 
-  #menu-toggle {
+  #page-content-wrapper {
+    width: 100%;
+  }
+
+  .sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li{
+      line-height: 40px;
+      text-indent: 20px;
+
+      a{
+        color: #999999;
+        display: block;
+        text-decoration: none;
+      }
+
+      a:hover{
+        color: #fff;
+        background: rgba(255,255,255,0.2);
+        text-decoration: none;
+      }
+
+      a:active, a:focus{
+        text-decoration: none;
+      }
+    }
+  }
+
+  .sidebar-nav > .sidebar-brand {
+    height: 65px;
+    line-height: 60px;
+    font-size: 18px;
+
+    a{
+      color: #999999;
+    }
+
+    a:hover{
+      color: #fff;
+      background: none;
+    }
+  }
+
+
+  .content-header .webpage-name {
+    margin: 0;
     display: inline-block;
-  }
-
-  .inset {
+    background: none;
+    border: none;
     padding: 15px;
+    font-size: 36px;
+    margin: 15px 0;
+    width: auto;
   }
 
-}
+  .content-header .webpage-name:hover{
+    background-color:#e5e5e5;
+  }
 
+  .btn-generate{
+    margin-left: 15px;
+  }
 
-#sidebar-submenu {
-  background: #202224;
-  border-left: 2px solid #27292b;
-  padding: 25px;
-  position: fixed;
-  width: 330px;
-  left: -80px;
-  top: 55px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  height: 100%;
-  -webkit-transition: 0.25s;
-  -moz-transition: 0.25s;
-  -ms-transition: 0.25s;
-  -o-transition: 0.25s;
-  transition: 0.25s;
-  z-index: 50;
-  -webkit-transition: left 0.5s;
-  -moz-transition: left 0.5s;
-  -ms-transition: left 0.5s;
-  -o-transition: left 0.5s;
-  transition: left 0.5s;
-}
+  #menu-toggle {
+    display: none;
+  }
+  
+  .inset {
+    padding: 20px;
+  }
 
-#sidebar-submenu ul {
-  display: none;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
+  @media (max-width:767px) {
 
-/*#sidebar-submenu ul.show{
-  display: block;
-}*/
+    #wrapper {
+      padding-left: 0;
+    }
 
-#sidebar-submenu ul li.bloc_element{
-  position: relative;
-  margin-bottom: 35px;
-}
+    #sidebar-wrapper {
+      left: 0;
+    }
 
-#sidebar-submenu ul li.bloc_element:last-child{
-  margin-bottom: 50px;
-}
+    #wrapper.active {
+      position: relative;
+      left: 250px;
 
-#sidebar-submenu ul li.bloc_element .bloc_title{
-  z-index: 60;
-  color: white;
-}
+      #sidebar-wrapper{
+        left: 250px;
+        width: 250px;
+        transition: all 0.4s ease 0s;
+      }
+    }
 
-#sidebar-submenu ul li.bloc_element img{
-  width: 100%;
-}
+    #menu-toggle {
+      display: inline-block;
+    }
 
-.bloc_element{
-  position: relative;
-}
-.add-hitspace{
-  display: block;
-  position: absolute;
-  width: 100%;
-  // height: 100%;
-  left: 0;
-  bottom: 0;
-  background: rgba(255,255,255,0.8);
-  opacity: 0;
-  color: #222;
-  text-decoration: none;
-  vertical-align: middle;
-  text-align: center;
-  line-height: 40px;
-  -webkit-transition: opacity 0.05s;
-  -moz-transition: opacity 0.05s;
-  -ms-transition: opacity 0.05s;
-  -o-transition: opacity 0.05s;
-  transition: opacity 0.05s;
-}
+    .inset {
+      padding: 15px;
+    }
 
-.bloc_element:hover .add-hitspace{
-  opacity: 1;
-  -webkit-transition: opacity 0.05s;
-  -moz-transition: opacity 0.05s;
-  -ms-transition: opacity 0.05s;
-  -o-transition: opacity 0.05s;
-  transition: opacity 0.05s;
-  color: #222;
-  text-decoration: none;
-}
+  }
 
-.bloc_element .bloc_title{
-  position: absolute;
-  bottom: -20px;
-  left: 0;
-}
-
-.bloc_element .add-hitspace i{
-  margin-right: 5px;
-  color: #0e73ee;
-
-}
-
-
-
-.page-content .bloc-item{
-  position: relative;
-}
-
-.page-content .bloc-item img{
-  z-index: 10;
-  position: relative;
-}
-
-.page-content .bloc-item .btn{
-  position: absolute;
-  right: 100px;
-  bottom: 0;
+  
+  #sidebar-submenu {
+    background: #202224;
+    border-left: 2px solid #27292b;
+    padding: 25px;
+    position: fixed;
+    width: 330px;
+    left: -80px;
+    top: 55px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    height: 100%;
     -webkit-transition: 0.25s;
-  -moz-transition: 0.25s;
-  -ms-transition: 0.25s;
-  -o-transition: 0.25s;
-  transition: 0.25s;
-  z-index: 5;
-}
+    -moz-transition: 0.25s;
+    -ms-transition: 0.25s;
+    -o-transition: 0.25s;
+    transition: 0.25s;
+    z-index: 50;
+    -webkit-transition: left 0.5s;
+    -moz-transition: left 0.5s;
+    -ms-transition: left 0.5s;
+    -o-transition: left 0.5s;
+    transition: left 0.5s;
 
-.page-content .bloc-item:hover .btn{
-  right: -50px;
-    -webkit-transition: 0.25s;
-  -moz-transition: 0.25s;
-  -ms-transition: 0.25s;
-  -o-transition: 0.25s;
-  transition: 0.25s;
+    ul{
+      list-style-type: none;
+      padding: 0;
+      margin: 0; 
+    }
+
+    li.bloc_element{
+      position: relative;
+      margin-bottom: 35px;
+
+      &:last-child{
+        margin-bottom: 50px;
+      }
+
+      .bloc_title{
+        z-index: 60;
+        color: white;
+      }
+
+      img{
+        width: 100%;
+      }
+
+      .bloc_title{
+        position: absolute;
+        bottom: -20px;
+        left: 0;
+      }
+
+      .add-hitspace{
+        display: block;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        background: rgba(255,255,255,0.8);
+        opacity: 0;
+        color: #222;
+        text-decoration: none;
+        vertical-align: middle;
+        text-align: center;
+        line-height: 40px;
+        -webkit-transition: opacity 0.05s;
+        -moz-transition: opacity 0.05s;
+        -ms-transition: opacity 0.05s;
+        -o-transition: opacity 0.05s;
+        transition: opacity 0.05s;
+
+        i{
+          margin-right: 5px;
+          color: #0e73ee;
+        }
+      }
+    }
+
+    .bloc_element:hover .add-hitspace{
+      opacity: 1;
+      -webkit-transition: opacity 0.05s;
+      -moz-transition: opacity 0.05s;
+      -ms-transition: opacity 0.05s;
+      -o-transition: opacity 0.05s;
+      transition: opacity 0.05s;
+      color: #222;
+      text-decoration: none;
+    }
+  }
+
+  
+  .page-content .bloc-item{
+    position: relative;
+
+    img{
+      z-index: 10;
+      position: relative;
+    }
+
+    .btn{
+      position: absolute;
+      right: 100px;
+      bottom: 0;
+        -webkit-transition: 0.25s;
+      -moz-transition: 0.25s;
+      -ms-transition: 0.25s;
+      -o-transition: 0.25s;
+      transition: 0.25s;
+      z-index: 5;
+    }
+  }
+
+  .page-content .bloc-item:hover{
+    .btn{
+      right: -50px;
+      -webkit-transition: 0.25s;
+      -moz-transition: 0.25s;
+      -ms-transition: 0.25s;
+      -o-transition: 0.25s;
+      transition: 0.25s;
+    }
+  }
+
+
+   .bloc-iframe{
+      -moz-transform: scale(0.66666);
+      -o-transform: scale(0.66666);
+      -webkit-transform: scale(0.66666);
+   }
+
+   .bucket-bloc-iframe{
+      -moz-transform: scale(0.225);
+      -o-transform: scale(0.225);
+      -webkit-transform: scale(0.225);
+   }
+
+
 }
 
 
@@ -297,53 +311,59 @@ width: auto;
 
 /* SORTABLE TABLE 
 =================================== */
+#sortable.table{
 
-#sortable.table thead{
-  display: none;
+  thead{
+    display: none;
+  }
+
+  tbody > tr > td{
+    padding: 0;
+    border-top: none;
+  }
+
+  .bloc-delete-col{
+    vertical-align: top;
+    padding-left: 10px;
+
+    .btn{
+      opacity: 0;
+      -webkit-transition: 0.1s;
+      -moz-transition: 0.1s;
+      -ms-transition: 0.1s;
+      -o-transition: 0.1s;
+      transition: 0.1s;
+    }
+  }
+
+  .item:hover .bloc-delete-col .btn{
+    opacity: 1;
+    -webkit-transition: 0.25s;
+    -moz-transition: 0.25s;
+    -ms-transition: 0.25s;
+    -o-transition: 0.25s;
+    transition: 0.25s;
+  }
+
+  .item.ui-sortable-helper{
+    *{
+      opacity: 0.8;
+    }
+
+    .bloc-delete-col .btn{
+      opacity: 0;
+      -webkit-transition: 0.1s;
+      -moz-transition: 0.1s;
+      -ms-transition: 0.1s;
+      -o-transition: 0.1s;
+      transition: 0.1s;
+    }
+  }
+
+  img{
+    width: 800px;
+  }
+
 }
 
-#sortable.table > tbody > tr > td{
-  padding: 0;
-  border-top: none;
-}
 
-#sortable.table .bloc-delete-col{
-  vertical-align: top;
-  padding-left: 10px;
-}
-
-#sortable.table .bloc-delete-col .btn{
-  opacity: 0;
-  -webkit-transition: 0.1s;
-  -moz-transition: 0.1s;
-  -ms-transition: 0.1s;
-  -o-transition: 0.1s;
-  transition: 0.1s;
-}
-
-#sortable.table .item:hover .bloc-delete-col .btn{
-  opacity: 1;
-      -webkit-transition: 0.25s;
-  -moz-transition: 0.25s;
-  -ms-transition: 0.25s;
-  -o-transition: 0.25s;
-  transition: 0.25s;
-}
-
-#sortable.table .item.ui-sortable-helper *{
-  opacity: 0.8;
-}
-
-#sortable.table .item.ui-sortable-helper .bloc-delete-col .btn{
-  opacity: 0;
-  -webkit-transition: 0.1s;
-  -moz-transition: 0.1s;
-  -ms-transition: 0.1s;
-  -o-transition: 0.1s;
-  transition: 0.1s;
-}
-
-table#sortable img {
-  width: 800px;
-  cursor: image-url("drag.png"), auto;
-}

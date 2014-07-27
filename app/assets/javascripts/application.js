@@ -18,6 +18,48 @@
 //= require zeroclipboard
 //= require_tree .
 
+$(function(){
+$(".dropdown-1").hover(            
+  function() {
+    $('.menu-1', this).fadeIn("fast");
+    $(this).toggleClass('open');
+    $('b', this).toggleClass("caret caret-up");                
+  },
+  function() {
+    $('.menu-1', this).fadeOut("fast");
+    $(this).toggleClass('open');
+    $('b', this).toggleClass("caret caret-up");                
+  });
+});
+
+$(function(){
+$(".dropdown-2").hover(            
+  function() {
+    $('.menu-2', this).fadeIn("fast");
+    $(this).toggleClass('open');
+    $('b', this).toggleClass("caret caret-up");                
+  },
+  function() {
+    $('.menu-2', this).fadeOut("fast");
+    $(this).toggleClass('open');
+    $('b', this).toggleClass("caret caret-up");                
+  });
+});
+
+$(function(){
+$(".dropdown-3").hover(            
+  function() {
+    $('.menu-3', this).fadeIn("fast");
+    $(this).toggleClass('open');
+    $('b', this).toggleClass("caret caret-up");                
+  },
+  function() {
+    $('.menu-3', this).fadeOut("fast");
+    $(this).toggleClass('open');
+    $('b', this).toggleClass("caret caret-up");                
+  });
+});
+
 
 function updateContainerSize(sizeid, scaleval) {
   var theframe = document.getElementById('iframe-'+sizeid);
@@ -25,7 +67,7 @@ function updateContainerSize(sizeid, scaleval) {
   thecontainer.style.height = (theframe.scrollHeight * scaleval) + 'px';
   thecontainer.style.width = (1200 * scaleval) + 'px';
   console.log("updateContainerSize");
-}
+};
 
 function returnHeaderTag(){
   return '<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">' + 
@@ -49,3 +91,28 @@ function setIframeHeight(iframe) {
         }
     }
 };
+
+function iframeMagic(iframe, container, scaleval) {
+  var theframe = document.getElementById(iframe);
+  var thecontainer = document.getElementById(container);
+
+
+  // Prevent Defaults
+  $(theframe).contents().find('a').click(function(event) {
+    event.preventDefault();
+  });
+
+  //Set Iframe Height
+  var iframeWin = theframe.contentWindow || theframe.contentDocument.parentWindow;
+  if (iframeWin.document.body) {
+      theframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+  }
+  console.log("Set Iframe Height -> " + theframe.height);
+
+  //Set Container Size
+  thecontainer.style.height = (theframe.height * scaleval) + 'px';
+  thecontainer.style.width = (1200 * scaleval) + 'px';
+  console.log("Set Container Size -> " + thecontainer.style.height);
+
+};
+

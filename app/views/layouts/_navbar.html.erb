@@ -9,8 +9,6 @@
 	                <span class="icon-bar"></span>
 	                <span class="icon-bar"></span>
 	                <span class="icon-bar"></span>
-	                <span class="icon-bar"></span>
-	                <span class="icon-bar"></span>
 	            </button>
 	            <a class="navbar-brand weblox-nav-brand" href="#">
         	<%= image_tag "weblox-branding-nav.png" %>
@@ -23,35 +21,67 @@
 	            	<% if current_user.present? && current_user.role == "admin" %>
 	            	<li><a href="/dashboard/show">Dashboard</a></li>
 	            	<% end %>
-	            	<li><a href="/blox">Blox</a></li>
-	            	<% if current_user.profile.present? %>
-	                <li><a href="<%= profile_path(current_user.profile) %>">Profile</a></li>
-	                <% end %>
-	                <li><a href="/webpages">Web Pages</a></li>
-
+	            	<li class="dropdown dropdown-1">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							Explore <b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu settings-menu menu-1" style="display: none;">
+							<li><a href="/blox"> Explore Blox</a></li>
+							<li><a href="/profiles">Developer Profiles</a></li>
+						</ul>
+	            	</li>
+	            	<li class="dropdown dropdown-2">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							Create <b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu settings-menu menu-2" style="display: none;">
+							<li><%= link_to "New Blox", new_bloc_path %></li>
+							<li><%= link_to "New Webpage", new_webpage_path %></li>
+							<li class="divider"></li>
+							<li><%= link_to "My Webpages", webpages_path %></li>
+						</ul>
+	            	</li>
 	            </ul>
 				
 				<% if user_signed_in? %>
-				<div class="nav navbar-right user-actions">
-						<div class="profile-details">
-							<!-- <h5>Signed in as <%= current_user.email %></h5> -->
-							<h5>Signed in as <%= link_to "#{current_user.profile.handle}", edit_user_registration_path %>  </h5> //
-							<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-						</div>
-						<div class="profile-image">
-							<% if current_user.profile.avatar.present? %>
-								<%= image_tag current_user.profile.avatar.url(:thumb), class: "img-circle" %>
-							<% elsif current_user.avatar_url.present? %>
-								<%= image_tag current_user.avatar_url, class: "img-circle" %>
-							<% else %>
-								<%= image_tag gravatar_url(current_user), class: "img-circle" %>
-							<% end %>
-						</div>
-				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown dropdown-3">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			          	<span class="glyphicon glyphicon-user"></span> My Stuff <b class="caret"></b>
+			          </a>
+			          <ul class="dropdown-menu settings-menu menu-3" style="display: none;">
+			          	<li class="userid">
+			          		<%= link_to edit_user_registration_path do %>
+			          		<div class="useravatar">
+								<% if current_user.profile.avatar.present? %>
+									<%= image_tag current_user.profile.avatar.url(:thumb), class: "img-rounded" %>
+								<% elsif current_user.avatar_url.present? %>
+									<%= image_tag current_user.avatar_url, class: "img-rounded" %>
+								<% else %>
+									<%= image_tag gravatar_url(current_user), class: "img-rounded" %>
+								<% end %>
+							</div>
+							<div class="userhandle">
+								<%=current_user.profile.handle%>
+								<small>Edit Account</small>
+							</div>
+			          		<% end %>
+			          	</li>
+			            <li class="divider"></li>
+			            <li> <%= link_to "My Profile", profile_path(current_user.profile) %> </li>
+			            <li> <%= link_to "My Webpages", webpages_path %> </li>
+			            <li class="divider"></li>
+			            <li> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> </li>
+			          </ul>
+			        </li>
+
+			       
+				</ul>
 				<% else %>
 				<ul class="nav navbar-nav navbar-right">
 						<li><%= link_to "Sign Up", new_user_registration_path %></li>
 						<li><%= link_to "Sign In", new_user_session_path%></li>
+
 				</ul>
 				<% end %>
 
@@ -63,3 +93,4 @@
 	    <!-- /.container -->
 	</nav>
 	<% end %>
+

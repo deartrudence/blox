@@ -14,28 +14,31 @@
   <div class="form-group">
     <%= f.text_field :name ,autofocus: true, placeholder: "Name", class: 'form-control'%>
   </div>
-  <div class="form-group">
-    <%= f.text_area :code, placeholder: "Code", class: 'form-control' %>
-  </div>
 
   <div class="form-group">
-    <%= f.text_area :styles, placeholder: "Styles", class: 'form-control' %>
-  </div>
- 
-  <div class="form-group">
-    <%=f.file_field :bloc_img %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Category"}, class: "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Weblox Category"}, class: "form-control" %>
-  </div>
   <div class="form-group">
     <%= f.text_field :tag_list, placeholder:"add tags seperated by commas", class: "form-control" %>
-  
+  </div>
+
+  <div class="form-group">
+    <%= f.text_area :code, placeholder: "HTML", id: 'html', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_area :styles, placeholder: "CSS", id: 'styles', class: 'form-control' %>
+  </div>
+ 
+  <!-- <div class="form-group">
+    <%=f.file_field :bloc_img %>
+  </div> -->
+
 
 
   <div class="actions">
-    <%= f.submit  class: "btn btn-primary btn-block" %>
+    <%= f.submit "I'm Done!",  class: "btn btn-primary " %>
     <%= hidden_field_tag :user_id,  current_user.id %>
   </div>
 <% end %>

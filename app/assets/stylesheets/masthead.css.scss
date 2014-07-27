@@ -1,40 +1,48 @@
-.navbar .user-actions > * {
-	display: inline-block;
+.dropdown-menu.settings-menu > li > a{
+	color: #888;
 }
 
-.navbar .user-actions .profile-details{
-	text-align: right;
-	color: #999999;
+.nav .dropdown .glyphicon-user{
+	margin-right: 5px;
 }
 
-.navbar .user-actions .profile-details *{
-	line-height: 30px;
+.settings-menu{
+	font-size: 12px;
+
+	.userid{
+		margin-top: 5px;
+
+		.useravatar{
+			display: inline-block;
+			vertical-align: top;
+			margin-right: 10px;
+			img{
+				height: 35px;
+			}
+		}
+		
+		.userhandle{
+			display: inline-block;
+			font-size: 14px;
+			color: #333;
+
+			small{
+				display: block;
+				font-size: 10px;
+				color: #555;
+			}
+		}
+	}
+
 }
 
-.navbar .user-actions .profile-details h5{
-	margin-bottom: 0;
-	display: inline-block;
+.caret-up {
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid rgba(0, 0, 0, 0);
+    border-right: 4px solid rgba(0, 0, 0, 0);
+    border-bottom: 4px solid;
+    display: inline-block;
+    margin-left: 2px;
+    vertical-align: middle;
 }
-
-.navbar .user-actions .profile-details a{
-	color: white;
-}
-
-.navbar .user-actions .profile-details a:hover{
-	color: #0099ff;
-	text-decoration: none;
-}
-
-.navbar .user-actions .profile-image img{
-	height: 40px;
-}
-
-.navbar .user-actions .profile-image{
-	vertical-align: top;
-	padding-top: 5px;
-	margin-left: 10px;
-}
-
-/*.test-image{
-	background-image: url(image-path('blox-sprite.png'));
-}*/

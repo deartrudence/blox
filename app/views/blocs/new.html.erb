@@ -1,27 +1,76 @@
-<div class="polygon"></div>
+<div class="new-bloc form-page">
+<div class="layoutsbg"></div>
 
-<div id="web-pages-content">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="col-md-6 col-md-offset-3">
-					<div class="landing-panel form-panel weblox-panel">
-						<div class="weblox-branding">
-			            	<%= image_tag("weblox-branding.png", class: "weblox-main-branding") %>
-			            	<div class="arrow-down"></div>
-			            </div>
+	<div class="heading-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h3>Create A New Blox</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="polygon-divider" width="1" height="1"></div>
 
-			            <div class="weblox-form panel-padding">
-			            	<h4>New Blox</h4>
-			            	<%= render 'form' %>
-			            </div>
+	<div class="page-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-1">
+					<%= render 'form' %>
+				</div>
+				<div class="col-md-4">
+					<h4>Preview</h4>
 
-			            <div class="form-footer-info text-center">
-			            	<%= link_to 'Return to Dashboard', '/dashboard/show'  %>
-			            </div>
-					</div>
+					<div id="show-iframe" class="iframe-container">
+	                  <iframe id="iframe" class="bloc-iframe" height="2"></iframe>
+	                </div>
+
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<%= render 'layouts/footer' %>
+
+<script>
+	$(window).bind("load", function(){
+		var	contents = $('iframe').contents(),
+		body = contents.find('body'),
+		headerTag = $(
+			'<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">' + 
+			'<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">' +
+			'<style>body{font:300 18px/30px "Open Sans",arial,sans-serif}p{font-size:16px}h1,h2,h3,h4,h5,h6{color:#272727;font-family:Montserrat,sans-serif;font-weight:400;line-height:1.17em}h1{font-size:3.5em;text-transform:uppercase}h2{font-size:2.4em;text-transform:uppercase}h3{font-size:30px;text-transform:uppercase}h4{font-size:1.8em;text-transform:uppercase}h5{font-size:21px}h6{font-size:16px;line-height:22px}.light-gray-bg{background-color:#f5f5f5}.dark-gray-bg{background-color:#333}.rose-bg{background-color:#C61D38}</style>')
+				.appendTo(contents.find('head')),
+		styleTag = $('<style></style>').appendTo(contents.find('head'));
+
+		addScript('https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js');
+			
+		updatesize();
+
+		function updatesize() { iframeMagic('iframe', 'show-iframe', 0.31); }
+
+		$('textarea').keyup(function() {
+			var $this = $(this);
+			if ( $this.attr('id') === 'html') {
+				body.html( $this.val() );
+				updatesize();
+			} else {
+				// it had to be css
+				styleTag.text( $this.val() );
+				updatesize();
+			}
+		});
+	});
+
+	var addScript = function(src){  
+		var script = document.createElement('script');  
+		script.type = 'text/javascript';  
+		script.src = src;  
+		$('iframe').contents().find('head')[0].appendChild(script);  
+		console.log("added script");  
+	}
+</script>
+
+
+

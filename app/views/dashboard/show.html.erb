@@ -1,35 +1,35 @@
-<div class="page-border" width="300" height="200"></div>
+<div class="dashboard-show">
+	<div class="page-border" width="300" height="200"></div>
 
-<style>
-.navbar-fixed-top{
-	margin-top: 5px;
-}
-.dashboard_page{
-	margin-top: 55px;
-}
-</style>
+	<style>
+	.navbar-fixed-top{
+		margin-top: 5px;
+	}
+	.dashboard_page{
+		margin-top: 55px;
+	}
+	</style>
 
-<div id="wrapper" class="dashboard_page">
+	<div id="wrapper" class="dashboard_page">
 
+		<!-- SIDEBAR -->
+		<%= render "dashboard_sidebar" %>
+		<!-- /SIDEBAR -->
 		
-	<!-- SIDEBAR -->
-	<%= render "dashboard_sidebar" %>
-	<!-- /SIDEBAR -->
-	
-	<div id="page-content-wrapper">
-		<div class="page-content">
-			<%= render "dashboard_masthead" %>			
-			<div class="inset">
+		<div id="page-content-wrapper">
+			<div class="page-content">
+				<%= render "dashboard_masthead" %>			
+				<div class="inset">
 
-				<% if @whichstuff == "overview" or @whichstuff.nil? %>
-					<%= render "dashboard_overview" %>
-				<% elsif @whichstuff == "userlist" %>
-					<%= render "dashboard_userlist" %>
-				<% end %>
+					<% if @whichstuff == "overview" or @whichstuff.nil? %>
+						<%= render "dashboard_overview" %>
+					<% elsif @whichstuff == "userlist" %>
+						<%= render "dashboard_userlist" %>
+					<% end %>
 
+				</div>
 			</div>
 		</div>
-	</div>
 
-</div>
+	</div>
 

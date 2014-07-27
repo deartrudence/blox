@@ -1,11 +1,11 @@
-<div class="page-border" width="300" height="200"></div>
-
 <style>
-.navbar-fixed-top{
-	margin-top: 5px;
+	.navbar-fixed-top{
+  margin-top: 5px;
 }
 </style>
 
+<div class="webpage-edit">
+<div class="page-border" width="300" height="200"></div>
 <div id="wrapper">
 	
 	<!-- SIDEBAR -->
@@ -56,8 +56,23 @@
 							<% end %>
 						
 							<% for wlayout in @webpage.web_layouts %>
+								<% bloc = wlayout.bloc %>
 								<tr class="item" data-item_id="<%= wlayout.id %>">
-									<td><img src="<%= wlayout.bloc.bloc_img.url %>" alt="<%= wlayout.bloc.name %>"></td>
+									<td>
+										<div class="iframe-container" id="show-iframe-<%=bloc.id%>">
+											<div class="glasspanel" height="2" width="2"></div>
+											<iframe id="iframe-<%=bloc.id%>" class="bloc-iframe" src="/blocs/<%=bloc.id%>/preview" height="2"></iframe>
+										</div>
+
+										
+
+										<script>
+						                $(window).bind("load", function(){
+						                  iframeMagic('iframe-<%=bloc.id%>', 'show-iframe-<%=bloc.id%>', 0.666666);
+						                });
+						                </script>
+
+									</td>
 									<td class="bloc-delete-col"><%= link_to "Delete", web_layout_path(wlayout, webpage: @webpage), method: :delete, class: 'btn btn-danger btn-sm' %></td>
 								</tr>
 							<% end %>
@@ -72,6 +87,46 @@
 
 	</div>
 	<!-- /Page content -->
+</div>
+
+<script>
+	$(window).bind("load", function(){
+		$("#sidebar-submenu ul").each(function( index ) {
+        	$(this).css("display", "none");
+        });
+	});
+</script>
+
+
+
+
+<style>
+.glasspanel{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  cursor: pointer;
+  background-color: #fff;
+  opacity: 0;
+ }
+
+.glasspanel:hover{opacity: 0.3;}
+
+iframe{
+  border: none;
+  width: 1200px;
+  -moz-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+ }
+
+
+
+ .iframe-container{ overflow: hidden; display: block; cursor: pointer; position: relative;}
+</style>
 
 <!-- Custom JavaScript for the Menu Toggle -->
 <script>
@@ -107,13 +162,7 @@ $("#menu-toggle").click(function(e) {
         $("#sidebar-wrapper, #sidebar-submenu").mouseenter(function() {
             clearTimeout(timer);
         });
+        
     });
 </script>
 </div>
-
-
-<style>
-	#wrapper{
-		margin-top: 50px;
-	}
-</style>
