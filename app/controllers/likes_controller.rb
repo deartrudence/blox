@@ -29,10 +29,23 @@ class LikesController < ApplicationController
       @like = @user.likes.build(likeable: @likeable)
     #@like = Like.new(like_params)
       if @like.save
-        redirect_to @likeable, notice: "liked!"
-      else
-        redirect_to @likeable, notice: "Not liked"
+        @bloc = Bloc.find(@like.likeable_id)
+        render :toggle, locals: {bloc: @bloc}
       end
+
+      # if @like.save
+      #   if params[:whendone] == "index"
+      #     redirect_to blocs_path
+      #   else
+      #     redirect_to @likeable
+      #   end
+      # end 
+
+      # if @like.save
+      #   redirect_to @likeable, notice: "liked!"
+      # else
+      #   redirect_to @likeable, notice: "Not liked"
+      # end
 
     # respond_to do |format|
     #   if @like.save
@@ -69,11 +82,18 @@ class LikesController < ApplicationController
     #@like_id = @like_array[0]
     @bloc = Bloc.find(params[:bloc_id])
     @like = @bloc.likes.find_by(user_id: current_user)
-    @like.destroy
-    respond_to do |format|
-      format.html { redirect_to bloc_path(@bloc) }
-      format.json { head :no_content }
+    if @like.destroy
+      render :toggle, locals: {bloc: @bloc}
     end
+
+    # if @like.destroy
+    #   if params[:whendone] == "index"
+    #     redirect_to blocs_path
+    #   else
+    #     redirect_to @bloc
+    #   end
+    # end 
+
   end
 
   private

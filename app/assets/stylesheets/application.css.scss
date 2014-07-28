@@ -662,6 +662,25 @@ body{
 
 		}
 
+		/* LIKEABLE STYLING */
+		.bloc-likes{
+
+			a{
+				&:hover {
+					text-decoration: none;
+				}
+			}
+
+			.bloc-unlike{
+				color: #C61D38;
+			}
+
+			.bloc-like{
+				color: #999;
+			}
+
+		}
+
 	}
 
 }
