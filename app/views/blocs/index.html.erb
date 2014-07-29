@@ -7,16 +7,17 @@
         <div class="col-md-10">
           <h3>Below is a listing of all available blox part of the Weblox project. Add your favorite blox to your bucket and use them to build your next webpage!</h3>
 
+          <%= form_tag(@blocs_path, :method => "get", class: "navbar-form") do %>
+            <input type="submit" class="btn btn-default" value="order by likes"></input>
+            <input type="hidden" name="order" value="liked">
+          <% end %>
+
           <%= form_tag(blocs_path, :method => "get", class: "navbar-form",id: "search-form") do %>
             <div class="input-append">
               <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search Tags" %>
               <input type="submit" class="btn btn-primary"></input>
               <%= link_to "reset", blocs_path, class: "btn btn-primary" %>
             </div>
-          <% end %>
-          <%= form_tag(@blocs_path, :method => "get", class: "navbar-form") do %>
-            <input type="submit" class="btn btn-default" value="order by likes"></input>
-            <input type="hidden" name="order" value="liked">
           <% end %>
           
         </div>
@@ -26,16 +27,6 @@
   <div class="polygon-divider" width="300" height="200"></div>
 
 
-  <%= form_tag(blocs_path, :method => "get", class: "navbar-form",id: "search-form") do %>
-    <div class="input-append">
-
-      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search Tags" %>
-      <input type="submit" class="btn btn-primary"></input>
-       <%= link_to "reset", blocs_path, class: "btn btn-primary" %>
-    </div>
-
-     
-  <% end %>
 
   <div class="bloc-listing">
     <div id="box" class=" js-isotope" >
@@ -44,7 +35,6 @@
         <% builder = @users.find(bloc.user_id) %>
         <div class="item">
             <div class="item-content">
-                <!-- <img class="img-responsive" src="<%= bloc.bloc_img.url %>" title="<%= bloc.id %>-<%= bloc.name %>"> -->
                 <%= link_to bloc_path(bloc), id: "show-iframe-"+bloc.id.to_s, class: "iframe-container" do %>
                   <div class="glasspanel" height="2" width="2"></div>
                   
@@ -52,18 +42,23 @@
 
                 <% end %>
               <div class="bloc-info">
+
                 <%= link_to bloc_path(bloc), class: "bloc-info-name" do %>
                   <%= bloc.name %>
                 <% end %>
 
-                <% if !current_user.bucket_blocs.where(:bloc_id => bloc.id).present? %>
-                  <%= link_to bucket_blocs_path(:user => current_user, :bloc => bloc), class: "add-to-bucket" ,method: :post do %>
-                  <i class="fa fa-plus"></i>
-                  <% end %>
-                <% end %>
+                <div class="user-controls">
 
-                <div id="like" class="bloc-likes">
-                  <%= render 'likes/like_button', :bloc => bloc %>
+                  <% if !current_user.bucket_blocs.where(:bloc_id => bloc.id).present? %>
+                    <%= link_to bucket_blocs_path(:user => current_user, :bloc => bloc), class: "add-to-bucket" ,method: :post do %>
+                    <i class="fa fa-plus"></i>
+                    <% end %>
+                  <% end %>
+
+                  <div id="like-<%=bloc.id%>" class="bloc-likes">
+                    <%= render 'likes/like_button', :bloc => bloc %>
+                  </div>
+
                 </div>
 
 

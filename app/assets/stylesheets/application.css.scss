@@ -628,12 +628,45 @@ body{
 					display: inline-block;
 					color: #777;
 					font-size: 12px;
+					width: 68%;
 				}
 
 				.bloc-info-name:hover{
 					color: #333;
 					text-decoration: none;
 				}
+
+				/* LIKEABLE STYLING */
+				.bloc-likes{
+					display: inline-block;
+					a{
+						opacity: 0.7;
+						&:hover {
+							text-decoration: none;
+							opacity: 1;
+						}
+					}
+
+					.bloc-unlike{
+						color: #C61D38;
+					}
+
+					.bloc-like{
+						color: #999;
+					}
+
+				}
+
+				.user-controls{
+					display: inline-block;
+					width: 30%;
+					text-align: right;
+
+					.add-to-bucket{
+						margin-right: 10px;
+					}
+				}
+
 			}
 
 			img:hover{
@@ -658,25 +691,6 @@ body{
 				text-decoration: none;
 				color: #333;
 				cursor: pointer;
-			}
-
-		}
-
-		/* LIKEABLE STYLING */
-		.bloc-likes{
-
-			a{
-				&:hover {
-					text-decoration: none;
-				}
-			}
-
-			.bloc-unlike{
-				color: #C61D38;
-			}
-
-			.bloc-like{
-				color: #999;
 			}
 
 		}
