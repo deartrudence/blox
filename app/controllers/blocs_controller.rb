@@ -8,7 +8,7 @@ class BlocsController < ApplicationController
     @users = User.all
     @order = params[:order]
     if params[:search]
-      @blocs = Bloc.tagged_with(params[:search], :any => :true)
+        @blocs = Bloc.tagged_with(params[:search], :any => :true) #.sort_by(&:likes_count).reverse
     else
       if @order == 'liked'
         @blocs = Bloc.includes(:category).all.sort_by(&:likes_count).reverse

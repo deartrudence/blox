@@ -1,5 +1,5 @@
 <div class="static-page">
-<div class="polygon" height="300" width="300"></div>
+<div class="layoutsbg" height="300" width="300"></div>
 
 <div id="landing-content">
   <div class="container">
@@ -18,7 +18,7 @@
 
                 <%= simple_form_for @contact, :html => {:class => '' } do |f| %>
                   <div class="form-group">
-                    <%= f.text_field :name, :required => true, placeholder: "Name", class: "form-control" %>
+                    <%= f.text_field :name, autofocus: true, :required => true, placeholder: "Name", class: "form-control" %>
                   </div>
                   <div class="form-group">
                     <%= f.email_field :email, :required => true, placeholder: "Email", class: "form-control" %>
