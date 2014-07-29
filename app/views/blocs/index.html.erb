@@ -49,11 +49,9 @@
 
                 <div class="user-controls">
 
-                  <% if !current_user.bucket_blocs.where(:bloc_id => bloc.id).present? %>
-                    <%= link_to bucket_blocs_path(:user => current_user, :bloc => bloc), class: "add-to-bucket" ,method: :post do %>
-                    <i class="fa fa-plus"></i>
-                    <% end %>
-                  <% end %>
+                  <div id="add-to-bucket-<%=bloc.id%>">
+                    <%= render 'bucket_blocs/add_to_bucket_button', :bloc => bloc, :user => current_user %>
+                  </div>
 
                   <div id="like-<%=bloc.id%>" class="bloc-likes">
                     <%= render 'likes/like_button', :bloc => bloc %>

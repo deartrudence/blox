@@ -32,17 +32,20 @@ class BucketBlocsController < ApplicationController
     @bucket_bloc.user = @user
     @bucket_bloc.bloc = @bloc
 
-    @bucket_bloc.save
-
-    respond_to do |format|
-      #if @bucket_bloc.save
-        format.html { redirect_to blocs_path, notice: 'Bucket bloc was successfully created.' }
-        #format.json { render action: 'show', status: :created, location: @bucket_bloc }
-      # else
-      #   format.html { render action: 'new' }
-      #   format.json { render json: @bucket_bloc.errors, status: :unprocessable_entity }
-      # end
+    if @bucket_bloc.save
+      # @bloc = Bloc.find(@like.likeable_id)
+      render :add_to_bucket, locals: {bloc: @bloc, user: @user}
     end
+
+    # respond_to do |format|
+    #   #if @bucket_bloc.save
+    #     # format.html { redirect_to blocs_path, notice: 'Bucket bloc was successfully created.' }
+    #     #format.json { render action: 'show', status: :created, location: @bucket_bloc }
+    #   # else
+    #   #   format.html { render action: 'new' }
+    #   #   format.json { render json: @bucket_bloc.errors, status: :unprocessable_entity }
+    #   # end
+    # end
   end
 
   # PATCH/PUT /bucket_blocs/1
