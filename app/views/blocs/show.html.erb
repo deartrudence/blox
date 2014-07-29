@@ -54,7 +54,11 @@
           <hr>
 
           <div class="bloc-addtobucket">
-            Add to bucket goes here
+            <% if !current_user.bucket_blocs.where(:bloc_id => @bloc.id).present? %>
+                    <%= link_to bucket_blocs_path(:user => current_user, :bloc => @bloc), class: "add-to-bucket" ,method: :post do %>
+                    <i class="fa fa-plus">Add to bucket</i>
+                    <% end %>
+                  <% end %>
           </div>
 
         </div>
