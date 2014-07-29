@@ -33,7 +33,8 @@
         <% if builder.blocs.present? %>
         <div class="item">
           <div class="item-content">
-            <li class='col-md-2 col-sm-4 col-xs-6 builder-profile'>     
+            <li class='col-md-2 col-sm-4 col-xs-6 builder-profile'> 
+            <%= link_to profile_path(builder.profile.id), class: "avatar" do %>    
               <div class="avatar">
                   <% if builder.profile.avatar.present? %>
                     <%= image_tag builder.profile.avatar.url(:thumb), class: "img-circle"%>
@@ -43,6 +44,7 @@
                     <%= image_tag gravatar_url(builder), class: "img-circle" %>
                   <% end %>
               </div>
+              <% end %>
               <div>
                 <%= link_to builder.profile.handle, profile_path(builder.profile.id) %>
               </div>
