@@ -3,5 +3,7 @@
     <i class="fa fa-plus"></i>
   <% end %>
 <% else %>
+  <%= link_to bucket_bloc_path(bloc), method: :delete, :remote => true do %>
   <i class="fa fa-minus"></i>
+  <% end %>
 <% end %>  

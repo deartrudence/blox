@@ -65,11 +65,17 @@ class BucketBlocsController < ApplicationController
   # DELETE /bucket_blocs/1
   # DELETE /bucket_blocs/1.json
   def destroy
-    @bucket_bloc.destroy
-    respond_to do |format|
-      format.html { redirect_to bucket_blocs_url }
-      format.json { head :no_content }
+    @bloc = Bloc.find(params[:id])
+    # @user = User.find_by(user_id: current_user)
+    @bucket_bloc = current_user.bucket_blocs.find_by(bloc_id: @bloc.id)
+    
+    if @bucket_bloc.destroy
+      render :add_to_bucket, locals: {bloc: @bloc}
     end
+    # respond_to do |format|
+    #   format.html { redirect_to bucket_blocs_url }
+    #   format.json { head :no_content }
+    # end
   end
 
   private
@@ -80,6 +86,6 @@ class BucketBlocsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bucket_bloc_params
-      params.require(:bucket_bloc).permit(:user_id, :bloc_id)
+      params.require(:bucket_bloc).permit(:user_id, :bloc_id, :bloc)
     end
 end
