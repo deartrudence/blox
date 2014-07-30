@@ -34,7 +34,7 @@ class BlocsController < ApplicationController
 
   # GET /blocs/1/edit
   def edit
-    if user_owns_bloc? or current_user.role == 'admin'
+    if current_user.role == 'admin' #user_owns_bloc? or 
     else 
       redirect_to bloc_path(params[:id])
     end

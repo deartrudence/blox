@@ -1,5 +1,5 @@
 class BucketBlocsController < ApplicationController
-  before_action :set_bucket_bloc, only: [:show, :edit, :update, :destroy]
+  before_action :set_bucket_bloc, only: [:show, :edit, :update]
 
   # GET /bucket_blocs
   # GET /bucket_blocs.json
