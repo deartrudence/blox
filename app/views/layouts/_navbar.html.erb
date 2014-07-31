@@ -69,6 +69,7 @@
 			          	</li>
 			            <li class="divider"></li>
 			            <li> <%= link_to "My Profile", profile_path(current_user.profile) %> </li>
+			            <li> <%= link_to "Edit Profile", edit_profile_path(current_user.profile) %> </li>
 			            <li> <%= link_to "My Webpages", webpages_path %> </li>
 			            <li class="divider"></li>
 			            <li> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> </li>
@@ -81,7 +82,6 @@
 				<ul class="nav navbar-nav navbar-right">
 						<li><%= link_to "Sign Up", new_user_registration_path %></li>
 						<li><%= link_to "Sign In", new_user_session_path%></li>
-
 				</ul>
 				<% end %>
 

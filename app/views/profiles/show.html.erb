@@ -58,14 +58,18 @@
                 <%= link_to bloc_path(bloc), class: "bloc-info-name" do %>
                   <%= bloc.name %>
                 <% end %>
-                
-                <div id="add-to-bucket-<%=bloc.id%>">
-                    <%= render 'bucket_blocs/add_to_bucket_button', :bloc => bloc, :user => current_user %>
-                  </div>
-                  
 
-                <div id="like-<%=bloc.id%>" class="bloc-likes">
-                  <%= render 'likes/like_button', :bloc => bloc %>
+                <div class="user-controls">
+                
+                  <div id="add-to-bucket-<%=bloc.id%>" class="add-to-bucket-container">
+                      <%= render 'bucket_blocs/add_to_bucket_button', :bloc => bloc, :user => current_user %>
+                    </div>
+                    
+
+                  <div id="like-<%=bloc.id%>" class="bloc-likes">
+                    <%= render 'likes/like_button', :bloc => bloc %>
+                  </div>
+
                 </div>
 
                 <script>
