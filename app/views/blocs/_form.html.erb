@@ -22,6 +22,10 @@
   <div class="form-group">
     <%= f.text_field :tag_list, placeholder:"add tags seperated by commas", class: "form-control" %>
   </div>
+  
+  <div>
+    <p> Download the blox <%= link_to "template", "/weblox-template.zip" %>
+  </div>
 
   <div class="form-group">
     <%= f.text_area :code, placeholder: "HTML", id: 'html', class: 'form-control' %>
