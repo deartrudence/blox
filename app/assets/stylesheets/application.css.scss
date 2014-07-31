@@ -662,6 +662,13 @@ body{
 					width: 30%;
 					text-align: right;
 
+					.add-to-bucket-container{
+						display: inline-block;
+						margin-right: 6px;
+						border-right: 1px solid #e5e5e5;
+						padding-right: 10px;
+					}
+
 					.add-to-bucket{
 						margin-right: 10px;
 					}

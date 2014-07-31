@@ -33,6 +33,38 @@
 			}
 		}
 	}
+
+	.search-actions{
+		margin: 15px auto 0;
+		text-align: right;
+		width: 1140px;
+		form{
+			display: inline-block;
+			padding-right: 6px;
+		}
+	}
+
+	.bloc-listing{
+		margin: 15px auto 50px;
+	}
+}
+
+@media screen and (max-width: 1140px){
+	.bloc-index .search-actions{
+		width: 855px;
+	}
+}
+
+@media screen and (max-width: 855px){
+	.bloc-index .search-actions{
+		width: 570px;
+	}
+}
+
+@media screen and (max-width: 570px){
+	.bloc-index .search-actions{
+		width: 285px;
+	}
 }
 
 
