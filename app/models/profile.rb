@@ -5,7 +5,7 @@ class Profile < ActiveRecord::Base
   	"#{id} #{handle}".parameterize
   end
 
-  validates :user, presence: true
+  # validates :user, presence: true
 
   has_attached_file :avatar, :styles => { :thumb => "100x100!"}
 

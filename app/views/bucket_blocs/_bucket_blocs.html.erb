@@ -32,6 +32,8 @@
 
      
       <span class="bloc_title"><%= bucket_bloc.bloc.name %></span>
+      
+      
 
       
       <script>
@@ -44,7 +46,15 @@
     </script>
 
   </li>
+
+<!--   <div class="bloc-addtobucket">
+    <div id="add-to-bucket-<%=bucket_bloc.bloc.id%>">
+      <%= render 'bucket_blocs/add_to_bucket_button', :bloc => bucket_bloc.bloc, :user => current_user %>
+    </div>
+  </div> -->
+
 <% end %>
+
       
 <% end %>
 </ul>

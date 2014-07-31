@@ -8,9 +8,9 @@ class DashboardController < ApplicationController
   	@webpages = Webpage.count
     @whichstuff = params[:whichstuff]
     if params[:search]
-      @users = User.paginate(:page => params[:page], :per_page => 3).search(params[:search])
+      @users = User.paginate(:page => params[:page], :per_page => 25).search(params[:search])
     else
-      @users = User.paginate(:page => params[:page], :per_page => 3)
+      @users = User.paginate(:page => params[:page], :per_page => 25)
     end 
   end
 

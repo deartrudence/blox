@@ -8,7 +8,7 @@
 
 
 
-@weblox = User.where(email: 'buildweblox@gmail.com')
+@weblox = User.find_by(email: 'buildweblox@gmail.com')
 
 
 Bloc.all.each do | bloc |
@@ -26,8 +26,10 @@ User.all.each do | user |
 	else
 		p.handle = user.email
 	end
+  p.user_id = user.id
 	p.save
-  bloc.each do |bloc|
+
+  Bloc.all.each do |bloc|
     if bloc.user.email == 'buildweblox@gmail.com'
       bucket_bloc = BucketBloc.new
       bucket_bloc.bloc = bloc
