@@ -1,33 +1,107 @@
-<h1>Listing blocs</h1>
+<!-- <div class="layoutsbg layoutsbglight"></div> -->
+<div class="bloc-index">
 
-<table class='table'>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Code</th>
-      <th>Category ID</th>
-      <th>Image<th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <div class="index-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10">
+          <h3>Below is a listing of all available blox part of the Weblox project. Add your favorite blox to your bucket and use them to build your next webpage!</h3>
 
-  <tbody>
-    <% @blocs.each do |bloc| %>
-      <tr>
-        <td><%= bloc.name %></td>
-        <td><%= bloc.code %></td>
-        <td><%= bloc.category.name %></td>
-        <td><%= bloc.img_url %></td>
-        <td><%= link_to 'Show', bloc %></td>
-        <td><%= link_to 'Edit', edit_bloc_path(bloc) %></td>
-        <td><%= link_to 'Destroy', bloc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="polygon-divider" width="300" height="200"></div>
 
-<br>
+  <div class="search-actions">
+  <%= form_tag(@blocs_path, :method => "get", class: "navbar-form") do %>
+    <input type="submit" class="btn btn-primary" value="order by likes"></input>
+    <input type="hidden" name="order" value="liked">
+  <% end %>
 
-<%= link_to 'New Bloc', new_bloc_path %>
+  <%= form_tag(blocs_path, :method => "get", class: "navbar-form",id: "search-form") do %>
+    <div class="input-append">
+      <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search Tags" %>
+      <input type="submit" class="btn btn-primary"></input>
+      <%= link_to "reset", blocs_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  </div>
+
+  <div class="bloc-listing">
+    <div id="box" class=" js-isotope" >
+
+      <% @blocs.each do |bloc| %>
+        <% builder = @users.find(bloc.user_id) %>
+        <div class="item">
+            <div class="item-content">
+                <%= link_to bloc_path(bloc), id: "show-iframe-"+bloc.id.to_s, class: "iframe-container" do %>
+                  <div class="glasspanel" height="2" width="2"></div>
+                  
+                  <iframe id="iframe-<%=bloc.id%>" class="bloc-iframe" src="/blocs/<%=bloc.id%>/preview" height="2"></iframe>
+
+                <% end %>
+              <div class="bloc-info">
+
+                <%= link_to bloc_path(bloc), class: "bloc-info-name" do %>
+                  <%= bloc.name %>
+                <% end %>
+
+                <div class="user-controls">
+
+                  <div id="add-to-bucket-<%=bloc.id%>" class="add-to-bucket-container">
+                    <%= render 'bucket_blocs/add_to_bucket_button', :bloc => bloc, :user => current_user %>
+                  </div>
+
+                  <div id="like-<%=bloc.id%>" class="bloc-likes">
+                    <%= render 'likes/like_button', :bloc => bloc %>
+                  </div>
+
+                </div>
+
+
+                <script>
+                $(window).bind("load", function(){
+                  iframeMagic('iframe-<%=bloc.id%>', 'show-iframe-<%=bloc.id%>', 0.2175);
+                });
+                </script>
+
+
+              </div>
+            </div>
+            <div class="bloc-builder">
+                  <% if builder.profile.avatar.present? %>
+                    <%= image_tag builder.profile.avatar.url(:thumb), class: "img-circle" %>
+                  <% elsif builder.avatar_url.present? %>
+                    <%= image_tag builder.avatar_url, class: "img-circle" %>
+                  <% else %>
+                    <%= image_tag gravatar_url(builder), class: "img-circle" %>
+                  <% end %>
+                  <%= link_to builder.profile.handle, profile_path(builder.profile.id), class: "builder-profile" %>
+                </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+
+</div>
+
+
+<%= render 'layouts/footer' %>
+
+
+<script>
+$(window).bind("load", function(){
+  
+  $('.js-isotope').isotope({
+    itemSelector: '.item',
+    masonry: {
+      columnWidth: 285
+    }
+  });
+
+});
+</script>

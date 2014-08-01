@@ -1,0 +1,63 @@
+
+
+
+<% for category in categories %>
+<ul id="list-<%=category.name%>">
+<% for bucket_bloc in current_user.bucket_blocs %>
+  <% if bucket_bloc.bloc.category == category %>
+    <li class="bloc_element">
+      <!-- <img src="<%=bucket_bloc.bloc.bloc_img%>" alt="<%=bucket_bloc.bloc.name%>" id="img-<%=bucket_bloc.bloc.name%>"> -->
+      <% bloc = bucket_bloc.bloc %>
+
+      <div id="bucketshow-iframe-<%=bloc.id%>" class="iframe-container">
+        <!-- <div class="glasspanel" height="2" width="2"></div> -->
+
+        
+        <% if @webpage.present? %>
+        <%= link_to web_layouts_path(:webpage => @webpage, :bloc => bucket_bloc.bloc), class: "add-hitspace glasspanel", id: bucket_bloc.bloc.name ,method: :post do%>
+        <i class="fa fa-plus"></i>
+        click to add
+        <% end %>
+     <% end %>
+
+
+        <iframe id="bucketiframe-<%=bloc.id%>" class="bucket-bloc-iframe" src="/blocs/<%=bloc.id%>/preview" height="0"></iframe>
+      </div>
+
+      <script>
+      $(window).bind("load", function(){
+        iframeMagic('bucketiframe-<%=bloc.id%>', 'bucketshow-iframe-<%=bloc.id%>', 0.225);
+      });
+      </script>
+
+     
+      <span class="bloc_title"><%= bucket_bloc.bloc.name %></span>
+      
+      
+
+      
+      <script>
+      $(window).bind("load", function(){
+        $(".add-hitspace.glasspanel").each(function( index ) {
+          var lh = $(this).height();
+              $(this).css("line-height", lh+"px");
+        });
+      });
+    </script>
+
+  </li>
+
+<!--   <div class="bloc-addtobucket">
+    <div id="add-to-bucket-<%=bucket_bloc.bloc.id%>">
+      <%= render 'bucket_blocs/add_to_bucket_button', :bloc => bucket_bloc.bloc, :user => current_user %>
+    </div>
+  </div> -->
+
+<% end %>
+
+      
+<% end %>
+</ul>
+<% end %>
+
+

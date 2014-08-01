@@ -1,0 +1,138 @@
+
+
+<div class="profile">
+
+<!-- NOTICE ONLY SHOWS WHEN EXISTS -->
+<% if notice %> <p id="notice"><%= notice %></p> <% end %>
+
+<div class="profile-heading">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 profile-info">
+        <div class="avatar">
+          <% if @profile.avatar.present? %>
+            <%= image_tag @profile.avatar.url(:thumb), class: "img-circle" %>
+          <% elsif @profile.user.avatar_url.present? %>
+            <%= image_tag @profile.user.avatar_url, class: "img-circle" %>
+          <% else %>
+            <%= image_tag gravatar_url(@profile.user), class: "img-circle" %>
+          <% end %>
+        </div>
+        <h3><%= @profile.handle %></h3>
+        <h5 class="profile-bio">
+          <%= @profile.bio %>
+        </h5>
+
+        <% if @profile.company.present? %>
+        <h5 class="profile-quicklink">
+          <i class="fa fa-globe fa-lg"></i>
+          <%= @profile.company %>
+        </h5>
+        <% end %>
+
+        <% if @profile.website.present? %>
+        <h5 class="profile-quicklink">
+          <a href="<%= @profile.website %>">
+            <i class="fa fa-laptop fa-lg"></i>
+            <%= @profile.website %>
+          </a>
+        </h5>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="profile-border" width="300" height="200"></div>
+
+<div class=" bloc-listing">
+  <div id="box" class=" js-isotope" >
+    <% @profile.user.blocs.each do |bloc| %>
+        <div class="item">
+            <div class="item-content">
+                <%= link_to bloc_path(bloc), id: "show-iframe-"+bloc.id.to_s, class: "iframe-container" do %>
+                  <div class="glasspanel" height="2" width="2"></div>
+                  <iframe id="iframe-<%=bloc.id%>" class="bloc-iframe" src="/blocs/<%=bloc.id%>/preview" height="2"></iframe>
+                <% end %>
+              <div class="bloc-info">
+                <%= link_to bloc_path(bloc), class: "bloc-info-name" do %>
+                  <%= bloc.name %>
+                <% end %>
+
+                <div class="user-controls">
+                
+                  <div id="add-to-bucket-<%=bloc.id%>" class="add-to-bucket-container">
+                      <%= render 'bucket_blocs/add_to_bucket_button', :bloc => bloc, :user => current_user %>
+                    </div>
+                    
+
+                  <div id="like-<%=bloc.id%>" class="bloc-likes">
+                    <%= render 'likes/like_button', :bloc => bloc %>
+                  </div>
+
+                </div>
+
+                <script>
+                $(window).bind("load", function(){
+                  iframeMagic('iframe-<%=bloc.id%>', 'show-iframe-<%=bloc.id%>', 0.2175);
+                });
+                </script>
+
+
+              </div>
+            </div>
+          </div>
+      <% end %>
+  </div>
+</div>
+
+
+</div>
+
+
+<%= render 'layouts/footer' %>
+
+
+<style>
+   iframe{
+    border: none;
+    width: 1200px;
+      -moz-transform: scale(0.2175);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.2175);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.2175);
+    -webkit-transform-origin: 0 0;
+   }
+
+   a.iframe-container{ overflow: hidden; display: block; cursor: pointer; position: relative;}
+
+   .glasspanel{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    cursor: pointer;
+    background-color: #fff;
+    opacity: 0;
+   }
+
+   .glasspanel:hover{opacity: 0.3;}
+
+   .hidden{ display: none; }
+
+  </style>
+<script>
+$(window).bind("load", function(){
+  
+  $('.js-isotope').isotope({
+    itemSelector: '.item',
+    masonry: {
+      columnWidth: 285
+    }
+  });
+
+});
+</script>

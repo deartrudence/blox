@@ -1,0 +1,29 @@
+<h1>Listing likes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Likeable</th>
+      <th>Likeable type</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @likes.each do |like| %>
+      <tr>
+        <td><%= like.likeable_id %></td>
+        <td><%= like.likeable_type %></td>
+        <td><%= like.user_id %></td>
+        <td><%= like.id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Like', new_bloc_like_path %>

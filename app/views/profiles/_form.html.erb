@@ -1,0 +1,48 @@
+<br><br><br>
+<div class="col-md-8 col-md-offset-2">
+<%= form_for(@profile) do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.text_field :handle ,autofocus: true, placeholder: "handle", class: 'form-control'%>
+  </div>
+  <div class="form-group">
+    <%= f.text_field :company, placeholder: "company", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_area :bio, placeholder: "bio", class: 'form-control' %>
+  </div>
+
+   <div class="form-group">
+    <%= f.text_field :website, placeholder: "website", class: 'form-control' %>
+  </div>
+  <br>
+
+  <h4>Avatar</h4>
+  <p>Signed in with <a href='https://twitter.com/'>Twitter</a>? Your profile pic will show up. Signed in with email? Your <a href='http://en.gravatar.com/'>Gravatar</a> picture will show up.</p>
+  <p>Wanna override either of those, upload a new profile pic here:</p>
+
+  <div class="form-group">
+    <%=f.file_field :avatar %>
+  </div>
+  
+  <br>
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary btn-block" %>
+  </div>
+
+<% end %>
+
+</div>
+<br>

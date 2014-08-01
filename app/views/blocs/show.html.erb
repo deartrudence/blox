@@ -1,26 +1,116 @@
+<div class="layoutsbg layoutsbglight"></div>
+<div class="show-bloc">
+  <div class="show-bloc-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+
+          <% builder = @bloc.user %>
+          <% if builder.avatar_url.present? %>
+            <%= image_tag builder.avatar_url, class: "img-circle bloc-profile-avatar" %>
+          <% else %>
+            <%= image_tag gravatar_url(builder), class: "img-circle bloc-profile-avatar" %>
+          <% end %>
+
+
+          <h3 class="bloc-name">
+            <%= @bloc.name %>
+            <small><%= @bloc.category.name %></small>
+          </h3>
+          By <%= link_to profile_path(@bloc.user.profile.id), class: "bloc-profile-link" do %>
+          <%=@bloc.user.profile.handle%>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <div class="bloc-preview">
+            <div class="iframe-container" id="show-iframe-<%= @bloc.id %>">
+              <iframe id="iframe-<%=@bloc.id%>" class="bloc-iframe" src="/blocs/<%=@bloc.id%>/preview" height="2"></iframe>
+            </div>
+
+            <script>
+            $(window).bind("load", function(){
+              updateIframeSize("iframe-<%=@bloc.id%>");
+              updateContainerSize('<%=@bloc.id%>', 0.6);
+            });
+            </script>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="bloc-tags">
+          <% @bloc.tags.any? %>
+            <i class="fa fa-tags"></i>
+            <% @bloc.tags.each do |tag| %>
+              <%= link_to tag.name, tagged_url(:tag => tag.name), class: "bloc-tag" %>
+          <% end %>
+          </div>
+          <hr>
+          
+          <div id="like-<%=@bloc.id%>" class="bloc-likes">
+            <%= render 'likes/like_button', :bloc => @bloc %>
+          </div>
+          <hr>
+
+          <div class="bloc-addtobucket">
+            
+              <div id="add-to-bucket-<%=@bloc.id%>">
+                <%= render 'bucket_blocs/add_to_bucket_button', :bloc => @bloc, :user => current_user %>
+              </div>
+            
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="polygon-divider" width="300" height="200"></div>
+
+  <div class="container">
+    <div class="row render-code-container">
+      <div class="col-md-12">
+
+        <div class="render-code">
+          <h4><i class="fa fa-code"></i>  HTML</h4>
+          <pre><code data-language="html"><%= @bloc.code %></code></pre>
+        </div>
+        <br><br><br>
+
+        <div class="render-code">
+          <h4><i class="fa fa-code"></i>  CSS</h4>
+          <pre><code data-language="css"><%= @bloc.styles %></code></pre>
+        </div>
+
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<%= render 'layouts/footer' %>
+
+
+<div id="web-pages-content" class="hidden">
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @bloc.name %>
-</p>
 
-<p>
-  <strong>Code:</strong>
-  <%= @bloc.code %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @bloc.img_url %><br>
-  <img src="<%= @bloc.img_url %>" alt=" <%= @bloc.name %> ">
-
-</p>
 
 <p>
   <strong>Category:</strong>
   <%= @bloc.category_id %> :: <%= @bloc.category.name %>
 </p>
 
+
+
+
+<p>
+  Count: <%= @bloc.likes.count %>
+
 <%= link_to 'Edit', edit_bloc_path(@bloc) %> |
 <%= link_to 'Back', blocs_path %>
+
+</div>

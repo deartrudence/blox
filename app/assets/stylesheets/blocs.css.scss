@@ -1,3 +1,283 @@
 // Place all the styles related to the blocs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* COMMON
+===================================== */
+
+.polygon-divider{
+	height: 5px;
+	width: 100%;
+	background-image: url(/assets/polygon.jpg);
+	background-size: cover;
+	background-position: 50% 50%;
+}
+
+
+
+/* INDEX BLOC
+===================================== */
+
+.bloc-index{
+	margin-top: 50px;
+
+	.index-top{
+		background-color: #fff;
+		padding: 40px;
+
+		.col-md-10{
+			padding-left: 0;
+
+			h3{
+				line-height: 1.5em;
+			}
+		}
+	}
+
+	.search-actions{
+		margin: 15px auto 0;
+		text-align: right;
+		width: 1140px;
+		form{
+			display: inline-block;
+			padding-right: 6px;
+		}
+	}
+
+	.bloc-listing{
+		margin: 15px auto 50px;
+	}
+}
+
+@media screen and (max-width: 1140px){
+	.bloc-index .search-actions{
+		width: 855px;
+	}
+}
+
+@media screen and (max-width: 855px){
+	.bloc-index .search-actions{
+		width: 570px;
+	}
+}
+
+@media screen and (max-width: 570px){
+	.bloc-index .search-actions{
+		width: 285px;
+	}
+}
+
+
+/* NEW + EDIT BLOC
+===================================== */
+.form-page{
+	margin-top: 50px; 
+
+	.layoutsbg{
+		opacity: 0.05;
+	}
+
+	.heading-content{
+		background-color: #fff;
+		
+		h3{
+			line-height: 70px;
+		}
+	}
+
+	.page-content .container{
+		// background-color: #f5f5f5;
+		// box-shadow: 0px 4px 3px 3px rgba(0,0,0,0.18);
+		// min-height: calc(100vh - 155px);
+		padding: 30px 0;
+
+		textarea{
+			min-height: 200px;
+		}
+	}
+}
+
+.new-bloc, .edit-bloc{
+	iframe{
+	    border: none;
+	    width: 1200px;
+	      -moz-transform: scale(0.31);
+	    -moz-transform-origin: 0 0;
+	    -o-transform: scale(0.31);
+	    -o-transform-origin: 0 0;
+	    -webkit-transform: scale(0.31);
+	    -webkit-transform-origin: 0 0;
+   }
+
+   .iframe-container{
+		overflow: hidden; 
+		display: block; 
+		cursor: pointer; 
+		position: relative;
+   }
+}
+
+
+/* SHOW BLOC
+===================================== */
+
+.show-bloc{
+	margin-top: 50px;
+
+	.show-bloc-top{
+		background-color: #fff;
+		padding: 50px 0 75px;
+
+
+		.bloc-name{
+			margin-bottom: 0;
+			margin-top: 3px;
+		}
+
+		.bloc-profile-avatar{
+			float: left;
+			margin-right: 20px;
+			height: 50px;
+		}
+
+		.bloc-profile-link{
+			margin-bottom: 20px;
+			display: inline-block;
+		}
+	}
+
+	.bloc-preview{
+
+		.iframe-container{
+			overflow: hidden;
+			display: block;
+			cursor: pointer;
+			position: relative;
+			border: 1px solid #e5e5e5;
+		}
+
+		iframe{
+		    border: none;
+		    width: 1200px;
+		    -moz-transform: scale(0.6);
+		    -moz-transform-origin: 0 0;
+		    -o-transform: scale(0.6);
+		    -o-transform-origin: 0 0;
+		    -webkit-transform: scale(0.6);
+		    -webkit-transform-origin: 0 0;
+		}
+	}
+
+	.render-code-container{
+		padding: 75px 0;
+
+		.render-code{
+			background-color: #fff;
+			border: 1px solid #e5e5e5;
+
+			h4{
+				padding: 15px;
+				border-bottom: 1px solid #f5f5f5;
+				margin-top: 6px;
+				margin-bottom: 0;
+			}
+
+			i{
+				height: 30px;
+				width: 30px;
+				background-color: #e5e5e5;
+				text-align: center;
+				line-height: 30px;
+				border-radius: 3px;
+				margin-right: 5px;
+			}
+		}
+
+		pre{
+			margin-bottom: 0;
+		    background-color: #f8f8f8;
+		    border-left-width: 0;
+		    border-right-width: 0;
+		    border-top-width: 0;
+		    border-bottom-width: 3px;
+		    height: 300px;
+		    border-color: #e5e5e5;
+		    overflow: auto;
+		    width: calc(100% - 20px);
+		    margin: 10px 0 10px 10px;
+		}
+	}
+
+	.bloc-tags{
+		color: #666;
+		
+		i{
+			margin-right: 5px;
+			width: 20px;
+		}
+
+		.bloc-tag{
+			background-color: #C61D38;
+		    display: inline-block;
+		    color: #fff;
+		    padding: 2px 5px;
+		    border-radius: 3px;
+		    opacity: 0.85;
+		    font-size: 12px;
+		}
+
+		.bloc-tag:hover{
+			text-decoration: none;
+		    opacity: 1;
+		    color: #fff;
+		}
+	}
+
+	.bloc-likes{
+		color: #666;
+
+		i{
+			width: 20px;
+			margin-right: 5px;
+		}
+
+		.bloc-unlike{
+			opacity: 0.8;
+			color: #666;
+
+			i{
+				color: #C61D38;
+			}
+
+			&:hover{
+				opacity: 1;
+				text-decoration: none;
+			}
+		}
+
+		.bloc-like{
+			color: #666;
+			opacity: 0.8;
+
+			&:hover{
+				opacity: 1;
+				text-decoration: none;
+			}
+		}
+
+		.right{
+			float: right;
+		}
+
+		.right:after{
+			content: "";
+			clear: both;
+		}
+
+	}
+
+	.bloc-addtobucket{
+		color: #666;
+	}
+
+}

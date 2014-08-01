@@ -1,18 +1,24 @@
 Blox::Application.routes.draw do
   
+
+  resources :bucket_blocs
+
+  resources :profiles
+
   get "user/edit"
   get "user/update"
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } #do
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "my_devise/registrations" } #do
     #get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru' end
 
-  resources :users
+  resources :users 
 
   root to: "webpages#index"
 
   get "dashboard/show"
 
-  get "about_us" => 'static#about_us'
+  post "crop_submit" => "blocs#crop_submit"
 
+  get "about_us" => 'static#about_us'
 
   resources "contacts", only: [:new, :create]
   get "terms" => 'static#terms'
@@ -21,7 +27,16 @@ Blox::Application.routes.draw do
 
   resources :webpages
 
-  resources :blocs
+  resources :blocs, :path => "blox"
+
+  get "blocs/:id/preview", :controller => "blocs", :action => "preview"
+  get "blox/:id/preview", :controller => "blocs", :action => "preview"
+
+  resources :blocs do
+    resources :likes
+  end
+
+  get 'tagged' => 'blocs#tagged', :as => 'tagged'
 
   resources :web_layouts do
     post :sort, on: :collection

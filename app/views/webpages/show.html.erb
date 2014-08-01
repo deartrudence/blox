@@ -1,112 +1,116 @@
-<div class="polygon"></div>
+<div class="layoutsbg layoutsbglight"></div>
+<div class="show-bloc">
+  <div class="show-bloc-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
 
-<div id="generate-code">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <div class="landing-panel">
-          <div class="text-center">
-            <h4>Webpage Code</h4>
+          <% builder = @bloc.user %>
+          <% if builder.avatar_url.present? %>
+            <%= image_tag builder.avatar_url, class: "img-circle bloc-profile-avatar" %>
+          <% else %>
+            <%= image_tag gravatar_url(builder), class: "img-circle bloc-profile-avatar" %>
+          <% end %>
+
+
+          <h3 class="bloc-name">
+            <%= @bloc.name %>
+            <small><%= @bloc.category.name %></small>
+          </h3>
+          By <%= link_to profile_path(@bloc.user.profile.id), class: "bloc-profile-link" do %>
+          <%=@bloc.user.profile.handle%>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <div class="bloc-preview">
+            <div class="iframe-container" id="show-iframe-<%= @bloc.id %>">
+              <iframe id="iframe-<%=@bloc.id%>" class="bloc-iframe" src="/blocs/<%=@bloc.id%>/preview" height="2"></iframe>
+            </div>
+
+            <script>
+            $(window).bind("load", function(){
+              updateIframeSize("iframe-<%=@bloc.id%>");
+              updateContainerSize('<%=@bloc.id%>', 0.6);
+            });
+            </script>
           </div>
+        </div>
+        <div class="col-md-4">
+          <div class="bloc-tags">
+          <% @bloc.tags.any? %>
+            <i class="fa fa-tags"></i>
+            <% @bloc.tags.each do |tag| %>
+              <%= link_to tag.name, tagged_url(:tag => tag.name), class: "bloc-tag" %>
+          <% end %>
+          </div>
+          <hr>
           
-          <p>Below is the generated code based on your webpage blox. Ensure to copy both the HTML and the CSS code into separate files, and to make any changes to the stylesheet link if both files do not reside in the same directory.</p>
-          <p>Please note that the HTML below does not show the opening and closing code for the website, but it will be included in the copied code.</p>
+          <div id="like-<%=@bloc.id%>" class="bloc-likes">
+            <%= render 'likes/like_button', :bloc => @bloc %>
+          </div>
           <hr>
 
-          <p>
-            <strong>Webpage Name:</strong>
-            <%= @webpage.name %>
-          </p>
-
-          <p class="code-type-html">HTML</p>
-          <!-- Shown Code -->
-          <% if @webpage.blocs.present? %>
-            <pre><code data-language="html"><%= @webpage.blocs.map(&:code).join("\n") %></code></pre> 
-          <% end %>
-
-          <!-- Hidden Text Area for Clipboard --> 
-          <% if @webpage.blocs.present? %>
-            <textarea id='fe_text'><%= render 'html_header' %><%= @webpage.blocs.map(&:code).join("\n") %><%= render 'html_footer' %></textarea> 
-          <% end %>
-          <style>#fe_text{display:none;}</style>
-
-          <button class='my_clip_button btn btn-primary' data-clipboard-target='fe_text' data-clipboard-text='Default clipboard text from attribute' id='d_clip_button' title='Click me to copy to clipboard.'>
-            Copy HTML To Clipboard
-          </button>
-          <%= link_to 'Back', edit_webpage_path(@webpage), class: 'btn btn-primary' %>
-
-          
-          <p class="code-type-css">CSS</p>
-          <!-- Shown Code -->
-          <% if @webpage.blocs.present? %>
-            <pre><code data-language="css"><%=render 'styles_header'%><%= @webpage.blocs.map(&:styles).join("\n") %></code></pre> 
-          <% end %>
-
-          <!-- Hidden Text Area for Clipboard --> 
-          <% if @webpage.blocs.present? %>
-            <textarea id='css_text'><%=render 'styles_header'%><%= @webpage.blocs.map(&:styles).join("\n") %></textarea> 
-          <% end %>
-          <style>#css_text{display:none;}</style>
-
-          <button class='my_clip_button btn btn-primary' data-clipboard-target='css_text' data-clipboard-text='Default clipboard text from attribute' id='css_clip_button' title='Click me to copy to clipboard.'>
-            Copy CSS To Clipboard
-          </button>
-          <%= link_to 'Back', edit_webpage_path(@webpage), class: 'btn btn-primary' %>
+          <div class="bloc-addtobucket">
+            
+              <div id="add-to-bucket-<%=@bloc.id%>">
+                <%= render 'bucket_blocs/add_to_bucket_button', :bloc => @bloc, :user => current_user %>
+              </div>
+            
+          </div>
 
         </div>
       </div>
     </div>
   </div>
+
+  <div class="polygon-divider" width="300" height="200"></div>
+
+  <div class="container">
+    <div class="row render-code-container">
+      <div class="col-md-12">
+
+        <div class="render-code">
+          <h4><i class="fa fa-code"></i>  HTML</h4>
+          <pre><code data-language="html"><%= @bloc.code %></code></pre>
+        </div>
+        <br><br><br>
+
+        <div class="render-code">
+          <h4><i class="fa fa-code"></i>  CSS</h4>
+          <pre><code data-language="css"><%= @bloc.styles %></code></pre>
+        </div>
+
+      </div>
+
+      
+    </div>
+  </div>
 </div>
 
-
-<script>
-  $(document).ready(function() {
-    var clip = new ZeroClipboard($("#d_clip_button"))
-  });
-
-  $("#clear-test").on("click", function(){
-    $("#fe_text").val("Copy me!");
-    $("#testarea").val("");
-  });
-</script>
-
-<script>
-  $(document).ready(function() {
-    var clip = new ZeroClipboard($("#css_clip_button"))
-  });
-
-  $("#clear-test").on("click", function(){
-    $("#css_text").val("Copy me!");
-    $("#testarea").val("");
-  });
-</script>
+<%= render 'layouts/footer' %>
 
 
-<style>
-  #generate-code{
-    margin: 100px 0 50px 0;
-  }
+<div id="web-pages-content" class="hidden">
 
-  #generate-code .landing-panel{
-    padding: 35px;
-    height: auto;
-  }
+<p id="notice"><%= notice %></p>
 
-  #generate-code h4{
-    margin: 20px 0 40px 0;
-  }
 
-  #generate-code pre{
-    height: 300px;
-    overflow: auto;
-  }
 
-  #generate-code .code-type-html{
-    margin: 0px 0 15px 0;
-  }
+<p>
+  <strong>Category:</strong>
+  <%= @bloc.category_id %> :: <%= @bloc.category.name %>
+</p>
 
-  #generate-code .code-type-css{
-    margin: 40px 0 15px 0;
-  }
-</style>
+
+
+
+<p>
+  Count: <%= @bloc.likes.count %>
+
+<%= link_to 'Edit', edit_bloc_path(@bloc) %> |
+<%= link_to 'Back', blocs_path %>
+
+</div>

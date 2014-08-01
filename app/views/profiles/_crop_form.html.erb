@@ -1,0 +1,11 @@
+<%= form_for(@profile) do |f|  %>
+
+	<%= f.cropbox :avatar %>
+
+	<%= f.crop_preview :avatar %>
+
+	<div class="actions">
+		<%= f.submit 'crop' %>
+	</div>
+
+<% end %>

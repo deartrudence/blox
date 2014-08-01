@@ -14,7 +14,7 @@ class WebpagesController < ApplicationController
   # GET /webpages/1.json
   def show
     if user_owns_webpage?
-    else
+    else 
       redirect_to webpages_path
     end
   end
@@ -29,7 +29,7 @@ class WebpagesController < ApplicationController
   def edit
     if user_owns_webpage?
       @categories = Category.all
-    else
+    else 
       redirect_to webpages_path
     end
   end
@@ -90,11 +90,9 @@ class WebpagesController < ApplicationController
     def user_owns_webpage?
       @webpage.user == current_user
     end
-    
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def webpage_params
       params.require(:webpage).permit(:name, :bloc_id, :user_id)
     end
 end
-
-

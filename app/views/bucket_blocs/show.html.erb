@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @bucket_bloc.user %>
+</p>
+
+<p>
+  <strong>Bloc:</strong>
+  <%= @bucket_bloc.bloc %>
+</p>
+
+<%= link_to 'Edit', edit_bucket_bloc_path(@bucket_bloc) %> |
+<%= link_to 'Back', bucket_blocs_path %>

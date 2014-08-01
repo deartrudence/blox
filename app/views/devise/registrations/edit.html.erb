@@ -1,21 +1,42 @@
-<div class="polygon"></div>
+<div class="user">
 
-<div id="landing-content">
+<div class="user-heading">
   <div class="container">
     <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3">
-            <div class="landing-panel form-panel panel-padding">
-              <div class="weblox-form ">
-                <h4>Edit Account Info</h4>
+      <div class="col-md-8 col-md-offset-2 profile-info">
+        <div class="avatar">
+          <% if current_user.profile.avatar.present? %>
+            <%= image_tag current_user.profile.avatar.url(:thumb), class: "img-circle"%>
+          <% elsif current_user.avatar_url.present? %>
+            <%= image_tag current_user.avatar_url, class: "img-circle" %>
+          <% else %>
+            <%= image_tag gravatar_url(current_user), class: "img-circle" %>
+          <% end %>
+        </div>
+
+          <h4>Edit Account Info</h4>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="user-border" width="300" height="200"></div>
+
+
+      <br><br>  
+        <div class="col-md-8 col-md-offset-2">
+                
                 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
                 <%= devise_error_messages! %>
 
                 <% if current_user.provider.nil? %>
 
-                  <div class="form-group"><%= f.label :email %><br />
-                  <%= f.email_field :email, autofocus: true, class: "form-control" %></div>
+                 <h4>Update Email and Password</h4>
+
+                  <div class="form-group">
+                    <%= f.email_field :email, autofocus: true, placeholder:"email", class: "form-control" %>
+                  </div>
 
                   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -24,25 +45,19 @@
                 
 
                   <div class="form-group">
-                    <%= f.label :password %> 
-                    <i>(leave blank if you don't want to change it)</i><br />
-                    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+                    <%= f.password_field :password, autocomplete: "off", placeholder: "password (leave blank if you don't want to change it)", class: "form-control" %>
                   </div>
 
                   <div class="form-group">
-                    <%= f.label :password_confirmation %><br />
-                    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+                    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "password confirmation", class: "form-control" %>
                   </div>
 
                   <div class="form-group">
-                    <%= f.label :current_password %>
-                    <i>(we need your current password to confirm your changes)</i><br />
-                    <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+                    <%= f.password_field :current_password, autocomplete: "off",placeholder: "current password (we need your current password to confirm the change)", class: "form-control" %>
                   </div>
                   
                   <% if current_user.present? && current_user.role == "admin" %>
                     <div class="form-group">
-                      <%= f.label :role %>
                       <%= f.select :role, [["Administrator", "admin"], ["Designer", "designer"]], {}, {class: "form-control"} %>
                     </div>
                   <% end %>
@@ -60,16 +75,22 @@
                 <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-block" %>
 
               </div>
-<!-- 
-              <div class="form-footer-info text-center" style="">
+
+
+              <!-- <div class="form-footer-info text-center" style="">
                 Changed your mind? Head <%= link_to "back to webpages", :back %>
               </div> -->
-
-            </div>
-          </div>
-        </div>
+        <br><br><br>
       </div>
-    </div>
-  </div>
-</div>
 
+      <style>
+        .avatar{
+          padding: 5px 10px 20px;
+
+          img{
+            width: 80px;
+            height: 80px;
+            margin-top: 10px;
+          }
+        }
+      </style>

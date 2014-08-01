@@ -1,0 +1,15 @@
+<% if liked?(bloc, current_user) %>
+
+	<%= link_to bloc_like_path(bloc, current_user.id),method: :delete, class: "bloc-unlike", :remote => true do%>
+	  <i class="fa fa-heart "></i>
+	<% end %>
+
+<% else %>
+
+	<%= link_to bloc_likes_path(bloc, @like), method: :post, class: "bloc-like", :remote => true do%>
+	  <i class="fa fa-heart "></i>
+	<% end %>
+
+<% end %>
+
+<span class="right"><%= bloc.likes.count %></span>

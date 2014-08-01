@@ -6,31 +6,63 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Category.create!(name: 'Header')
 
-a = Bloc.create!(
-	name: 'header1', 
-	code: '<header></header>',
-	category: Category.find_by(name: "Header"),
-	img_url: 'http://placehold.it/800x150/e5e5e5'
-)
 
-b = Bloc.create!(
-	name: 'header2', 
-	code: '<header></header>',
-	category: Category.find_by(name: "Header"),
-	img_url: 'http://placehold.it/800x150/333333'
-)
+@weblox = User.find_by(email: 'buildweblox@gmail.com')
 
-c = Bloc.create!(
-	name: 'header3', 
-	code: '<header></header>',
-	category: Category.find_by(name: "Header"),
-	img_url: 'http://placehold.it/800x150/4d4d4d'
-)
 
-page = Webpage.create!(name: 'Website 01')
+Bloc.all.each do | bloc |
+  bloc.user = @weblox
+  bloc.likes_count = 0
+  bloc.save
+end
 
-WebLayout.create! webpage: page, bloc: c, position: 3
-WebLayout.create! webpage: page, bloc: a, position: 1
-WebLayout.create! webpage: page, bloc: b, position: 2
+User.all.each do | user |
+	p =  Profile.create!
+	user.profile = p 
+	user.save
+	if user.email.include? '@'
+		p.handle = user.email.split("@").first
+	else
+		p.handle = user.email
+	end
+  p.user_id = user.id
+	p.save
+
+  Bloc.all.each do |bloc|
+    if bloc.user.email == 'buildweblox@gmail.com'
+      bucket_bloc = BucketBloc.new
+      bucket_bloc.bloc = bloc
+      bucket_bloc.user = user
+      bucket_bloc.save
+    end
+  end
+end
+# Category.create!(name: 'Header')
+
+# a = Bloc.create!(
+# 	name: 'header1', 
+# 	code: '<header></header>',
+# 	category: Category.find_by(name: "Header"),
+# 	img_url: 'http://placehold.it/800x150/e5e5e5'
+# )
+
+# b = Bloc.create!(
+# 	name: 'header2', 
+# 	code: '<header></header>',
+# 	category: Category.find_by(name: "Header"),
+# 	img_url: 'http://placehold.it/800x150/333333'
+# )
+
+# c = Bloc.create!(
+# 	name: 'header3', 
+# 	code: '<header></header>',
+# 	category: Category.find_by(name: "Header"),
+# 	img_url: 'http://placehold.it/800x150/4d4d4d'
+# )
+
+# page = Webpage.create!(name: 'Website 01')
+
+# WebLayout.create! webpage: page, bloc: c, position: 3
+# WebLayout.create! webpage: page, bloc: a, position: 1
+# WebLayout.create! webpage: page, bloc: b, position: 2

@@ -1,16 +1,30 @@
 class BlocsController < ApplicationController
-  before_action :set_bloc, only: [:show, :edit, :update, :destroy]
-  before_filter :authorize_admin
+  before_action :set_bloc, only: [:show, :edit, :update, :destroy, :preview]
+  # before_filter :authorize_admin
 
   # GET /blocs
   # GET /blocs.json
   def index
-    @blocs = Bloc.includes(:category).all
+    @users = User.all
+    @order = params[:order]
+    if params[:search]
+        @blocs = Bloc.tagged_with(params[:search], :any => :true) #.sort_by(&:likes_count).reverse
+    else
+      if @order == 'liked'
+        @blocs = Bloc.includes(:category).all.sort_by(&:likes_count).reverse
+      else
+        @blocs = Bloc.includes(:category).all.sort_by(&:created_at).reverse
+      end
+    end
   end
 
   # GET /blocs/1
   # GET /blocs/1.json
   def show
+  end
+
+  def preview
+
   end
 
   # GET /blocs/new
@@ -20,22 +34,42 @@ class BlocsController < ApplicationController
 
   # GET /blocs/1/edit
   def edit
+    if current_user.role == 'admin' #user_owns_bloc? or 
+    else 
+      redirect_to bloc_path(params[:id])
+    end
+  end
+
+  def crop
+
+  end
+
+  def crop_submit
+    redirect_to bloc_show_path(params[:id]), notice: 'Bloc was successfully created.'
   end
 
   # POST /blocs
   # POST /blocs.json
   def create
     @bloc = Bloc.new(bloc_params)
+    @bloc.user_id = params[:user_id]
+    @bloc.likes_count = 0
 
-    respond_to do |format|
+    # respond_to do |format|
       if @bloc.save
-        format.html { redirect_to dashboard_show_path, notice: 'Bloc was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @bloc }
+        if params[:bloc][:bloc_img].blank?
+          redirect_to @bloc
+        else
+          render action: "crop"
+        end
+        # format.html { redirect_to dashboard_show_path, notice: 'Bloc was successfully created.' }
+        # format.json { render action: 'show', status: :created, location: @bloc }
       else
-        format.html { render action: 'new' }
-        format.json { render json: @bloc.errors, status: :unprocessable_entity }
+        render action: "new"
+        # format.html { render action: 'new' }
+        # format.json { render json: @bloc.errors, status: :unprocessable_entity }
       end
-    end
+    # end
   end
 
   # PATCH/PUT /blocs/1
@@ -62,14 +96,29 @@ class BlocsController < ApplicationController
     end
   end
 
+  def tagged
+    @users = User.all
+    if params[:tag].present?
+      @blocs = Bloc.tagged_with(params[:tag])
+    else
+      @blocs = Bloc.all
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bloc
       @bloc = Bloc.find(params[:id])
     end
 
+    def user_owns_bloc?
+      @bloc.user == current_user
+    end
+
+
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def bloc_params
-      params.require(:bloc).permit(:name, :code, :styles, :bloc_img, :category_id)
+      params.require(:bloc).permit(:name, :code, :styles, :bloc_img, :category_id, :user_id, :tag_list, :likes_count)
     end
 end
