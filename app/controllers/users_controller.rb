@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    Profile.find_by(user_id: params[:id]).destroy
   	User.find(params[:id]).destroy
   	redirect_to dashboard_show_path
   end

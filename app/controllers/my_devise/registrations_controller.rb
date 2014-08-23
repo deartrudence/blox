@@ -28,4 +28,12 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
 		end
 	end
 
+	def destroy
+		super #this calls Devise::RegistrationsController#destroy
+		if resource.destroy
+    		Profile.find_by(user_id: resource.id).destroy
+    	end
+  	end
+
+
 end
