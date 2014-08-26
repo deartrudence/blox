@@ -12,6 +12,12 @@ class User < ActiveRecord::Base
    #has_many :blocs, through: :bucket_blocs
    has_one :profile
    has_many :likes
+
+   #scope :created_blox, -> {where("user.blocs <> ''")}
+
+  def created_blox?
+    self.blocs.present?
+  end
    
 
   def self.from_twitter_auth(auth)

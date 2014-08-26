@@ -22,25 +22,24 @@
   
   <div class="container"><div class="row"><div class="col-md-10 col-md-offset-1">
   <div class="profile-listing">
-    <% @profiles.each do |profile| %>
-        <% builder = @users.find(profile.user_id) %>
-        <% if builder.blocs.present? %>
+    <% @users.each do |user| %>
+      <% if user.created_blox? %>
         <div class="item">
           <div class="item-content">
             <li class='col-md-2 col-sm-4 col-xs-6 builder-profile'> 
-            <%= link_to profile_path(builder.profile.id), class: "avatar" do %>    
+            <%= link_to profile_path(user.profile.id), class: "avatar" do %>    
               <div class="avatar">
-                  <% if builder.profile.avatar.present? %>
-                    <%= image_tag builder.profile.avatar.url(:thumb), class: "img-circle"%>
-                  <% elsif builder.avatar_url.present? %>
-                    <%= image_tag builder.avatar_url, class: "img-circle" %>
+                  <% if user.profile.avatar.present? %>
+                    <%= image_tag user.profile.avatar.url(:thumb), class: "img-circle"%>
+                  <% elsif user.avatar_url.present? %>
+                    <%= image_tag user.avatar_url, class: "img-circle" %>
                   <% else %>
-                    <%= image_tag gravatar_url(builder), class: "img-circle" %>
+                    <%= image_tag gravatar_url(user), class: "img-circle" %>
                   <% end %>
               </div>
               <% end %>
               <div>
-                <%= link_to builder.profile.handle, profile_path(builder.profile.id) %>
+                <%= link_to user.profile.handle, profile_path(user.profile.id) %>
               </div>
             </li>
           <% end %>
