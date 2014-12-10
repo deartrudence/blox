@@ -22,8 +22,8 @@
   
   <div class="container"><div class="row"><div class="col-md-10 col-md-offset-1">
   <div class="profile-listing">
-    <% @users.each do |user| %>
-      <% if user.created_blox? %>
+    <% @all_users.each do |i| %>
+      <% user = User.find(i) %>
         <div class="item">
           <div class="item-content">
             <li class='col-md-2 col-sm-4 col-xs-6 builder-profile'> 
@@ -43,7 +43,7 @@
               </div>
             </li>
           <% end %>
-        <% end %>
+
       </div>
     </div>
   </div>

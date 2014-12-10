@@ -25,6 +25,10 @@ gem 'pg'
 
 gem 'rails_12factor'
 
+group :production do
+	gem 'puma'
+end
+
 #for Authentification
 gem 'devise'
 

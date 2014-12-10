@@ -8,8 +8,8 @@ describe Like do
 
 	it "does not allow duplicate likes per user" do 
 		user = FactoryGirl.create(:user)
-		FactoryGirl.create(:like, likeable: Bloc, likeable_id: 10, likeable_type: "Bloc", user: user) 
-		FactoryGirl.build(:like, likeable: Bloc, likeable_id: 10, likeable_type: "Bloc", user: user).should_not be_valid 
+		FactoryGirl.create(:like, likeable_id: 10, likeable_type: "Bloc", user: user) 
+		FactoryGirl.build(:like, likeable_id: 10, likeable_type: "Bloc", user: user).should_not be_valid 
 	end
 
 end

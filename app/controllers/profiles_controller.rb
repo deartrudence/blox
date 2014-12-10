@@ -4,6 +4,8 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
+    @all_users = Bloc.all.group_by(&:user_id).keys.uniq
+
     @profiles = Profile.all
     @users = User.all
   end
